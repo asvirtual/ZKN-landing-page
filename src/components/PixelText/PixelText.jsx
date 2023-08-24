@@ -1,7 +1,5 @@
 import { useEffect } from 'react'
-import { AnimatePresence, delay, motion } from "framer-motion"
-
-import "../../fonts/Akashi.ttf"
+import { AnimatePresence, motion } from "framer-motion"
 
 
 function PixelText(props) {
@@ -83,6 +81,7 @@ function PixelText(props) {
             }
     
             this.ctx.font = `${props.fontSize}px ${props.fontFamily}`
+            this.ctx.fontFamily = props.fontFamily
             this.ctx.textAlign = props.textAlign
             this.ctx.textBaseline = props.textBaseline
 
@@ -163,6 +162,9 @@ function PixelText(props) {
             const ctx = canvas.getContext('2d', {
                 willReadFrequently: true
             })
+            
+            ctx.font = `${props.fontFamily} ${props.fontSize}px`
+            ctx.fontFamily = props.fontFamily
 
             const effect = new Effect(ctx, canvas.width, canvas.height, props.maxTextWidth)
             effect.wrapText(props.text)
@@ -192,7 +194,6 @@ function PixelText(props) {
                 initial={ props.framerMotionInitial } 
                 animate={ props.framerMotionAnimate } 
                 exit={ props.framerMotionExit }
-                style={{ fontFamily: "Akashi" }}
                 transition={ props.framerMotionTransition }></motion.canvas> }
         </AnimatePresence> : 
         <canvas id={ props.id } className={ props.className }></canvas>

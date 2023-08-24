@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import PixelText from './components/PixelText/PixelText'
 
-import './fonts/style.css'
-
 
 function App() {
 	const delaySeconds = 2
@@ -19,7 +17,7 @@ function App() {
 	return (
 		<>
 			<PixelText 
-				// show={ !loaded }
+				show={ !loaded }
 				id="initial-logo" 
 				text="ZKN LBS"
 				framerMotion={ true }
@@ -46,7 +44,6 @@ function App() {
 
 			<PixelText 
 				show={ loaded }
-				// show={ false }
 				id="logo"
 				text="ZIKEN LABS"
 				framerMotion={ true }
@@ -56,7 +53,7 @@ function App() {
 				width="300"
 				height="160"
 				fontSize={ 40 }
-				fontFamily="Bungee"
+				fontFamily="Akashi"
 				textAlign="center"
 				textBaseLine="middle"
 				gradient={ [ [0.3, '#121517'], [0.5, '#4C4E50'], [0.7, '#BFC0C2'] ] }
