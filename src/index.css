@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Akashi";   /*Can be any text*/
+  src: local("Akashi"),
+    url("./fonts/Akashi.ttf") format("truetype");
+}
+
 :root {
-  font-family: Space Grotesk;
+  /* font-family: "Space Grotesk"; */
   line-height: 1.5;
   font-weight: 400;
 
@@ -16,4 +22,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+canvas {
+  font-family: "Akashi";
 }

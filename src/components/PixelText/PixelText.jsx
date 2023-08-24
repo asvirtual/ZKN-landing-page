@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { AnimatePresence, delay, motion } from "framer-motion"
 
+import "../../fonts/Akashi.ttf"
+
 
 function PixelText(props) {
     class Particle {
@@ -19,9 +21,9 @@ function PixelText(props) {
             this.force = 0
             this.angle = 0
             this.distance = 0
-            this.friction = Math.random() * 0.6 + 0.15
+            this.friction = Math.random() * props.randomFriction + props.fixedFriction // 0.6 + 0.15
             // this.ease = Math.random() * 0.1 + 0.005
-            this.ease = Math.random() * 0.1 + 0.02
+            this.ease = Math.random() * props.randomEase + props.fixedEase // 0.1 + 0.08
         }
     
         draw() {
@@ -50,12 +52,13 @@ function PixelText(props) {
     }
     
     class Effect {
-        constructor(ctx, canvasWidth, canvasHeight) {
+        constructor(ctx, canvasWidth, canvasHeight, maxTextWidth) {
             this.ctx = ctx
             this.canvasWidth = canvasWidth
             this.canvasHeight = canvasHeight
             this.textX = canvasWidth / 2
             this.textY = canvasHeight / 2
+            this.maxTextWidth = maxTextWidth
     
             this.particles = []
             this.gap = props.gap
@@ -79,11 +82,38 @@ function PixelText(props) {
                 this.ctx.fillStyle = gradient
             }
     
-            this.ctx.font = `${props.fontSize} ${props.fontFamily}`
+            this.ctx.font = `${props.fontSize}px ${props.fontFamily}`
             this.ctx.textAlign = props.textAlign
             this.ctx.textBaseline = props.textBaseline
+
+            if (!this.maxTextWidth) {
+                this.ctx.fillText(text, this.textX, this.textY)
+                this.convertToParticles()
+                return
+            }
+            
+            let linesArray = []
+            let lineCounter = 0
+            let line = ''
+            let words = text.split(' ')
+            for (let i = 0; i < words.length; i++) {
+                let testLine = line + words[i] + ' '
+                if (this.ctx.measureText(testLine).width > this.maxTextWidth) {
+                    line = words[i] + ' '
+                    lineCounter++
+                } else {
+                    line = testLine
+                }
+
+                linesArray[lineCounter] = line
+            }
+
+            let textHeight = props.fontSize * lineCounter
+            this.textY = this.canvasHeight / 2 - textHeight / 2
+            linesArray.forEach((el, index) => {
+                this.ctx.fillText(el, this.textX, this.textY + props.fontSize * index)
+            })
     
-            this.ctx.fillText(text, this.textX, this.textY)
             this.convertToParticles()
         }
     
@@ -125,33 +155,35 @@ function PixelText(props) {
     }
 
 	useEffect(() => {
-		const canvas = document.getElementById(props.id)
-		canvas.width = props.width
-		canvas.height = props.height
+        if (props.show == undefined || props.show) {
+            const canvas = document.getElementById(props.id)
+            canvas.width = props.width
+            canvas.height = props.height
 
-		const ctx = canvas.getContext('2d', {
-			willReadFrequently: true
-		})
+            const ctx = canvas.getContext('2d', {
+                willReadFrequently: true
+            })
 
-		const effect = new Effect(ctx, canvas.width, canvas.height)
-		effect.wrapText(props.text)
-		effect.render()
-		
-		const animate = (effect) => {
-			ctx.clearRect(0, 0, canvas.width, canvas.height)
-			effect.render()
-			requestAnimationFrame(() => animate(effect))
-		}
-		
-		animate(effect)	
-		
-		window.addEventListener('resize', () => {
-			// canvas.width = window.innerWidth
-			// canvas.height = window.innerHeight
-			// effect.resize(canvas.width, canvas.height)
-			// effect.wrapText(props.text)
-		});
-	}, [])
+            const effect = new Effect(ctx, canvas.width, canvas.height, props.maxTextWidth)
+            effect.wrapText(props.text)
+            effect.render()
+            
+            const animate = (effect) => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                effect.render()
+                requestAnimationFrame(() => animate(effect))
+            }
+            
+            animate(effect)	
+            
+            window.addEventListener('resize', () => {
+                // canvas.width = window.innerWidth
+                // canvas.height = window.innerHeight
+                // effect.resize(canvas.width, canvas.height)
+                // effect.wrapText(props.text)
+            });
+        }
+	}, [props.show])
 
     // return <motion.canvas  animate={{ animationdel scale: 0,  }} exit={{ animationDura }} ></motion.canvas>
 	return props.framerMotion ? 
@@ -160,6 +192,7 @@ function PixelText(props) {
                 initial={ props.framerMotionInitial } 
                 animate={ props.framerMotionAnimate } 
                 exit={ props.framerMotionExit }
+                style={{ fontFamily: "Akashi" }}
                 transition={ props.framerMotionTransition }></motion.canvas> }
         </AnimatePresence> : 
         <canvas id={ props.id } className={ props.className }></canvas>
