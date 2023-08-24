@@ -74,7 +74,7 @@ class Effect {
 
 		this.ctx.fillStyle = gradient
 
-		this.ctx.font = '80px Helvetica'
+		this.ctx.font = '80px Bungee'
 		this.ctx.textAlign = 'center'
 		this.ctx.textBaseline = 'middle'
 
