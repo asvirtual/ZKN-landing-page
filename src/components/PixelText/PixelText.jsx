@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from "framer-motion"
 
 
@@ -20,8 +20,8 @@ function PixelText(props) {
             this.angle = 0
             this.distance = 0
             this.friction = Math.random() * props.randomFriction + props.fixedFriction // 0.6 + 0.15
-            // this.ease = Math.random() * 0.1 + 0.005
-            this.ease = Math.random() * props.randomEase + props.fixedEase // 0.1 + 0.08
+            this.ease = Math.random() * props.randomEase + props.fixedEase // 0.1 + 0.005
+            this.exitAcceleration = Math.random() * props.randomExitAcceleration + props.fixedExitAcceleration // 1 + 0.2
         }
     
         draw() {
@@ -44,8 +44,22 @@ function PixelText(props) {
                 this.vy += this.force * Math.sin(this.angle)
             }
             
-            this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease;
+            this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease
             this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease
+        }
+
+        exit() {
+            this.dx = (this.effect.canvasWidth / 2) - this.x
+            this.dy = (this.effect.canvasHeight / 2) - this.y
+            this.distance = this.dx * this.dx + this.dy * this.dy
+            this.force = -this.effect.mouse.radius / this.distance
+    
+            this.angle = Math.atan2(this.dy, this.dx)
+            this.vx += this.force * Math.cos(this.angle)
+            this.vy += this.force * Math.sin(this.angle)
+            
+            this.x += (this.vx *= this.exitAcceleration)
+            this.y += (this.vy *= this.exitAcceleration)
         }
     }
     
@@ -138,9 +152,11 @@ function PixelText(props) {
             }
         }
     
-        render() {
+        render(exit) {
+            console.log(exit)
             this.particles.forEach(particle => {
-                particle.update()
+                if (exit) particle.exit()
+                else particle.update()
                 particle.draw()
             })
         }
@@ -154,6 +170,8 @@ function PixelText(props) {
     }
 
 	useEffect(() => {
+        let exit = false
+
         if (props.show == undefined || props.show) {
             const canvas = document.getElementById(props.id)
             canvas.width = props.width
@@ -172,11 +190,13 @@ function PixelText(props) {
             
             const animate = (effect) => {
                 ctx.clearRect(0, 0, canvas.width, canvas.height)
-                effect.render()
+                effect.render(exit)
                 requestAnimationFrame(() => animate(effect))
             }
             
             animate(effect)	
+            // setTimeout(() => exit = true, 3000)
+            // setTimeout(() => exit = false, 6000)
             
             window.addEventListener('resize', () => {
                 // canvas.width = window.innerWidth
@@ -184,8 +204,11 @@ function PixelText(props) {
                 // effect.resize(canvas.width, canvas.height)
                 // effect.wrapText(props.text)
             });
+     
+            const id = setTimeout(() => exit = !exit, props.exitDelay);
+            return () => clearTimeout(id)
         }
-	}, [props.show])
+	}, [props.text])
 
     // return <motion.canvas  animate={{ animationdel scale: 0,  }} exit={{ animationDura }} ></motion.canvas>
 	return props.framerMotion ? 

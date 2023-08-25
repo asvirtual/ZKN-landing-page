@@ -3,27 +3,26 @@ import PixelText from './components/PixelText/PixelText'
 
 
 function App() {
-	const delaySeconds = 2
+	const animationPeriodMillis = 10000
 
-	const [loaded, setLoaded] = useState(false);
-
+	const [animationIndex, setAnimationIndex] = useState(0)
+	
 	useEffect(() => {
-		setTimeout(() => {
-			console.log("loaded")
-			setLoaded(true)
-		}, delaySeconds * 1000)
-	}, [])
+		const id = setInterval(() => setAnimationIndex((oldIndex) => oldIndex == 2 ? 0 : oldIndex + 1), animationPeriodMillis);
+		return () => clearInterval(id)
+	  }, []);
+
 
 	return (
 		<>
 			<PixelText 
-				show={ !loaded }
+				// show={ !loaded }
 				id="initial-logo" 
-				text="ZKN LBS"
-				framerMotion={ true }
-				framerMotionInitial={{ scale: 1 }}
-				framerMotionExit={{ scale: 0 }}
-				framerMotionTransition={{ delay: delaySeconds, duration: 1 }}
+				text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Are you looking for help to build your project?" : "We are here for this." }
+				// framerMotion={ true }
+				// framerMotionInitial={{ scale: 1 }}
+				// framerMotionExit={{ scale: 0 }}
+				// framerMotionTransition={{ delay: delaySeconds, duration: 1 }}
 				width={ window.innerWidth }
 				height={ window.innerHeight }
 				fontSize={ 120 }
@@ -39,10 +38,14 @@ function App() {
 				fixedFriction={ 0.15 }
 				randomEase={ 0.1 }
 				fixedEase={ 0.1 }
-				maxTextWidth={ 100 }
+				randomExitAcceleration={ 1 }
+				fixedExitAcceleration={ 0.2 }
+				exitDelay={ animationPeriodMillis / 2 }
+				// maxTextWidth={ 100 }
+				maxTextWidth={ animationIndex == 0 ? 100 : animationIndex == 1 ? 1000 : 500 }
 			/>
 
-			<PixelText 
+			{/* <PixelText 
 				show={ loaded }
 				id="logo"
 				text="ZIKEN LABS"
@@ -65,7 +68,7 @@ function App() {
 				fixedFriction={ 0.15 }
 				randomEase={ 0.1 }
 				fixedEase={ 0.005 }
-			/>
+			/> */}
 		</>
 	)
 }
