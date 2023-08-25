@@ -51,20 +51,35 @@ function PixelText(props) {
         }
 
         exit() {
-            this.dx = (this.effect.canvasWidth / 2) - this.x
-            this.dy = (this.effect.canvasHeight / 2) - this.y
+            this.dx = this.effect.mouse.x - this.x
+            this.dy = this.effect.mouse.y - this.y
             this.distance = this.dx * this.dx + this.dy * this.dy
-            this.force = -this.effect.mouse.radius / this.distance
     
-            this.angle = Math.atan2(this.dy, this.dx)
-            this.vx += this.force * Math.cos(this.angle)
-            this.vy += this.force * Math.sin(this.angle)
-            
-            this.x += (this.vx *= this.exitAcceleration)
-            this.y += (this.vy *= this.exitAcceleration)
+            if (this.distance < this.effect.mouse.radius) {
+                this.force = -this.effect.mouse.radius / this.distance
 
-            // if ((this.x < 0 || this.x > this.effect.canvasWidth) && (this.y < 0 || this.y > this.effect.canvasHeight))
-                // this.effect.ctx.clearRect(this.x, this.y, this.effect.canvasWidth, this.effect.canvasHeight)
+                this.angle = Math.atan2(this.dy, this.dx)
+                this.vx += this.force * Math.cos(this.angle)
+                this.vy += this.force * Math.sin(this.angle)
+            
+                this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease
+                this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease
+            } else {
+                this.dx = (this.effect.canvasWidth / 2) - this.x
+                this.dy = (this.effect.canvasHeight / 2) - this.y
+                this.distance = this.dx * this.dx + this.dy * this.dy
+                this.force = -this.effect.mouse.radius / this.distance
+        
+                this.angle = Math.atan2(this.dy, this.dx)
+                this.vx += this.force * Math.cos(this.angle)
+                this.vy += this.force * Math.sin(this.angle)
+                
+                this.x += (this.vx *= this.exitAcceleration)
+                this.y += (this.vy *= this.exitAcceleration)
+
+                // if ((this.x < 0 || this.x > this.effect.canvasWidth) && (this.y < 0 || this.y > this.effect.canvasHeight))
+                    // this.effect.ctx.clearRect(this.x, this.y, this.effect.canvasWidth, this.effect.canvasHeight)
+            }
         }
         
     }

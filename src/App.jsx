@@ -29,8 +29,9 @@ function App() {
 				fontFamily="Akashi"
 				textAlign="center"
 				textBaseLine="middle"
-				gradient={ [ [0.3, '#121517'], [0.5, '#4C4E50'], [0.7, '#BFC0C2'] ] }
-				gap={ 3 }
+				// gradient={ [ [0.3, '#121517'], [0.5, '#4C4E50'], [0.7, '#BFC0C2'] ] }
+				gradient={ [ [0, '#121517'], [1, '#121517'] ] }
+				gap={ 2 }
 				radius={ 20000 }
 				initialAnimation={ true }
 				hoverAnimation={ true }
@@ -42,7 +43,7 @@ function App() {
 				fixedExitAcceleration={ 0.2 }
 				exitDelay={ animationPeriodMillis / 2 }
 				// maxTextWidth={ 100 }
-				maxTextWidth={ animationIndex == 0 ? 100 : animationIndex == 1 ? 1000 : 500 }
+				maxTextWidth={ animationIndex == 0 ? 100 : animationIndex == 1 ? 750 : 500 }
 			/>
 
 			{/* <PixelText 
