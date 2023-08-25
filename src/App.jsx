@@ -18,14 +18,14 @@ function App() {
 			<PixelText 
 				// show={ !loaded }
 				id="initial-logo" 
-				text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Need help for your project?" : "We are here for this." }
+				text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Your vision, our expertise." : "Let's build together" }
 				// framerMotion={ true }
 				// framerMotionInitial={{ scale: 1 }}
 				// framerMotionExit={{ scale: 0 }}
 				// framerMotionTransition={{ delay: delaySeconds, duration: 1 }}
 				width={ window.innerWidth }
 				height={ window.innerHeight }
-				fontSize={ 120 }
+				fontSize={ animationIndex == 0 ? 200 : 120 }
 				fontFamily="Akashi"
 				textAlign="center"
 				textBaseLine="middle"
