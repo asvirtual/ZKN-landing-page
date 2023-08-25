@@ -18,14 +18,14 @@ function App() {
 			<PixelText 
 				// show={ !loaded }
 				id="initial-logo" 
-				text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Your vision, our expertise." : "Let's build together" }
+				text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Your vision. Our expertise." : "Let's build. Together." }
 				// framerMotion={ true }
 				// framerMotionInitial={{ scale: 1 }}
 				// framerMotionExit={{ scale: 0 }}
 				// framerMotionTransition={{ delay: delaySeconds, duration: 1 }}
 				width={ window.innerWidth }
 				height={ window.innerHeight }
-				fontSize={ animationIndex == 0 ? 200 : 120 }
+				fontSize={ animationIndex == 0 ? 220 : 120 }
 				fontFamily="Akashi"
 				textAlign="center"
 				textBaseLine="middle"
@@ -43,7 +43,7 @@ function App() {
 				fixedExitAcceleration={ 0.2 }
 				exitDelay={ animationPeriodMillis / 2 }
 				// maxTextWidth={ 100 }
-				maxTextWidth={ animationIndex == 0 ? 100 : animationIndex == 1 ? 750 : 500 }
+				maxTextWidth={ animationIndex == 0 ? 100 : animationIndex == 1 ? 1000 : 1000 }
 			/>
 
 			{/* <PixelText 
