@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from "framer-motion"
 
 
 function PixelText(props) {
+    let effect
+
     class Particle {
         constructor(effect, x, y, color) {
             this.effect = effect
@@ -60,7 +62,11 @@ function PixelText(props) {
             
             this.x += (this.vx *= this.exitAcceleration)
             this.y += (this.vy *= this.exitAcceleration)
+
+            // if ((this.x < 0 || this.x > this.effect.canvasWidth) && (this.y < 0 || this.y > this.effect.canvasHeight))
+                // this.effect.ctx.clearRect(this.x, this.y, this.effect.canvasWidth, this.effect.canvasHeight)
         }
+        
     }
     
     class Effect {
@@ -153,7 +159,6 @@ function PixelText(props) {
         }
     
         render(exit) {
-            console.log(exit)
             this.particles.forEach(particle => {
                 if (exit) particle.exit()
                 else particle.update()
@@ -171,6 +176,7 @@ function PixelText(props) {
 
 	useEffect(() => {
         let exit = false
+        let animationFrame
 
         if (props.show == undefined || props.show) {
             const canvas = document.getElementById(props.id)
@@ -184,19 +190,17 @@ function PixelText(props) {
             ctx.font = `${props.fontFamily} ${props.fontSize}px`
             ctx.fontFamily = props.fontFamily
 
-            const effect = new Effect(ctx, canvas.width, canvas.height, props.maxTextWidth)
+            effect = new Effect(ctx, canvas.width, canvas.height, props.maxTextWidth)
             effect.wrapText(props.text)
             effect.render()
             
             const animate = (effect) => {
                 ctx.clearRect(0, 0, canvas.width, canvas.height)
                 effect.render(exit)
-                requestAnimationFrame(() => animate(effect))
+                animationFrame = requestAnimationFrame(() => animate(effect))
             }
             
-            animate(effect)	
-            // setTimeout(() => exit = true, 3000)
-            // setTimeout(() => exit = false, 6000)
+            animate(effect)
             
             window.addEventListener('resize', () => {
                 // canvas.width = window.innerWidth
@@ -206,7 +210,12 @@ function PixelText(props) {
             });
      
             const id = setTimeout(() => exit = !exit, props.exitDelay);
-            return () => clearTimeout(id)
+            return () => {
+                cancelAnimationFrame(animationFrame)
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                clearTimeout(id)
+                effect = null
+            }
         }
 	}, [props.text])
 

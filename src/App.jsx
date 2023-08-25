@@ -18,7 +18,7 @@ function App() {
 			<PixelText 
 				// show={ !loaded }
 				id="initial-logo" 
-				text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Are you looking for help to build your project?" : "We are here for this." }
+				text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Need help for your project?" : "We are here for this." }
 				// framerMotion={ true }
 				// framerMotionInitial={{ scale: 1 }}
 				// framerMotionExit={{ scale: 0 }}
