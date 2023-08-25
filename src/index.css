@@ -23,3 +23,8 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+body {
+  overflow-x: hidden;
+  cursor: url("assets/cursor.png"), auto;
+}

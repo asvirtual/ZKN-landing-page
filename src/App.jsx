@@ -4,7 +4,6 @@ import PixelText from './components/PixelText/PixelText'
 
 function App() {
 	const animationPeriodMillis = 10000
-
 	const [animationIndex, setAnimationIndex] = useState(0)
 	
 	useEffect(() => {
