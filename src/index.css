@@ -27,6 +27,7 @@
 body {
   overflow-x: hidden;
   cursor: url("assets/cursor.png"), auto;
+  height: 200vh;
 }
 
 #initial-logo {

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import PixelText from './components/PixelText/PixelText'
 
+import logo from "./assets/cursor.png"
+
 
 function App() {
 	let animateLogo = true
@@ -18,7 +20,7 @@ function App() {
 				this.color = color
 				this.size = this.effect.gap
 				this.angle = Math.random() * Math.PI * 2
-				this.force = Math.random() * 10 + 0.5
+				this.force = Math.random() * 5 + 0.5
                 this.vx = this.force * Math.cos(this.angle) * (Math.random() - 0.5)
                 this.vy = this.force * Math.sin(this.angle) * (Math.random() - 0.5)
 				this.distance = 0
@@ -54,7 +56,7 @@ function App() {
 				this.canvasHeight = canvasHeight
 		
 				this.particles = []
-				this.gap = 3
+				this.gap = 1
 				this.convertToParticles()
 			}
 		
@@ -64,14 +66,14 @@ function App() {
 				// this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
 
 				for (let index = 0; index < particlesNumber; ++index) {								
-					// const color = `rgb(126,126,126,${Math.random() * 50 + 1})`
-					const color = `rgb(0,0,0)`
+					// const color = `rgb(0,0,0,${Math.random() * 50 + 1})`
+					const color = `rgb(${241 + (Math.random() - 0.5) * 200},${80 + (Math.random() - 0.5) * 200},${37 + (Math.random() - 0.5) * 200},${Math.random() * 50 + 1})`
+					// const color = `rgb(0,0,0)`
 					this.particles.push(new Particle(this, color))
 				}
 			}
 		
 			render() {
-				this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
 				this.particles.forEach(particle => {
 					particle.update()
 					particle.draw()
@@ -98,12 +100,25 @@ function App() {
 		
 		animate(effect)
 
+		const id = setInterval(() => {
+			ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+			effect.convertToParticles()
+		}, animationPeriodMillis / 2);
+
 		return () => {
+			clearInterval(id)
 			cancelAnimationFrame(animationFrame)
 		}
 	}, [])
 	
 	useEffect(() => {
+		window.addEventListener('scroll', e => {
+			const nav = document.querySelector("#top-nav")
+			if (window.scrollY > 80) nav.style.top = "0px"
+			else nav.style.top = "-80px"
+			// console.log(window.scrollY)
+		})
+
 		const id = setInterval(() => {
 			if (animateLogo)
 				setAnimationIndex((oldIndex) => oldIndex == 2 ? 0 : oldIndex + 1)
@@ -125,6 +140,15 @@ function App() {
 
 	return (
 		<>
+			<nav id="top-nav" className="fixed w-full h-20 bg-black flex" style={{ top: "-80px", transition: "top .25s ease" }}>
+				<img src={ logo } className="w-32 h-20 mx-auto ml-auto mr-auto block text-center" alt="logo"></img>
+				<a className="flex-1 text-center mt-auto mb-auto">Services</a>
+				<a className="flex-1 text-center mt-auto mb-auto">Products</a>
+				<a className="flex-1 text-center mt-auto mb-auto">Works</a>
+				<a className="flex-1 text-center mt-auto mb-auto">Blog</a>
+				<a className="flex-1 text-center mt-auto mb-auto">About</a>
+				<a className="flex-1 text-center mt-auto mb-auto">Contact</a>
+			</nav>
 			<canvas id="background" style={{ position: "absolute", zIndex: -1 }}></canvas>
 			<PixelText 
 				// show={ !loaded }
