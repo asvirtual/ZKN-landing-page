@@ -223,13 +223,20 @@ function PixelText(props) {
                 // effect.resize(canvas.width, canvas.height)
                 // effect.wrapText(props.text)
             });
-     
-            const id = setTimeout(() => exit = !exit, props.exitDelay);
+
+            let id
+            if (props.exitDelay != null)
+                id = setTimeout(() => {
+                    if (props.exitDelay != null)
+                        exit = !exit
+                }, props.exitDelay)
+
             return () => {
                 cancelAnimationFrame(animationFrame)
                 ctx.clearRect(0, 0, canvas.width, canvas.height)
-                clearTimeout(id)
                 effect = null
+                if (id)
+                    clearTimeout(id)
             }
         }
 	}, [props.text])
