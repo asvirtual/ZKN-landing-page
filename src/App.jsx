@@ -243,7 +243,7 @@ function App() {
 	return (
 		<>
 			<div id="progress-bar" style={{ width: `${scrollProgress}%` }}></div>
-			<nav id="top-nav" className="w-full h-20 px-4 grid" style={{ transition: "top .25s ease" }}>
+			<nav id="top-nav" className="w-full h-20 px-4 grid" style={{ transition: "top .25s ease", position: "absolute" }}>
 				<img src={ logo } className="my-auto block" alt="logo"></img>
 				<div></div>
 				<a className="text-center mt-auto mb-auto text-black font-bold mr-5">Services</a>
