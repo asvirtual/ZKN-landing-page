@@ -2,14 +2,20 @@ import { useEffect, useState } from 'react'
 import PixelText from './components/PixelText/PixelText'
 
 import logo from "./assets/cursor.png"
+import * as THREE from "three"
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
 
 function App() {
 	let animateLogo = true
 	const animationPeriodMillis = 10000
 	const [animationIndex, setAnimationIndex] = useState(0)
+	const [scrollProgress, setScrollProgress] = useState(0)
 
 	useEffect(() => {
+		
+		return
+
 		class Particle {
 			constructor(effect, color) {
 				this.effect = effect
@@ -113,10 +119,12 @@ function App() {
 	
 	useEffect(() => {
 		window.addEventListener('scroll', e => {
-			const nav = document.querySelector("#top-nav")
-			if (window.scrollY > 80) nav.style.top = "0px"
-			else nav.style.top = "-80px"
+			// const nav = document.querySelector("#top-nav")
+			// if (window.scrollY > 80) nav.style.top = "0px"
+			// else nav.style.top = "-80px"
 			// console.log(window.scrollY)
+
+			setScrollProgress(window.scrollY / (document.body.scrollHeight / 2) * 100)
 		})
 
 		const id = setInterval(() => {
@@ -129,27 +137,124 @@ function App() {
 		};
 		
 		const observer = new IntersectionObserver(callback, {});
-		observer.observe(document.querySelector("#initial-logo"))
+		// observer.observe(document.querySelector("#initial-logo"))
 		
 		return () => {
 			clearInterval(id)
-			observer.unobserve(document.querySelector("#initial-logo"))
+			// observer.unobserve(document.querySelector("#initial-logo"))
 			observer.disconnect()
 		}
 	}, []);
 
+	// Threejs
+	useEffect(() => {
+		const canvas = document.querySelector("#background")
+		canvas.width = window.innerWidth
+		canvas.height = window.innerHeight
+
+		const scene = new THREE.Scene()
+		scene.background = new THREE.Color(255, 255, 255)
+
+		const geometry = new THREE.TorusGeometry(.7, .2, 16, 100)
+		const particlesGeometry = new THREE.BufferGeometry()
+		const particlesCount = 5000
+		const posArray = new Float32Array(particlesCount * 3)
+
+		for (let i = 0; i < particlesCount * 3; ++i) {
+			posArray[i] = (Math.random() - 0.5) * 5
+		}
+
+		particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3))
+
+		const material = new THREE.PointsMaterial({ size: 0.005, color: 0x000000, sizeAttenuation: true, transparent: true })
+
+		const sphere = new THREE.Mesh(geometry, material)
+		const particlesMesh = new THREE.Points(particlesGeometry, material)
+		scene.add(particlesMesh)
+
+		const pointLight = new THREE.PointLight(0xffffff, 0.1)
+		pointLight.position.x = 2
+		pointLight.position.y = 3
+		pointLight.position.z = 4
+		scene.add(pointLight)
+
+		const sizes = {
+			width: window.innerWidth,
+			height: window.innerHeight
+		}
+
+		let mouseX = 0
+		let mouseY = 0
+
+		document.addEventListener('mousemove', (event) => {
+			mouseX = event.clientX
+			mouseY = event.clientY
+		})
+
+		window.addEventListener('resize', () => {
+			sizes.width = window.innerWidth
+			sizes.height = window.innerHeight
+
+			camera.aspect = sizes.width / sizes.height
+			camera.updateProjectionMatrix()
+
+			renderer.setSize(sizes.width, sizes.height)
+			renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+		})
+
+		const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+		camera.position.x = 0
+		camera.position.y = 0
+		camera.position.z = 2
+
+		scene.add(camera)
+
+		let animationFrameId
+		let renderer = new THREE.WebGLRenderer({
+			canvas: canvas,
+		})
+
+		renderer.setSize(sizes.width, sizes.height)
+		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+		const clock = new THREE.Clock()
+		const tick = () => {
+			const elapsedTime = clock.getElapsedTime()
+			// sphere.rotation.y = .5 * elapsedTime
+
+			particlesMesh.rotation.y = -.1 * elapsedTime
+			if (mouseX > 0) {
+				particlesMesh.rotation.x = -mouseY * (elapsedTime * 0.00008)
+				particlesMesh.rotation.y = -mouseX * (elapsedTime * 0.00008)
+			}
+
+			renderer.render(scene, camera)
+			animationFrameId = window.requestAnimationFrame(tick)
+		}
+
+		tick()
+
+		return () => {
+			renderer.dispose()
+			cancelAnimationFrame(animationFrameId)
+		}
+	}, [])
+
 	return (
 		<>
-			<nav id="top-nav" className="fixed w-full h-20 bg-black flex" style={{ top: "-80px", transition: "top .25s ease" }}>
-				<img src={ logo } className="w-32 h-20 mx-auto ml-auto mr-auto block text-center" alt="logo"></img>
-				<a className="flex-1 text-center mt-auto mb-auto">Services</a>
-				<a className="flex-1 text-center mt-auto mb-auto">Products</a>
-				<a className="flex-1 text-center mt-auto mb-auto">Works</a>
-				<a className="flex-1 text-center mt-auto mb-auto">Blog</a>
-				<a className="flex-1 text-center mt-auto mb-auto">About</a>
-				<a className="flex-1 text-center mt-auto mb-auto">Contact</a>
+			<div id="progress-bar" style={{ width: `${scrollProgress}%` }}></div>
+			<nav id="top-nav" className="w-full h-20 px-4 grid" style={{ transition: "top .25s ease" }}>
+				<img src={ logo } className="my-auto block" alt="logo"></img>
+				<div></div>
+				<a className="text-center mt-auto mb-auto text-black font-bold mr-5">Services</a>
+				<a className="text-center mt-auto mb-auto text-black font-bold mx-5">Products</a>
+				<a className="text-center mt-auto mb-auto text-black font-bold mx-5">Works</a>
+				<a className="text-center mt-auto mb-auto text-black font-bold mx-5">Blog</a>
+				<a className="text-center mt-auto mb-auto text-black font-bold mx-5">About</a>
+				<a className="text-center mt-auto mb-auto text-black font-bold ml-5 mr-3">Contact</a>
 			</nav>
 			<canvas id="background" style={{ position: "absolute", zIndex: -1 }}></canvas>
+			{/* <canvas id="background" style={{ position: "absolute", zIndex: -1 }}></canvas> */}
 			<PixelText 
 				// show={ !loaded }
 				id="initial-logo" 

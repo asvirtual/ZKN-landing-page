@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "Akashi";   /*Can be any text*/
+    src: local("Akashi"),
+      url("../public/Akashi.ttf") format("truetype");
+}
+  
+
+* {
+    font-family: "Space Grotesk";
+}

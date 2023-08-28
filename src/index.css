@@ -30,5 +30,16 @@ body {
   height: 200vh;
 }
 
-#initial-logo {
+#top-nav {
+  grid-template-columns: minmax(0, 1fr) 50vw repeat(6, auto);
+}
+
+#progress-bar {
+  width: 0;
+  height: 3px;
+  /* margin-left: .1rem; */
+  /* margin-right: .1rem ; */
+  position: fixed;
+  top: 0;
+  background-color: black;
 }
