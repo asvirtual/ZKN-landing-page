@@ -3,6 +3,7 @@ import PixelText from './components/PixelText/PixelText'
 
 import logo from "./assets/logo.png"
 import * as THREE from "three"
+import dot from "./assets/dot.png"
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
 import { motion } from 'framer-motion'
@@ -139,11 +140,14 @@ function App() {
 
 		particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3))
 
-		const material = new THREE.PointsMaterial({ size: 0.005, color: 0x000000, sizeAttenuation: true, transparent: true })
-		const sphereMaterial = new THREE.PointsMaterial({ size: 0.009, color: 0x000000, transparent: true })
-
+		const loader = new THREE.TextureLoader()
+		const material = new THREE.PointsMaterial({ size: 0.005, color: 0x000000, sizeAttenuation: true, map: loader.load(dot) })
+		const sphereMaterial = new THREE.PointsMaterial({ size: 0.005, color: 0x000000, sizeAttenuation: true, map: loader.load(dot) })
+		
 		const sphere = new THREE.Points(geometry, sphereMaterial)
+		sphere.position.z = -1
 		scene.add(sphere)
+
 		const particlesMesh = new THREE.Points(particlesGeometry, material)
 		scene.add(particlesMesh)
 
@@ -160,7 +164,6 @@ function App() {
 
 		let mouseX = 0
 		let mouseY = 0
-		let lastScroll = 0
 
 		const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 		camera.position.x = 0
@@ -194,20 +197,13 @@ function App() {
 		})
 
 		window.addEventListener('scroll', e => {
-			// const nav = document.querySelector("#top-nav")
-			// if (window.scrollY > 80) nav.style.top = "0px"
-			// else nav.style.top = "-80px"
-			// console.log(window.scrollY)
-			
+			const scrollRange = (window.scrollY / (document.body.scrollHeight / 2) - 0.5) * 2
 			setScrollProgress(window.scrollY / (document.body.scrollHeight / 2) * 100)
+
 			particlesMesh.rotation.z = window.scrollY / (document.body.scrollHeight / 2) * 2
-			sphere.rotation.z = window.scrollY / (document.body.scrollHeight / 2) * 2
-			camera.zoom = 1 + (window.scrollY / (document.body.scrollHeight / 2))
+			sphere.position.z = scrollRange 
 
-			// sphere.translateY(scrollY / 100)
-
-			// console.log(scrollY)
-			lastScroll = window.scrollY
+			// console.log(scrollRange)
 		})
 
 
@@ -227,24 +223,25 @@ function App() {
 		// element.addEventListener('wheel', transformScroll);
 
 
-
-
 		const clock = new THREE.Clock()
 		const tick = () => {
 			let elapsedTime = clock.getElapsedTime()
 
-			// sphere.rotation.y = .5 * elapsedTime
-			// particlesMesh.rotation.y = -.1 * elapsedTime
-			sphere.rotation.y += 0.00005
-			particlesMesh.rotation.y += 0.00005
+			sphere.rotation.x = .5 * elapsedTime
+			sphere.rotation.y = .5 * elapsedTime
+			particlesMesh.rotation.y = -.1 * elapsedTime
 
-			if (mouseX > 0) {
-				particlesMesh.rotation.x = -mouseY * 0.00008 // * elapsedTime
-				particlesMesh.rotation.y = mouseX * 0.00008 // * elapsedTime
+			// if (mouseX > 0) {
+			// 	particlesMesh.rotation.x = -mouseY * 0.00008 * elapsedTime
+			// 	particlesMesh.rotation.y = mouseX * 0.00008 * elapsedTime
 
-				sphere.rotation.x = -mouseY * 0.00008 // * elapsedTime
-				sphere.rotation.y = mouseX * 0.00008 // * elapsedTime
-			}
+			// 	sphere.rotation.x = -mouseY * 0.00008 * elapsedTime
+			// 	sphere.rotation.y = mouseX * 0.00008 * elapsedTime
+			// } else {
+			// 	sphere.rotation.x = .05 * elapsedTime
+			// 	sphere.rotation.y = .5 * elapsedTime
+			// 	particlesMesh.rotation.y = -.1 * elapsedTime
+			// }
 
 			renderer.render(scene, camera)
 			animationFrameId = window.requestAnimationFrame(tick)
