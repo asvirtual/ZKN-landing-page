@@ -233,15 +233,17 @@ function App() {
 		const tick = () => {
 			let elapsedTime = clock.getElapsedTime()
 
-			sphere.rotation.y = .5 * elapsedTime
-			particlesMesh.rotation.y = -.1 * elapsedTime
+			// sphere.rotation.y = .5 * elapsedTime
+			// particlesMesh.rotation.y = -.1 * elapsedTime
+			sphere.rotation.y += 0.00005
+			particlesMesh.rotation.y += 0.00005
 
 			if (mouseX > 0) {
-				particlesMesh.rotation.x = -mouseY * 0.00008 * elapsedTime
-				particlesMesh.rotation.y = mouseX * 0.00008 * elapsedTime
+				particlesMesh.rotation.x = -mouseY * 0.00008 // * elapsedTime
+				particlesMesh.rotation.y = mouseX * 0.00008 // * elapsedTime
 
-				sphere.rotation.x = -mouseY * 0.00008 * elapsedTime
-				sphere.rotation.y = mouseX * 0.00008 * elapsedTime
+				sphere.rotation.x = -mouseY * 0.00008 // * elapsedTime
+				sphere.rotation.y = mouseX * 0.00008 // * elapsedTime
 			}
 
 			renderer.render(scene, camera)
