@@ -160,6 +160,7 @@ function App() {
 
 		let mouseX = 0
 		let mouseY = 0
+		let lastScroll = 0
 
 		const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 		camera.position.x = 0
@@ -200,25 +201,30 @@ function App() {
 			
 			setScrollProgress(window.scrollY / (document.body.scrollHeight / 2) * 100)
 			particlesMesh.rotation.z = window.scrollY / (document.body.scrollHeight / 2) * 2
-			sphere.rotation.x = window.scrollY / (document.body.scrollHeight / 2) * 2
+			sphere.rotation.z = window.scrollY / (document.body.scrollHeight / 2) * 2
 			camera.zoom = 1 + (window.scrollY / (document.body.scrollHeight / 2))
+
+			// sphere.translateY(scrollY / 100)
+
+			// console.log(scrollY)
+			lastScroll = window.scrollY
 		})
 
 
 
-		function transformScroll(event) {
-			if (!event.deltaY) {
-				return;
-			}
+		// function transformScroll(event) {
+		// 	if (!event.deltaY) {
+		// 		return;
+		// 	}
 
 
 		  
-			event.currentTarget.scrollLeft += event.deltaY + event.deltaX;
-			event.preventDefault();
-		}
+		// 	event.currentTarget.scrollLeft += event.deltaY + event.deltaX;
+		// 	event.preventDefault();
+		// }
 		
-		const element = document.body;
-		element.addEventListener('wheel', transformScroll);
+		// const element = document.body;
+		// element.addEventListener('wheel', transformScroll);
 
 
 
@@ -231,11 +237,11 @@ function App() {
 			particlesMesh.rotation.y = -.1 * elapsedTime
 
 			if (mouseX > 0) {
-				particlesMesh.rotation.x = -mouseY * 0.000008 * elapsedTime
-				particlesMesh.rotation.y = mouseX * 0.000008 * elapsedTime
+				particlesMesh.rotation.x = -mouseY * 0.00008 * elapsedTime
+				particlesMesh.rotation.y = mouseX * 0.00008 * elapsedTime
 
-				sphere.rotation.x = -mouseY * 0.000008 * elapsedTime
-				sphere.rotation.y = mouseX * 0.000008 * elapsedTime
+				sphere.rotation.x = -mouseY * 0.00008 * elapsedTime
+				sphere.rotation.y = mouseX * 0.00008 * elapsedTime
 			}
 
 			renderer.render(scene, camera)
