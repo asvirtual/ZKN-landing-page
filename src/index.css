@@ -24,14 +24,25 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html {
+  scroll-snap-type: y mandatory;
+}
+
 body {
   overflow-x: hidden;
   cursor: url("assets/cursor.png"), auto;
-  height: 200vh;
+  /* height: 200vh; */
+  scroll-snap-type: y mandatory;
+}
+
+section {
+  height: 100vh;
+  scroll-snap-align: start;
+  /* scroll-snap-stop: always; */
 }
 
 #top-nav {
-  grid-template-columns: minmax(0, 1fr) 50vw repeat(6, auto);
+  grid-template-columns: auto 30vw repeat(6, auto);
 }
 
 #progress-bar {

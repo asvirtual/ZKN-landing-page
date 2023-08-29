@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import PixelText from './components/PixelText/PixelText'
 
-import logo from "./assets/cursor.png"
+import logo from "./assets/logo.png"
 import * as THREE from "three"
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+
+import { motion } from 'framer-motion'
 
 
 function App() {
@@ -138,8 +140,10 @@ function App() {
 		particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3))
 
 		const material = new THREE.PointsMaterial({ size: 0.005, color: 0x000000, sizeAttenuation: true, transparent: true })
+		const sphereMaterial = new THREE.PointsMaterial({ size: 0.009, color: 0x000000, transparent: true })
 
-		const sphere = new THREE.Mesh(geometry, material)
+		const sphere = new THREE.Points(geometry, sphereMaterial)
+		scene.add(sphere)
 		const particlesMesh = new THREE.Points(particlesGeometry, material)
 		scene.add(particlesMesh)
 
@@ -156,6 +160,21 @@ function App() {
 
 		let mouseX = 0
 		let mouseY = 0
+
+		const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+		camera.position.x = 0
+		camera.position.y = 0
+		camera.position.z = 2
+
+		scene.add(camera)
+
+		let animationFrameId
+		let renderer = new THREE.WebGLRenderer({
+			canvas: canvas,
+		})
+
+		renderer.setSize(sizes.width, sizes.height)
+		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 		document.addEventListener('mousemove', (event) => {
 			mouseX = event.clientX
@@ -178,36 +197,45 @@ function App() {
 			// if (window.scrollY > 80) nav.style.top = "0px"
 			// else nav.style.top = "-80px"
 			// console.log(window.scrollY)
-
+			
 			setScrollProgress(window.scrollY / (document.body.scrollHeight / 2) * 100)
 			particlesMesh.rotation.z = window.scrollY / (document.body.scrollHeight / 2) * 2
+			sphere.rotation.x = window.scrollY / (document.body.scrollHeight / 2) * 2
+			camera.zoom = 1 + (window.scrollY / (document.body.scrollHeight / 2))
 		})
 
-		const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-		camera.position.x = 0
-		camera.position.y = 0
-		camera.position.z = 2
 
-		scene.add(camera)
 
-		let animationFrameId
-		let renderer = new THREE.WebGLRenderer({
-			canvas: canvas,
-		})
+		function transformScroll(event) {
+			if (!event.deltaY) {
+				return;
+			}
 
-		renderer.setSize(sizes.width, sizes.height)
-		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+		  
+			event.currentTarget.scrollLeft += event.deltaY + event.deltaX;
+			event.preventDefault();
+		}
+		
+		const element = document.body;
+		element.addEventListener('wheel', transformScroll);
+
+
+
 
 		const clock = new THREE.Clock()
 		const tick = () => {
 			let elapsedTime = clock.getElapsedTime()
 
-			// sphere.rotation.y = .5 * elapsedTime
+			sphere.rotation.y = .5 * elapsedTime
 			particlesMesh.rotation.y = -.1 * elapsedTime
 
 			if (mouseX > 0) {
-				particlesMesh.rotation.x = -mouseY * 0.00008 * elapsedTime
-				particlesMesh.rotation.y = mouseX * 0.00008 * elapsedTime
+				particlesMesh.rotation.x = -mouseY * 0.000008 * elapsedTime
+				particlesMesh.rotation.y = mouseX * 0.000008 * elapsedTime
+
+				sphere.rotation.x = -mouseY * 0.000008 * elapsedTime
+				sphere.rotation.y = mouseX * 0.000008 * elapsedTime
 			}
 
 			renderer.render(scene, camera)
@@ -235,50 +263,62 @@ function App() {
 		}
 	}, [])
 
+	const logoScale = -((scrollProgress * 2 / 100 - 1))
+	// const logoScale = 1
+
 	return (
 		<>
 			<div id="progress-bar" style={{ width: `${scrollProgress}%` }}></div>
-			<nav id="top-nav" className="w-full h-20 px-4 grid" style={{ transition: "top .25s ease", position: "absolute" }}>
-				<img src={ logo } className="my-auto block" alt="logo"></img>
-				<div></div>
-				<a className="text-center mt-auto mb-auto text-black font-bold mr-5">Services</a>
-				<a className="text-center mt-auto mb-auto text-black font-bold mx-5">Products</a>
-				<a className="text-center mt-auto mb-auto text-black font-bold mx-5">Works</a>
-				<a className="text-center mt-auto mb-auto text-black font-bold mx-5">Blog</a>
-				<a className="text-center mt-auto mb-auto text-black font-bold mx-5">About</a>
-				<a className="text-center mt-auto mb-auto text-black font-bold ml-5 mr-3">Contact</a>
-			</nav>
-			<canvas id="background" style={{ position: "absolute", zIndex: -1 }}></canvas>
-			{/* <canvas id="background" style={{ position: "absolute", zIndex: -1 }}></canvas> */}
-			<PixelText 
-				// show={ !loaded }
-				id="initial-logo" 
-				text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Your vision. Our expertise." : "Let's build. Together." }
-				// framerMotion={ true }
-				// framerMotionInitial={{ scale: 1 }}
-				// framerMotionExit={{ scale: 0 }}
-				// framerMotionTransition={{ delay: delaySeconds, duration: 1 }}
-				width={ window.innerWidth }
-				height={ window.innerHeight }
-				fontSize={ animationIndex == 0 ? 220 : 120 }
-				fontFamily="Akashi"
-				textAlign="center"
-				textBaseLine="middle"
-				// gradient={ [ [0.3, '#121517'], [0.5, '#4C4E50'], [0.7, '#BFC0C2'] ] }
-				gradient={ [ [0, '#121517'], [1, '#121517'] ] }
-				gap={ 3 }
-				radius={ 20000 }
-				initialAnimation={ true }
-				hoverAnimation={ true }
-				randomFriction={ 0.5 }
-				fixedFriction={ 0.15 }
-				randomEase={ 0.1 }
-				fixedEase={ 0.1 }
-				randomExitAcceleration={ 1 }
-				fixedExitAcceleration={ 0.2 }
-				exitDelay={ animationPeriodMillis / 2 }
-				maxTextWidth={ animationIndex == 0 ? 100 : animationIndex == 1 ? 1000 : 1000 }
-			/>
+			<section style={{ height: "100vh" }}>
+				<nav id="top-nav" className="w-full h-20 px-4 grid" style={{ transition: "top .25s ease", position: "absolute", zIndex: 1 }}>
+					<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
+					<div></div>
+					<a className="text-center my-auto text-black font-bold mr-5">Services</a>
+					<a className="text-center my-auto text-black font-bold mx-5">Products</a>
+					<a className="text-center my-auto text-black font-bold mx-5">Works</a>
+					<a className="text-center my-auto text-black font-bold mx-5">Blog</a>
+					<a className="text-center my-auto text-black font-bold mx-5">About</a>
+					<a className="text-center my-auto text-black font-bold mx-5">Contact</a>
+				</nav>
+				{/* <canvas id="background" style={{ position: "absolute", zIndex: -1 }}></canvas> */}
+				<canvas id="background" style={{ position: "fixed", top: 0, zIndex: -1 }}></canvas>
+				
+				{/* <motion.div > */}
+				<motion.div style={{ position: "fixed", top: 0 }} animate={{ scale: logoScale < 0 ? 0 : logoScale }} className="relative">
+					<PixelText 
+						// show={ !loaded }
+						id="initial-logo" 
+						text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Your vision. Our expertise." : "Let's build. Together." }
+						// framerMotion={ true }
+						// framerMotionInitial={{ scale: 1 }}
+						// framerMotionExit={{ scale: 0 }}
+						// framerMotionTransition={{ delay: delaySeconds, duration: 1 }}
+						width={ window.innerWidth }
+						height={ window.innerHeight }
+						fontSize={ animationIndex == 0 ? 220 : 120 }
+						fontFamily="Akashi"
+						textAlign="center"
+						textBaseLine="middle"
+						// gradient={ [ [0.3, '#121517'], [0.5, '#4C4E50'], [0.7, '#BFC0C2'] ] }
+						gradient={ [ [0, '#121517'], [1, '#121517'] ] }
+						gap={ 3 }
+						radius={ 20000 }
+						initialAnimation={ true }
+						hoverAnimation={ true }
+						randomFriction={ 0.5 }
+						fixedFriction={ 0.15 }
+						randomEase={ 0.1 }
+						fixedEase={ 0.1 }
+						randomExitAcceleration={ 1 }
+						fixedExitAcceleration={ 0.2 }
+						exitDelay={ animationPeriodMillis / 2 }
+						maxTextWidth={ animationIndex == 0 ? 100 : animationIndex == 1 ? 1000 : 1000 }
+					/>
+				</motion.div>
+			</section>
+			<section>
+				<h1 style={{ color: "black", zIndex: 1 }}>TEST</h1>
+			</section>
 
 			{/* <PixelText 
 				show={ loaded }
