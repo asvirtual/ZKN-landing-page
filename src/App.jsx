@@ -116,35 +116,6 @@ function App() {
 			cancelAnimationFrame(animationFrame)
 		}
 	}, [])
-	
-	useEffect(() => {
-		window.addEventListener('scroll', e => {
-			// const nav = document.querySelector("#top-nav")
-			// if (window.scrollY > 80) nav.style.top = "0px"
-			// else nav.style.top = "-80px"
-			// console.log(window.scrollY)
-
-			setScrollProgress(window.scrollY / (document.body.scrollHeight / 2) * 100)
-		})
-
-		const id = setInterval(() => {
-			if (animateLogo)
-				setAnimationIndex((oldIndex) => oldIndex == 2 ? 0 : oldIndex + 1)
-		}, animationPeriodMillis);
-
-		const callback = function (entries, observer) {
-			animateLogo = entries.every(entry => entry.isIntersecting)
-		};
-		
-		const observer = new IntersectionObserver(callback, {});
-		// observer.observe(document.querySelector("#initial-logo"))
-		
-		return () => {
-			clearInterval(id)
-			// observer.unobserve(document.querySelector("#initial-logo"))
-			observer.disconnect()
-		}
-	}, []);
 
 	// Threejs
 	useEffect(() => {
@@ -202,6 +173,16 @@ function App() {
 			renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 		})
 
+		window.addEventListener('scroll', e => {
+			// const nav = document.querySelector("#top-nav")
+			// if (window.scrollY > 80) nav.style.top = "0px"
+			// else nav.style.top = "-80px"
+			// console.log(window.scrollY)
+
+			setScrollProgress(window.scrollY / (document.body.scrollHeight / 2) * 100)
+			particlesMesh.rotation.z = window.scrollY / (document.body.scrollHeight / 2) * 2
+		})
+
 		const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 		camera.position.x = 0
 		camera.position.y = 0
@@ -219,13 +200,14 @@ function App() {
 
 		const clock = new THREE.Clock()
 		const tick = () => {
-			const elapsedTime = clock.getElapsedTime()
-			// sphere.rotation.y = .5 * elapsedTime
+			let elapsedTime = clock.getElapsedTime()
 
+			// sphere.rotation.y = .5 * elapsedTime
 			particlesMesh.rotation.y = -.1 * elapsedTime
+
 			if (mouseX > 0) {
-				particlesMesh.rotation.x = -mouseY * (elapsedTime * 0.00008)
-				particlesMesh.rotation.y = -mouseX * (elapsedTime * 0.00008)
+				particlesMesh.rotation.x = -mouseY * 0.00008 * elapsedTime
+				particlesMesh.rotation.y = mouseX * 0.00008 * elapsedTime
 			}
 
 			renderer.render(scene, camera)
@@ -234,9 +216,22 @@ function App() {
 
 		tick()
 
+		const logoAnimationId = setInterval(() => {
+			if (animateLogo)
+				setAnimationIndex((oldIndex) => oldIndex == 2 ? 0 : oldIndex + 1)
+		}, animationPeriodMillis);
+
+		const observer = new IntersectionObserver(function (entries, observer) {
+			animateLogo = entries.every(entry => entry.isIntersecting)
+		}, {});
+		// observer.observe(document.querySelector("#initial-logo"))
+
 		return () => {
 			renderer.dispose()
 			cancelAnimationFrame(animationFrameId)
+			clearInterval(logoAnimationId)
+			// observer.unobserve(document.querySelector("#initial-logo"))
+			observer.disconnect()
 		}
 	}, [])
 

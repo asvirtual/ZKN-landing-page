@@ -24,6 +24,7 @@ function PixelText(props) {
             this.friction = Math.random() * props.randomFriction + props.fixedFriction // 0.6 + 0.15
             this.ease = Math.random() * props.randomEase + props.fixedEase // 0.1 + 0.005
             this.exitAcceleration = Math.random() * props.randomExitAcceleration + props.fixedExitAcceleration // 1 + 0.2
+            this.exitRandomPos = Math.random()
         }
     
         draw() {
@@ -65,8 +66,8 @@ function PixelText(props) {
                 this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease
                 this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease
             } else {
-                this.dx = (this.effect.canvasWidth / 2) - this.x
-                this.dy = (this.effect.canvasHeight / 2) - this.y
+                this.dx = (this.effect.canvasWidth * this.exitRandomPos / 2) - this.x
+                this.dy = (this.effect.canvasHeight * this.exitRandomPos / 2) - this.y
                 this.distance = this.dx * this.dx + this.dy * this.dy
                 this.force = -this.effect.mouse.radius / this.distance
         
