@@ -3,18 +3,22 @@ import PixelText from './components/PixelText/PixelText'
 
 import logo from "./assets/logo.png"
 import * as THREE from "three"
+import { gsap } from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger" 
 import dot from "./assets/dot.png"
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
 import { motion } from 'framer-motion'
 
 
+gsap.registerPlugin(ScrollTrigger)
+
 function App() {
 	let animateLogo = true
 	const animationPeriodMillis = 10000
 	const [animationIndex, setAnimationIndex] = useState(0)
 	const [scrollProgress, setScrollProgress] = useState(0)
-
+	
 	useEffect(() => {
 		
 		return
@@ -140,7 +144,7 @@ function App() {
 
 		particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3))
 
-		const loader = new THREE.TextureLoader()
+		const loader = new THREE.TextureLoader(new THREE.LoadingManager())
 		const material = new THREE.PointsMaterial({ size: 0.005, color: 0x000000, sizeAttenuation: true, map: loader.load(dot) })
 		const sphereMaterial = new THREE.PointsMaterial({ size: 0.005, color: 0x000000, sizeAttenuation: true, map: loader.load(dot) })
 		
@@ -197,39 +201,65 @@ function App() {
 		})
 
 		window.addEventListener('scroll', e => {
-			const scrollRange = (window.scrollY / (document.body.scrollHeight / 2) - 0.5) * 2
+			const scrollRange = (window.scrollY / (document.body.scrollHeight / 2) - 0.5) * 4
+			const scrollPercentage = window.scrollY / (document.body.scrollHeight) * 100
 			setScrollProgress(window.scrollY / (document.body.scrollHeight / 2) * 100)
 
 			particlesMesh.rotation.z = window.scrollY / (document.body.scrollHeight / 2) * 2
 			sphere.position.z = scrollRange 
+			
+			// console.log(window.scrollY / (document.body.scrollHeight) * 100)
+			// console.log(sphere.material.color.r, sphere.material.color.g, sphere.material.color.b)
+			// console.log(sphere.material.color.r === 0 && sphere.material.color.g === 0 && sphere.material.color.b === 0)
 
-			// console.log(scrollRange)
+			// let color = -((window.scrollY / document.body.scrollHeight) * 3 * 255 - 255)
+			// if (color === -0) color = 0
+			// console.log(color)
+			// scene.background = new THREE.Color(color, color, color)
+			// console.log(scene.background)
+
+			if (window.scrollY / (document.body.scrollHeight) * 100 < 30) {
+				if (sphere.material.color.r === 1 && sphere.material.color.g === 1 && sphere.material.color.b === 1) {
+					sphere.material = sphereMaterial
+					particlesMesh.material = material
+				}
+
+				if (scene.background.r === 0 && scene.background.g === 0 && scene.background.b === 0)
+					scene.background = new THREE.Color(255, 255, 255)
+			} else if (scrollPercentage > 30 && scrollPercentage < 60) {
+				if (sphere.material.color.r === 0 && sphere.material.color.g === 0 && sphere.material.color.b === 0) {
+ 					sphere.material = new THREE.PointsMaterial({ size: 0.005, color: 0xffffff, sizeAttenuation: true })
+					particlesMesh.material = new THREE.PointsMaterial({ size: 0.005, color: 0xffffff, sizeAttenuation: true })
+				}
+
+				// console.log(scene.background.r)
+				if (scene.background.r === 255 && scene.background.g === 255 && scene.background.b === 255)
+					// gsap.to(scene.background, { 
+					// 	duration: 2, r: 0, g: 0, b: 0 
+					// })
+					scene.background = new THREE.Color(0x000000)
+
+			} else if (scrollPercentage > 60) {
+				if (sphere.material.color.r === 1 && sphere.material.color.g === 1 && sphere.material.color.b === 1) {
+					sphere.material = sphereMaterial
+					particlesMesh.material = material
+				}
+
+				if (scene.background.r === 0 && scene.background.g === 0 && scene.background.b === 0)
+					scene.background = new THREE.Color(255, 255, 255)
+			}
 		})
 
 
-
-		// function transformScroll(event) {
-		// 	if (!event.deltaY) {
-		// 		return;
-		// 	}
-
-
-		  
-		// 	event.currentTarget.scrollLeft += event.deltaY + event.deltaX;
-		// 	event.preventDefault();
-		// }
-		
-		// const element = document.body;
-		// element.addEventListener('wheel', transformScroll);
-
-
 		const clock = new THREE.Clock()
+
 		const tick = () => {
 			let elapsedTime = clock.getElapsedTime()
 
 			sphere.rotation.x = .5 * elapsedTime
 			sphere.rotation.y = .5 * elapsedTime
 			particlesMesh.rotation.y = -.1 * elapsedTime
+			particlesMesh.rotation.x = .1 * elapsedTime
 
 			// if (mouseX > 0) {
 			// 	particlesMesh.rotation.x = -mouseY * 0.00008 * elapsedTime
@@ -268,6 +298,7 @@ function App() {
 		}
 	}, [])
 
+
 	const logoScale = -((scrollProgress * 2 / 100 - 1))
 	// const logoScale = 1
 
@@ -287,10 +318,8 @@ function App() {
 				</nav>
 				{/* <canvas id="background" style={{ position: "absolute", zIndex: -1 }}></canvas> */}
 				<canvas id="background" style={{ position: "fixed", top: 0, zIndex: -1 }}></canvas>
-				
-				{/* <motion.div > */}
 				<motion.div style={{ position: "fixed", top: 0 }} animate={{ scale: logoScale < 0 ? 0 : logoScale }} className="relative">
-					<PixelText 
+					{/* <PixelText 
 						// show={ !loaded }
 						id="initial-logo" 
 						text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Your vision. Our expertise." : "Let's build. Together." }
@@ -318,11 +347,14 @@ function App() {
 						fixedExitAcceleration={ 0.2 }
 						exitDelay={ animationPeriodMillis / 2 }
 						maxTextWidth={ animationIndex == 0 ? 100 : animationIndex == 1 ? 1000 : 1000 }
-					/>
+					/> */}
 				</motion.div>
 			</section>
 			<section>
-				<h1 style={{ color: "black", zIndex: 1 }}>TEST</h1>
+				<h2>OUR SERVICES</h2>
+			</section>
+			<section>
+			
 			</section>
 
 			{/* <PixelText 
