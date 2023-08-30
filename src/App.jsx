@@ -206,7 +206,10 @@ function App() {
 			setScrollProgress(window.scrollY / (document.body.scrollHeight / 2) * 100)
 
 			particlesMesh.rotation.z = window.scrollY / (document.body.scrollHeight / 2) * 2
+
+			// sphere.scale = scrollRange
 			sphere.position.z = scrollRange 
+			sphere.rotation.z = scrollRange 
 			
 			// console.log(window.scrollY / (document.body.scrollHeight) * 100)
 			// console.log(sphere.material.color.r, sphere.material.color.g, sphere.material.color.b)
@@ -256,22 +259,25 @@ function App() {
 		const tick = () => {
 			let elapsedTime = clock.getElapsedTime()
 
-			sphere.rotation.x = .5 * elapsedTime
-			sphere.rotation.y = .5 * elapsedTime
+			// sphere.rotation.x = .5 * elapsedTime
+			// sphere.rotation.y = .5 * elapsedTime
+			// sphere.rotation.z = .5 * elapsedTime
+
 			particlesMesh.rotation.y = -.1 * elapsedTime
 			particlesMesh.rotation.x = .1 * elapsedTime
 
-			// if (mouseX > 0) {
+			if (mouseX > 0) {
 			// 	particlesMesh.rotation.x = -mouseY * 0.00008 * elapsedTime
 			// 	particlesMesh.rotation.y = mouseX * 0.00008 * elapsedTime
 
 			// 	sphere.rotation.x = -mouseY * 0.00008 * elapsedTime
-			// 	sphere.rotation.y = mouseX * 0.00008 * elapsedTime
-			// } else {
+				// sphere.rotation.y = mouseX * 0.00008 * elapsedTime
+				sphere.rotation.y = mouseX * 0.0005
+			} else {
 			// 	sphere.rotation.x = .05 * elapsedTime
 			// 	sphere.rotation.y = .5 * elapsedTime
 			// 	particlesMesh.rotation.y = -.1 * elapsedTime
-			// }
+			}
 
 			renderer.render(scene, camera)
 			animationFrameId = window.requestAnimationFrame(tick)
