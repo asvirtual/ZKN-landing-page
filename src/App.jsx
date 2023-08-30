@@ -207,7 +207,6 @@ function App() {
 
 			particlesMesh.rotation.z = window.scrollY / (document.body.scrollHeight / 2) * 2
 
-			// sphere.scale = scrollRange
 			sphere.position.z = scrollRange 
 			sphere.rotation.z = scrollRange 
 			
@@ -221,7 +220,13 @@ function App() {
 			// scene.background = new THREE.Color(color, color, color)
 			// console.log(scene.background)
 
-			if (window.scrollY / (document.body.scrollHeight) * 100 < 30) {
+			if (scrollPercentage <= 33) {
+				sphere.position.x = scrollPercentage * 3 / 100
+			} else if (scrollPercentage <= 66) {
+				sphere.position.x = 1 - (scrollPercentage - 33) * 3 / 100
+			}
+
+			if (scrollPercentage < 30) {
 				if (sphere.material.color.r === 1 && sphere.material.color.g === 1 && sphere.material.color.b === 1) {
 					sphere.material = sphereMaterial
 					particlesMesh.material = material
@@ -259,8 +264,8 @@ function App() {
 		const tick = () => {
 			let elapsedTime = clock.getElapsedTime()
 
-			// sphere.rotation.x = .5 * elapsedTime
-			// sphere.rotation.y = .5 * elapsedTime
+			sphere.rotation.x = .5 * elapsedTime
+			sphere.rotation.y = .5 * elapsedTime
 			// sphere.rotation.z = .5 * elapsedTime
 
 			particlesMesh.rotation.y = -.1 * elapsedTime
@@ -272,7 +277,7 @@ function App() {
 
 			// 	sphere.rotation.x = -mouseY * 0.00008 * elapsedTime
 				// sphere.rotation.y = mouseX * 0.00008 * elapsedTime
-				sphere.rotation.y = mouseX * 0.0005
+				// sphere.rotation.y = mouseX * 0.0005
 			} else {
 			// 	sphere.rotation.x = .05 * elapsedTime
 			// 	sphere.rotation.y = .5 * elapsedTime
@@ -356,7 +361,7 @@ function App() {
 					/> */}
 				</motion.div>
 			</section>
-			<section>
+			<section style={{ color: "white" }}>
 				<h2>OUR SERVICES</h2>
 			</section>
 			<section>
