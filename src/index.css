@@ -25,13 +25,14 @@
 
   --scrollbar-color: black;
   --scrollbar-background: white;
+  --scrollbar-hover-color: rgb(72, 72, 72);
 }
 
-/* width */
 ::-webkit-scrollbar {
-  /* width: 0; */
-  width: 5px;
-  height: 5px;
+  /* width: 5px; */
+  /* height: 5px; */
+  width: 0;
+  height: 0;
 }
 
 /* Track */
@@ -47,12 +48,22 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: white;
+  background: var(--scrollbar-hover-color);
 }
 
 /* section::-webkit-scrollbar {
   width: 0px;
 } */
+
+#scrollbar-handle {
+  border-radius: .2rem;
+}
+
+#scrollbar-handle:hover {
+  background: var(--scrollbar-hover-color);
+  width: 1rem;
+  transition: width .5s ease;
+}
 
 body {
   margin: 0;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import PixelText from './components/PixelText/PixelText'
 
 import logo from "./assets/logo.png"
@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import dot from "./assets/dot.png"
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
-import { motion } from 'framer-motion'
+import { motion, scroll } from 'framer-motion'
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -18,12 +18,18 @@ ScrollTrigger.defaults({
 	scrub: true
 });
 
-
 function App() {
+	const numberOfSections = 3
 	let animateLogo = true
 	const animationPeriodMillis = 10000
+	let mouseX = 0
+	let mouseY = 0
+
+	const [dragging, setDragging] = useState(false)
 	const [animationIndex, setAnimationIndex] = useState(0)
 	const [scrollProgress, setScrollProgress] = useState(0)
+
+	const scrollContainer = useRef()
 
 	useEffect(() => {
 		const canvas = document.querySelector("#background")
@@ -66,9 +72,6 @@ function App() {
 			height: window.innerHeight
 		}
 
-		let mouseX = 0
-		let mouseY = 0
-
 		const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 		camera.position.x = 0
 		camera.position.y = 0
@@ -84,7 +87,7 @@ function App() {
 		renderer.setSize(sizes.width, sizes.height)
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-		document.addEventListener('mousemove', (event) => {
+		document.addEventListener('mousemove', event => {
 			mouseX = event.clientX
 			mouseY = event.clientY
 		})
@@ -102,9 +105,10 @@ function App() {
 
 		const scrollContainer = document.querySelector("#scroll-container")
 		scrollContainer.addEventListener('scroll', e => {
-			const scrollRange = (scrollContainer.scrollTop / (scrollContainer.scrollHeight / 2) - 0.5) * 4
-			const scrollPercentage = scrollContainer.scrollTop / (scrollContainer.scrollHeight) * 100
+			const scrollPercentage = scrollContainer.scrollTop / (scrollContainer.scrollHeight / numberOfSections * (numberOfSections - 1)) * 100
 			setScrollProgress(scrollPercentage)
+
+			const scrollRange = (scrollContainer.scrollTop / (scrollContainer.scrollHeight / 2) - 0.5) * 4
 
 			particlesMesh.rotation.z = scrollContainer.scrollTop / (scrollContainer.scrollHeight / 2) * 2
 			sphere.position.z = scrollRange 
@@ -141,6 +145,10 @@ function App() {
 			}
 		})
 
+		document.querySelector("#scrollbar").addEventListener("click", e => {
+			const percentage = e.clientY / scrollContainer.clientHeight
+			scrollContainer.scrollTo({ top: scrollContainer.scrollHeight * percentage, behavior: "smooth" })
+		})
 
 		const clock = new THREE.Clock()
 
@@ -186,15 +194,46 @@ function App() {
 		}
 	}, [])
 
-
 	const logoScale = -((scrollProgress * 4 / 100 - 1))
 
 	return (
-		<div id="scroll-container" style={{ "--scrollbar-color": scrollProgress > 30 && scrollProgress < 60 ? "white" : "black", "--scrollbar-background": scrollProgress > 30 && scrollProgress < 60  ? "black" : "white" }}
+		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": scrollProgress > 30 && scrollProgress < 60 ? "white" : "black", "--scrollbar-background": scrollProgress > 30 && scrollProgress < 60  ? "black" : "white" }}
 			className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory">
+			<div
+				id="scrollbar"
+				className="absolute h-screen w-2 z-10 right-0"
+				style={{
+					background: scrollProgress > 30 && scrollProgress < 60 ? "black" : "white"
+				}}>
+			</div>
+			<motion.div 
+				id="scrollbar-handle" 
+				draggable
+				drag="y"
+				dragMomentum={ false }
+				dragConstraints={ scrollContainer }
+				onDragStart={ () => setDragging(true) }
+				onDragEnd={ (e, info) => {
+					setDragging(false)
+					const section = Math.round(e.clientY / (scrollContainer.current?.clientHeight / (numberOfSections - 1)))
+					scrollContainer.current?.scrollTo({ top: scrollContainer.current?.scrollHeight / numberOfSections * section, behavior: "smooth" })
+				} }
+				className="absolute h-10 w-2 z-20 right-0"
+				style={{ 
+					// top: scrollProgress > 10 ? `calc(${scrollProgress}vh - 40px)` : 0,
+					// y: scrollProgress > 10 ? `calc(${scrollProgress}vh - 40px)` : 0,
+					// transform: `translateY(0)`,
+					background: scrollProgress > 30 && scrollProgress < 60 ? "white" : "black",
+				}}
+				// animate={{ x: !dragging && 0, y: !dragging && 0, transform: !dragging && "none" }}
+				animate={{
+					y: dragging ? mouseY : scrollProgress > 10 ? `calc(${scrollProgress}vh - 40px)` : 0
+				}}>
+
+			</motion.div>
 			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: scrollProgress > 30 && scrollProgress < 66 ? "white" : "black" }}></div>
-			<canvas id="background" className="fixed top-0 -z-10" ></canvas>
-			<motion.div animate={{ scale: logoScale < 0 ? 0 : logoScale }} className="h-screen w-screen fixed top-0">
+			<canvas id="background" className="fixed top-0 -z-20" ></canvas>
+			<motion.div animate={{ scale: logoScale < 0 ? 0 : logoScale }} className="h-screen w-screen fixed top-0 -z-10">
 				<PixelText 
 					id="initial-logo" 
 					text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Your vision. Our expertise." : "Let's build. Together." }
