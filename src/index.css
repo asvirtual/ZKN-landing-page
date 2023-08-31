@@ -9,7 +9,7 @@
 }
 
 :root {
-  /* font-family: "Space Grotesk"; */
+  font-family: "Space Grotesk";
   line-height: 1.5;
   font-weight: 400;
 
@@ -22,24 +22,53 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --scrollbar-color: black;
+  --scrollbar-background: white;
 }
 
-html {
-  scroll-snap-type: y mandatory;
+/* width */
+::-webkit-scrollbar {
+  /* width: 0; */
+  width: 5px;
+  height: 5px;
 }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-background);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background: var(--scrollbar-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white;
+}
+
+/* section::-webkit-scrollbar {
+  width: 0px;
+} */
 
 body {
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
   cursor: url("assets/cursor.png"), auto;
-  /* height: 200vh; */
-  scroll-snap-type: y mandatory;
+  /* height: 100vh; */
+  /* scroll-snap-type: y mandatory; */
   color: black;
 }
 
 section {
+  max-height: 100vh;
   height: 100vh;
   scroll-snap-align: start;
-  /* scroll-snap-stop: always; */
+  scroll-snap-stop: always;
 }
 
 #top-nav {
