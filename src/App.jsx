@@ -19,11 +19,13 @@ ScrollTrigger.defaults({
 });
 
 function App() {
-	const numberOfSections = 3
+	// const numberOfSections = 3
 	let animateLogo = true
 	const animationPeriodMillis = 10000
 	let mouseX = 0
 	let mouseY = 0
+	let lastScroll = 0
+	let isScrollingDown = false
 
 	const [dragging, setDragging] = useState(false)
 	const [animationIndex, setAnimationIndex] = useState(0)
@@ -105,42 +107,56 @@ function App() {
 
 		const scrollContainer = document.querySelector("#scroll-container")
 		scrollContainer.addEventListener('scroll', e => {
-			const scrollPercentage = scrollContainer.scrollTop / (scrollContainer.scrollHeight) * 100 + 25
+			const scrollPercentage = scrollContainer.scrollTop / (scrollContainer.scrollHeight) * 100 + 20
 			setScrollProgress(scrollPercentage)
 
 			const scrollRange = (scrollPercentage - 50) / 25
-
+			isScrollingDown = scrollContainer.scrollTop !== lastScroll ? scrollContainer.scrollTop > lastScroll : isScrollingDown
 			particlesMesh.rotation.z = scrollContainer.scrollTop / (scrollContainer.scrollHeight / 2) * 2
-			if (scrollPercentage <= 60) sphere.position.z = scrollRange 
-			else if (scrollPercentage <= 75) sphere.position.z = scrollRange - 2
-			else sphere.position.z = scrollRange * 2 - 3
 
-			animateLogo = scrollPercentage <= 25
+			if (scrollPercentage < 39) {
+				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 0.5, x: 1.5 })
+				else gsap.to(sphere.position, { duration: 1, z: -1, x: 0 })
+			} else if (scrollPercentage > 41 && scrollPercentage < 59) {
+				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 0.5, x: -1.5 })
+				else gsap.to(sphere.position, { duration: 1, z: 0.5, x: 1.5 })
+			} else if (scrollPercentage > 61 && scrollPercentage < 79) {
+				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 0, x: 0 })
+				else gsap.to(sphere.position, { duration: 1, z: 0.5, x: -1.5 })
+			} else if (scrollPercentage > 81) {
+				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 2, x: -0.5 })
+				else gsap.to(sphere.position, { duration: 1, z: 0, x: 0 })
+			}
 
-			if (scrollPercentage <= 60) 
-				sphere.position.x = (scrollPercentage * 4 / 100 - 1) * 2
+			// if (scrollPercentage <= 60) sphere.position.z = scrollRange 
+			// else if (scrollPercentage <= 75) sphere.position.z = scrollRange - 2
+			// else sphere.position.z = scrollRange * 2 - 3
+
+			// animateLogo = scrollPercentage <= 25
+
+			// if (scrollPercentage <= 60) 
+			// 	sphere.position.x = (scrollPercentage * 4 / 100 - 1) * 2
 			
-			else if (scrollPercentage <= 75)
-				sphere.position.x = - 1 / (scrollPercentage * 4 / 100 - 1) * 6
-			else
-				sphere.position.x = - 1 / (scrollPercentage / 15 - 14 / 3)
+			// else if (scrollPercentage <= 75)
+			// 	sphere.position.x = - 1 / (scrollPercentage * 4 / 100 - 1) * 6
+			// else
+			// 	sphere.position.x = - 1 / (scrollPercentage / 15 - 14 / 3)
 
-			if (scrollPercentage < 30) {
+			if (scrollPercentage < 25 || (scrollPercentage > 45 && scrollPercentage < 65) || scrollPercentage > 85) { 
 				gsap.to(scene.background, { duration: 0.2, r: 1, g: 1, b: 1 })
-				// gsap.to(sphere.position, { duration: 1, z: 1 })
 
 				if (sphere.material.color.r === 1 && sphere.material.color.g === 1 && sphere.material.color.b === 1) {
 					sphere.material = sphereMaterial
 					particlesMesh.material = material
 				}
-			} else if (scrollPercentage > 30 && scrollPercentage < 60) {
+			} else if ((scrollPercentage > 25 && scrollPercentage < 45) || (scrollPercentage > 65 && scrollPercentage < 85)) {
 				gsap.to(scene.background, { duration: 0.2, r: 0, g: 0, b: 0 })
 
 				if (sphere.material.color.r === 0 && sphere.material.color.g === 0 && sphere.material.color.b === 0) {
  					sphere.material = new THREE.PointsMaterial({ size: 0.005, color: 0xffffff, sizeAttenuation: true })
 					particlesMesh.material = new THREE.PointsMaterial({ size: 0.005, color: 0xffffff, sizeAttenuation: true })
 				}
-			} else if (scrollPercentage > 60) {
+			} else if (scrollPercentage > 45) {
 				gsap.to(scene.background, { duration: 0.2, r: 1	, g: 1, b: 1 })
 
 				if (sphere.material.color.r === 1 && sphere.material.color.g === 1 && sphere.material.color.b === 1) {
@@ -148,6 +164,8 @@ function App() {
 					particlesMesh.material = material
 				}
 			}
+
+			lastScroll = scrollContainer.scrollTop
 		})
 
 		// document.querySelector("#scrollbar").addEventListener("click", e => {
@@ -200,8 +218,8 @@ function App() {
 	}, [])
 
 	const logoScale = 
-		scrollProgress <= 30 ? 1 :
-		scrollProgress <= 40 ? -(scrollProgress / 40 - 2) : 
+		scrollProgress <= 25 ? 1 :
+		scrollProgress <= 40 ? -(scrollProgress / 15 - 2) : 
 		0
 
 	return (
@@ -291,9 +309,9 @@ function App() {
 			<section>
 			
 			</section>
-			{/* <section>
+			<section>
 			
-			</section> */}
+			</section>
 		</div>
 	)
 }
