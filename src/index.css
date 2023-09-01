@@ -29,10 +29,9 @@
 }
 
 ::-webkit-scrollbar {
-  /* width: 5px; */
-  /* height: 5px; */
-  width: 0;
-  height: 0;
+  width: 5px;
+  /* width: 0; */
+  /* height: 0; */
 }
 
 /* Track */
@@ -51,11 +50,7 @@
   background: var(--scrollbar-hover-color);
 }
 
-/* section::-webkit-scrollbar {
-  width: 0px;
-} */
-
-#scrollbar-handle {
+/* #scrollbar-handle {
   border-radius: .2rem;
 }
 
@@ -63,7 +58,7 @@
   background: var(--scrollbar-hover-color);
   width: 1rem;
   transition: width .5s ease;
-}
+} */
 
 body {
   margin: 0;
