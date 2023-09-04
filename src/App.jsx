@@ -28,6 +28,8 @@ function App() {
 	let isScrollingDown = false
 
 	const [dragging, setDragging] = useState(false)
+	let animationBasic = true
+
 	const [animationIndex, setAnimationIndex] = useState(0)
 	const [scrollProgress, setScrollProgress] = useState(25)
 
@@ -110,23 +112,9 @@ function App() {
 			const scrollPercentage = scrollContainer.scrollTop / (scrollContainer.scrollHeight) * 100 + 20
 			setScrollProgress(scrollPercentage)
 
-			const scrollRange = (scrollPercentage - 50) / 25
+			// const scrollRange = (scrollPercentage - 50) / 25
 			isScrollingDown = scrollContainer.scrollTop !== lastScroll ? scrollContainer.scrollTop > lastScroll : isScrollingDown
 			particlesMesh.rotation.z = scrollContainer.scrollTop / (scrollContainer.scrollHeight / 2) * 2
-
-			if (scrollPercentage < 39) {
-				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 0.5, x: 1.5 })
-				else gsap.to(sphere.position, { duration: 1, z: -1, x: 0 })
-			} else if (scrollPercentage > 41 && scrollPercentage < 59) {
-				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 0.5, x: -1.5 })
-				else gsap.to(sphere.position, { duration: 1, z: 0.5, x: 1.5 })
-			} else if (scrollPercentage > 61 && scrollPercentage < 79) {
-				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 0, x: 0 })
-				else gsap.to(sphere.position, { duration: 1, z: 0.5, x: -1.5 })
-			} else if (scrollPercentage > 81) {
-				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 2, x: -0.5 })
-				else gsap.to(sphere.position, { duration: 1, z: 0, x: 0 })
-			}
 
 			// if (scrollPercentage <= 60) sphere.position.z = scrollRange 
 			// else if (scrollPercentage <= 75) sphere.position.z = scrollRange - 2
@@ -166,6 +154,26 @@ function App() {
 			}
 
 			lastScroll = scrollContainer.scrollTop
+
+			if (animationBasic) {
+				sphere.position.z = scrollPercentage <= 20 ? -1 : scrollPercentage <= 60 ? scrollPercentage / 20 - 2 : scrollPercentage / 60
+				sphere.rotation.z = scrollPercentage / 5
+				return
+			}
+
+			if (scrollPercentage < 39) {
+				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 0.5, x: 1.5 })
+				else gsap.to(sphere.position, { duration: 1, z: -1, x: 0 })
+			} else if (scrollPercentage > 41 && scrollPercentage < 59) {
+				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 0.5, x: -1.5 })
+				else gsap.to(sphere.position, { duration: 1, z: 0.5, x: 1.5 })
+			} else if (scrollPercentage > 61 && scrollPercentage < 79) {
+				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 0, x: 0 })
+				else gsap.to(sphere.position, { duration: 1, z: 0.5, x: -1.5 })
+			} else if (scrollPercentage > 81) {
+				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 2, x: -0.5 })
+				else gsap.to(sphere.position, { duration: 1, z: 0, x: 0 })
+			}
 		})
 
 		// document.querySelector("#scrollbar").addEventListener("click", e => {
@@ -178,25 +186,34 @@ function App() {
 		const tick = () => {
 			let elapsedTime = clock.getElapsedTime()
 
-			sphere.rotation.x = .5 * elapsedTime
-			sphere.rotation.y = .5 * elapsedTime
+			if (animationBasic) {
+				sphere.rotation.x = 0
+				sphere.rotation.y = 0
+			} else {
+				sphere.rotation.x = .5 * elapsedTime
+				sphere.rotation.y = .5 * elapsedTime
+			}
+
 			// sphere.rotation.z = .5 * elapsedTime
 
 			particlesMesh.rotation.y = -.1 * elapsedTime
 			particlesMesh.rotation.x = .1 * elapsedTime
 
-			if (mouseX > 0) {
-				// 	particlesMesh.rotation.x = -mouseY * 0.00008 * elapsedTime
-				// 	particlesMesh.rotation.y = mouseX * 0.00008 * elapsedTime
+			if (animationBasic) {
+				sphere.rotation.x = -(mouseY - window.innerHeight / 2) * 0.0005
+				sphere.rotation.y = (mouseX - window.innerWidth / 2) * 0.0005
 
-				// 	sphere.rotation.x = -mouseY * 0.00008 * elapsedTime
-				// sphere.rotation.y = mouseX * 0.00008 * elapsedTime
-				// sphere.rotation.x = -(mouseY - window.innerHeight / 2) * 0.0005
-				// sphere.rotation.y = (mouseX - window.innerWidth / 2) * 0.0005
-			} else {
-				// 	sphere.rotation.x = .05 * elapsedTime
-				// 	sphere.rotation.y = .5 * elapsedTime
-				// 	particlesMesh.rotation.y = -.1 * elapsedTime
+				if (mouseX > 0) {
+					// 	particlesMesh.rotation.x = -mouseY * 0.00008 * elapsedTime
+					// 	particlesMesh.rotation.y = mouseX * 0.00008 * elapsedTime
+
+					// 	sphere.rotation.x = -mouseY * 0.00008 * elapsedTime
+					// sphere.rotation.y = mouseX * 0.00008 * elapsedTime
+				} else {
+					// 	sphere.rotation.x = .05 * elapsedTime
+					// 	sphere.rotation.y = .5 * elapsedTime
+					// 	particlesMesh.rotation.y = -.1 * elapsedTime
+				}
 			}
 
 			renderer.render(scene, camera)
@@ -287,7 +304,7 @@ function App() {
 				/>
 			</motion.div>
 			<section className="relative">
-				<nav id="top-nav" className="w-full h-20 px-4 grid" style={{ transition: "top .25s ease", position: "absolute", zIndex: 1 }}>
+				<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
 					<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
 					<div></div> { /* Fill space */ }
 					<a className="text-center my-auto text-black font-extrabold mr-5">Services</a>
@@ -296,6 +313,7 @@ function App() {
 					<a className="text-center my-auto text-black font-bold mx-5">Blog</a>
 					<a className="text-center my-auto text-black font-bold mx-5">About</a>
 					<a className="text-center my-auto text-black font-bold mx-5">Contact</a>
+					<button onClick={ () => animationBasic = !animationBasic }>Animation</button>
 				</nav>
 			</section>
 			<section className="text-white overflow-hidden">
