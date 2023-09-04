@@ -293,12 +293,18 @@ function App() {
 					radius={ 20000 }
 					initialAnimation={ true }
 					hoverAnimation={ true }
-					randomFriction={ 0.5 }
-					fixedFriction={ 0.15 }
-					randomEase={ 0.1 }
-					fixedEase={ 0.1 }
-					randomExitAcceleration={ 1 }
-					fixedExitAcceleration={ 0.2 }
+					// randomFriction={ 0.5 }
+					randomFriction={ 0.1 }
+					// fixedFriction={ 0.15 }
+					fixedFriction={ 0 }
+					// randomEase={ 0.1 }
+					randomEase={ 0.01 }
+					// fixedEase={ 0.1 }
+					fixedEase={ 0.05 }
+					// randomExitAcceleration={ 1 }
+					randomExitAcceleration={ 0.5 }
+					// fixedExitAcceleration={ 0.2 }
+					fixedExitAcceleration={ 0.5 }
 					exitDelay={ animationPeriodMillis / 2 }
 					maxTextWidth={ animationIndex == 0 ? 100 : animationIndex == 1 ? 1000 : 1000 }
 				/>
