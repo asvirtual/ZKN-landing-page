@@ -294,11 +294,11 @@ function App() {
 					initialAnimation={ true }
 					hoverAnimation={ true }
 					// randomFriction={ 0.5 }
-					randomFriction={ 0.1 }
+					randomFriction={ 0.25 }
 					// fixedFriction={ 0.15 }
-					fixedFriction={ 0 }
+					fixedFriction={ 0.05 }
 					// randomEase={ 0.1 }
-					randomEase={ 0.01 }
+					randomEase={ 0.05 }
 					// fixedEase={ 0.1 }
 					fixedEase={ 0.05 }
 					// randomExitAcceleration={ 1 }
