@@ -19,8 +19,6 @@ ScrollTrigger.defaults({
 });
 
 function App() {
-	// const numberOfSections = 3
-	let animateLogo = true
 	const animationPeriodMillis = 10000
 	let mouseX = 0
 	let mouseY = 0
@@ -31,7 +29,7 @@ function App() {
 	let animationBasic = true
 
 	const [animationIndex, setAnimationIndex] = useState(0)
-	const [scrollProgress, setScrollProgress] = useState(25)
+	const [scrollProgress, setScrollProgress] = useState(20)
 
 	const scrollContainer = useRef()
 
@@ -120,8 +118,6 @@ function App() {
 			// else if (scrollPercentage <= 75) sphere.position.z = scrollRange - 2
 			// else sphere.position.z = scrollRange * 2 - 3
 
-			// animateLogo = scrollPercentage <= 25
-
 			// if (scrollPercentage <= 60) 
 			// 	sphere.position.x = (scrollPercentage * 4 / 100 - 1) * 2
 			
@@ -130,14 +126,14 @@ function App() {
 			// else
 			// 	sphere.position.x = - 1 / (scrollPercentage / 15 - 14 / 3)
 
-			if (scrollPercentage < 25 || (scrollPercentage > 45 && scrollPercentage < 65) || scrollPercentage > 85) { 
+			if (scrollPercentage < 30 || (scrollPercentage > 45 && scrollPercentage < 65) || scrollPercentage > 85) { 
 				gsap.to(scene.background, { duration: 0.2, r: 1, g: 1, b: 1 })
 
 				if (sphere.material.color.r === 1 && sphere.material.color.g === 1 && sphere.material.color.b === 1) {
 					sphere.material = sphereMaterial
 					particlesMesh.material = material
 				}
-			} else if ((scrollPercentage > 25 && scrollPercentage < 45) || (scrollPercentage > 65 && scrollPercentage < 85)) {
+			} else if ((scrollPercentage > 30 && scrollPercentage < 45) || (scrollPercentage > 65 && scrollPercentage < 85)) {
 				gsap.to(scene.background, { duration: 0.2, r: 0, g: 0, b: 0 })
 
 				if (sphere.material.color.r === 0 && sphere.material.color.g === 0 && sphere.material.color.b === 0) {
@@ -222,21 +218,26 @@ function App() {
 
 		tick()
 
+		return () => {
+			renderer.dispose()
+			cancelAnimationFrame(animationFrameId)
+		}
+	}, [])
+
+	useEffect(() => {
 		const logoAnimationId = setInterval(() => {
-			if (animateLogo)
+			if (scrollProgress <= 20)
 				setAnimationIndex((oldIndex) => oldIndex == 2 ? 0 : oldIndex + 1)
 		}, animationPeriodMillis);
 
 		return () => {
-			renderer.dispose()
-			cancelAnimationFrame(animationFrameId)
 			clearInterval(logoAnimationId)
 		}
-	}, [])
+	}, [scrollProgress])
 
 	const logoScale = 
 		scrollProgress <= 25 ? 1 :
-		scrollProgress <= 40 ? -(scrollProgress / 15 - 2) : 
+		scrollProgress <= 40 ? -(scrollProgress / 20 - 2) : 
 		0
 
 	return (
@@ -276,7 +277,7 @@ function App() {
 				}}>
 			</motion.div> */}
 
-			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: scrollProgress > 30 && scrollProgress < 66 ? "white" : "black" }}></div>
+			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: ((scrollProgress > 20 && scrollProgress <= 40) || (scrollProgress > 60 && scrollProgress <= 80)) ? "white" : "black" }}></div>
 			<canvas id="background" className="fixed top-0 -z-20" ></canvas>
 			<motion.div animate={{ scale: logoScale < 0 ? 0 : logoScale }} className="h-screen w-screen fixed top-0 -z-10">
 				<PixelText 
@@ -293,6 +294,7 @@ function App() {
 					radius={ 20000 }
 					initialAnimation={ true }
 					hoverAnimation={ true }
+					vibrateParticles={ true }
 					// randomFriction={ 0.5 }
 					randomFriction={ 0.25 }
 					// fixedFriction={ 0.15 }
@@ -307,24 +309,58 @@ function App() {
 					fixedExitAcceleration={ 0.5 }
 					exitDelay={ animationPeriodMillis / 2 }
 					maxTextWidth={ animationIndex == 0 ? 100 : animationIndex == 1 ? 1000 : 1000 }
+					paused={ scrollProgress > 35 }
 				/>
 			</motion.div>
 			<section className="relative">
 				<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
 					<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
 					<div></div> { /* Fill space */ }
-					<a className="text-center my-auto text-black font-extrabold mr-5">Services</a>
-					<a className="text-center my-auto text-black font-bold mx-5">Products</a>
-					<a className="text-center my-auto text-black font-bold mx-5">Works</a>
-					<a className="text-center my-auto text-black font-bold mx-5">Blog</a>
-					<a className="text-center my-auto text-black font-bold mx-5">About</a>
-					<a className="text-center my-auto text-black font-bold mx-5">Contact</a>
+					<a className="text-center akashi my-auto text-black font-extrabold mr-5">Services</a>
+					<a className="text-center akashi my-auto text-black font-bold mx-5">Products</a>
+					<a className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
+					<a className="text-center akashi my-auto text-black font-bold mx-5">About</a>
+					<a className="text-center akashi my-auto text-black font-bold mx-5">Works</a>
+					<a className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
 					<button onClick={ () => animationBasic = !animationBasic }>Animation</button>
 				</nav>
 			</section>
-			<section className="text-white overflow-hidden">
-				<div className="w-4/5 ">
-					<h2 className="text-center mt-10">OUR SERVICES</h2>
+			<section className="text-white overflow-hidden px-60">
+				{/* <h2 className='my-20 text-3xl akashi'>OUR SERVICES</h2> */}
+				{/* <div className='service'>
+					<h4 className='service-header'>Project Management</h4>
+					<p className='service-description'>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
+				</div>
+				<div className='service'>
+					<h4 className='service-header'>Graphic Design</h4>
+					<p className='service-description'>We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.</p>
+				</div>
+				<div className='service'>
+					<h4 className='service-header'>Copywriting</h4>
+					<p className='service-description'>We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.</p>
+				</div>
+				<div className='service'>
+					<h4 className='service-header'>Marketing</h4>
+					<p className='service-description'>We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.</p>
+				</div>
+				<div className='service'>
+					<h4 className='service-header'>Web Design</h4>
+					<p className='service-description'>We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.</p>
+				</div>
+				<div className='service'>
+					<h4 className='service-header'>Business consulting</h4>
+					<p className='service-description'>Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.</p>
+				</div> */}
+
+				<div className="cube-container">
+					<div id="cube">
+						<div className="front">1</div>
+						<div className="back">2</div>
+						<div className="right">3</div>
+						<div className="left">4</div>
+						<div className="top">5</div>
+						<div className="bottom">6</div>
+					</div>
 				</div>
 			</section>
 			<section>
@@ -339,5 +375,28 @@ function App() {
 		</div>
 	)
 }
+
+/*
+
+Project Management
+We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.
+
+Graphic Design
+We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.
+
+Copywriting
+We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.
+
+Marketing
+We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.
+
+Web Design
+We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.
+
+Business consulting
+Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.
+
+
+*/
 
 export default App

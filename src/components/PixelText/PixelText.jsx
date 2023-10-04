@@ -50,9 +50,9 @@ function PixelText(props) {
             this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease
             this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease
 
-            if (this.distance < this.effect.mouse.radius) {
-                this.x += (Math.random() * 3 - 1.5)
-                this.y += (Math.random() * 3 - 1.5)
+            if (this.distance < this.effect.mouse.radius && props.vibrateParticles) {
+                this.x += Math.random() * 3 - 1.5
+                this.y += Math.random() * 3 - 1.5
             }
         }
 
@@ -68,8 +68,8 @@ function PixelText(props) {
                 this.vx += this.force * Math.cos(this.angle)
                 this.vy += this.force * Math.sin(this.angle)
             
-                this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease  + (Math.random() * 3 - 1.5)
-                this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease  + (Math.random() * 3 - 1.5)
+                this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease
+                this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease
             } else {
                 this.dx = (this.effect.canvasWidth * this.exitRandomPos / 2) - this.x
                 this.dy = (this.effect.canvasHeight * this.exitRandomPos / 2) - this.y
@@ -80,11 +80,16 @@ function PixelText(props) {
                 this.vx += this.force * Math.cos(this.angle)
                 this.vy += this.force * Math.sin(this.angle)
                 
-                this.x += (this.vx *= this.exitAcceleration) + (Math.random() * 3 - 1.5)
-                this.y += (this.vy *= this.exitAcceleration) + (Math.random() * 3 - 1.5)
+                this.x += (this.vx *= this.exitAcceleration)
+                this.y += (this.vy *= this.exitAcceleration)
 
                 // if ((this.x < 0 || this.x > this.effect.canvasWidth) && (this.y < 0 || this.y > this.effect.canvasHeight))
                     // this.effect.ctx.clearRect(this.x, this.y, this.effect.canvasWidth, this.effect.canvasHeight)
+            }
+
+            if (props.vibrateParticles) {
+                this.x += Math.random() * 3 - 1.5
+                this.y += Math.random() * 3 - 1.5
             }
         }
         
@@ -216,8 +221,11 @@ function PixelText(props) {
             effect.render()
             
             const animate = (effect) => {
-                ctx.clearRect(0, 0, canvas.width, canvas.height)
-                effect.render(exit)
+                if (!props.paused) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height)
+                    effect.render(exit)
+                }
+
                 animationFrame = requestAnimationFrame(() => animate(effect))
             }
             
@@ -233,7 +241,7 @@ function PixelText(props) {
             let id
             if (props.exitDelay != null)
                 id = setTimeout(() => {
-                    if (props.exitDelay != null)
+                    if (props.exitDelay != null && !props.paused)
                         exit = !exit
                 }, props.exitDelay)
 
@@ -245,7 +253,7 @@ function PixelText(props) {
                     clearTimeout(id)
             }
         }
-	}, [props.text])
+	}, [props.text, props.exitDelay, props.paused])
 
     // return <motion.canvas  animate={{ animationdel scale: 0,  }} exit={{ animationDura }} ></motion.canvas>
 	return props.framerMotion ? 
