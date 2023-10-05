@@ -10,6 +10,9 @@ import dot from "./assets/dot.png"
 
 import { motion, scroll } from 'framer-motion'
 
+import Lottie from "lottie-react";
+import projectManagementAnimation from "./assets/project_management.json"
+
 
 gsap.registerPlugin(ScrollTrigger)
 ScrollTrigger.defaults({
@@ -43,7 +46,7 @@ function App() {
 
 		const geometry = new THREE.TorusGeometry(.7, .2, 16, 100)
 		const particlesGeometry = new THREE.BufferGeometry()
-		const particlesCount = 5000
+		const particlesCount = 1000
 		const posArray = new Float32Array(particlesCount * 3)
 
 		for (let i = 0; i < particlesCount * 3; ++i) {
@@ -325,33 +328,43 @@ function App() {
 					<button onClick={ () => animationBasic = !animationBasic }>Animation</button>
 				</nav>
 			</section>
-			<section className="text-white overflow-hidden px-60">
-				{/* <h2 className='my-20 text-3xl akashi'>OUR SERVICES</h2> */}
-				{/* <div className='service'>
-					<h4 className='service-header'>Project Management</h4>
-					<p className='service-description'>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
+			<section className="relative text-white overflow-y-scroll overflow-x-hidden px-48" id="services">
+				{/* <div className="bg-white absolute h-full" style={{ width: "5px", right: "-2px" }}></div> */}
+				<h2 className='mt-8 mb-20 text-5xl akashi'>OUR SERVICES</h2>
+				<div className="grid grid-rows-3 gap-8 mb-8">
+					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<h4 className='my-auto ml-24 text-4xl flex-1'>Project Management</h4>
+						<p className='my-auto text-lg flex-1'>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
+					</div>
+					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<h4 className='my-auto ml-24 text-4xl flex-1'>Graphic Design</h4>
+						<p className='my-auto text-lg flex-1'>We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.</p>
+					</div>
+					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<h4 className='my-auto ml-24 text-4xl flex-1'>Copywriting</h4>
+						<p className='my-auto text-lg flex-1'>We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.</p>
+					</div>
+					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<h4 className='my-auto ml-24 text-4xl flex-1'>Marketing</h4>
+						<p className='my-auto text-lg flex-1'>We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.</p>
+					</div>
+					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<h4 className='my-auto ml-24 text-4xl flex-1'>Web Design</h4>
+						<p className='my-auto text-lg flex-1'>We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.</p>
+					</div>
+					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<h4 className='my-auto ml-24 text-4xl flex-1'>Business consulting</h4>
+						<p className='my-auto text-lg flex-1'>Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.</p>
+					</div>
 				</div>
-				<div className='service'>
-					<h4 className='service-header'>Graphic Design</h4>
-					<p className='service-description'>We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.</p>
-				</div>
-				<div className='service'>
-					<h4 className='service-header'>Copywriting</h4>
-					<p className='service-description'>We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.</p>
-				</div>
-				<div className='service'>
-					<h4 className='service-header'>Marketing</h4>
-					<p className='service-description'>We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.</p>
-				</div>
-				<div className='service'>
-					<h4 className='service-header'>Web Design</h4>
-					<p className='service-description'>We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.</p>
-				</div>
-				<div className='service'>
-					<h4 className='service-header'>Business consulting</h4>
-					<p className='service-description'>Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.</p>
-				</div> */}
-
+			</section>
+			<section>
 				<div className="cube-container">
 					<div id="cube">
 						<div className="front">1</div>
@@ -362,9 +375,6 @@ function App() {
 						<div className="bottom">6</div>
 					</div>
 				</div>
-			</section>
-			<section>
-			
 			</section>
 			<section>
 			

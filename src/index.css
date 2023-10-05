@@ -52,6 +52,10 @@
   background: var(--scrollbar-hover-color);
 }
 
+#services::-webkit-scrollbar {
+  display: none;
+}
+
 /* #scrollbar-handle {
   border-radius: .2rem;
 }
