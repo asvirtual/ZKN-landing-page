@@ -12,6 +12,11 @@ import { motion, scroll } from 'framer-motion'
 
 import Lottie from "lottie-react";
 import projectManagementAnimation from "./assets/project_management.json"
+import graphicDesignAnimation from "./assets/graphic_design.json"
+import copywritingAnimation from "./assets/copywriting.json"
+import webDesignAnimation from "./assets/web_design.json"
+import marketingAnimation from "./assets/marketing.json"
+import businessConsultingAnimation from "./assets/business_consulting.json"
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -363,35 +368,35 @@ function App() {
 						</div>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[1] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
+						<Lottie lottieRef={ lottieAnimationsRefs[1] } className="w-52" animationData={ graphicDesignAnimation  } loop={ true } autoplay={ false } />
 						<div className="flex-1 ml-12 mr-4 my-auto">
 							<h4 className='my-auto ml-24 text-3xl'>Graphic Design</h4>
 							<p className='my-auto mt-4 text-lg'>We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.</p>
 						</div>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[2] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
+						<Lottie lottieRef={ lottieAnimationsRefs[2] } className="w-40" animationData={ copywritingAnimation } loop={ true } autoplay={ false } />
 						<div className="flex-1 ml-12 mr-4 my-auto">
 							<h4 className='my-auto ml-24 text-3xl'>Copywriting</h4>
 							<p className='my-auto mt-4 text-lg'>We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.</p>
 						</div>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[3] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
+						<Lottie lottieRef={ lottieAnimationsRefs[3] } className="w-52" animationData={ marketingAnimation } loop={ true } autoplay={ false } />
 						<div className="flex-1 ml-12 mr-4 my-auto">
 							<h4 className='my-auto ml-24 text-3xl'>Marketing</h4>
 							<p className='my-auto mt-4 text-lg'>We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.</p>
 						</div>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[4] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
+						<Lottie lottieRef={ lottieAnimationsRefs[4] } className="w-52" animationData={ webDesignAnimation } loop={ true } autoplay={ false } />
 						<div className="flex-1 ml-12 mr-4 my-auto">
 							<h4 className='my-auto ml-24 text-3xl'>Web Design</h4>
 							<p className='my-auto mt-4 text-lg'>We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.</p>
 						</div>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[5] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
+						<Lottie lottieRef={ lottieAnimationsRefs[5] } className="w-52" animationData={ businessConsultingAnimation } loop={ true } autoplay={ false } />
 						<div className="flex-1 ml-12 mr-4 my-auto">
 							<h4 className='my-auto ml-24 text-3xl'>Business consulting</h4>
 							<p className='my-auto mt-4 text-lg'>Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.</p>
@@ -420,28 +425,5 @@ function App() {
 		</div>
 	)
 }
-
-/*
-
-Project Management
-We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.
-
-Graphic Design
-We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.
-
-Copywriting
-We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.
-
-Marketing
-We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.
-
-Web Design
-We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.
-
-Business consulting
-Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.
-
-
-*/
 
 export default App
