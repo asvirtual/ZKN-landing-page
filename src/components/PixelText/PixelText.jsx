@@ -11,6 +11,7 @@ function PixelText(props) {
             this.x = props.initialAnimation ? Math.random() * effect.canvasWidth : x
             this.y = props.initialAnimation ? Math.random() * effect.canvasHeight : y
             this.color = color
+            this.effect.ctx.fillStyle = this.color
             this.originX = x
             this.originY = y
             this.size = this.effect.gap
@@ -28,11 +29,10 @@ function PixelText(props) {
         }
     
         draw() {
-            this.effect.ctx.fillStyle = this.color
-            // this.effect.ctx.fillRect(this.x, this.y, this.size, this.size)
-            this.effect.ctx.beginPath()
-            this.effect.ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI)
-            this.effect.ctx.fill()
+            this.effect.ctx.fillRect(this.x, this.y, this.size, this.size)
+            // this.effect.ctx.beginPath()
+            // this.effect.ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI)
+            // this.effect.ctx.fill()
         }
     
         update() {
@@ -172,7 +172,7 @@ function PixelText(props) {
                     const index = (y * this.canvasWidth + x) * 4
                     const alpha = pixels[index + 3]
     
-                    if (alpha == 0) continue
+                    if (alpha === 0) continue
     
                     const red =  pixels[index]
                     const green =  pixels[index + 1]
@@ -230,13 +230,6 @@ function PixelText(props) {
             }
             
             animate(effect)
-            
-            window.addEventListener('resize', () => {
-                // canvas.width = window.innerWidth
-                // canvas.height = window.innerHeight
-                // effect.resize(canvas.width, canvas.height)
-                // effect.wrapText(props.text)
-            });
 
             let id
             if (props.exitDelay != null)

@@ -36,6 +36,17 @@ function App() {
 
 	const scrollContainer = useRef()
 
+	// Lottie services animations refs
+	const lottieAnimationsRefs = [
+		useRef(), 
+		useRef(), 
+		useRef(), 
+		useRef(), 
+		useRef(), 
+		useRef()
+	]
+
+
 	useEffect(() => {
 		const canvas = document.querySelector("#background")
 		canvas.width = window.innerWidth
@@ -112,6 +123,13 @@ function App() {
 		scrollContainer.addEventListener('scroll', e => {
 			const scrollPercentage = scrollContainer.scrollTop / (scrollContainer.scrollHeight) * 100 + 20
 			setScrollProgress(scrollPercentage)
+
+			// Lottie animations controls
+			if (scrollPercentage >= 40 && scrollPercentage <= 60 && lottieAnimationsRefs[0].current?.animationItem?.isPaused)
+				lottieAnimationsRefs.forEach(anim => anim.current.play())
+			
+			if ((scrollPercentage < 40 || scrollPercentage > 60) && !lottieAnimationsRefs[0].current?.animationItem?.isPaused)
+				lottieAnimationsRefs.forEach(anim => anim.current.stop())
 
 			// const scrollRange = (scrollPercentage - 50) / 25
 			isScrollingDown = scrollContainer.scrollTop !== lastScroll ? scrollContainer.scrollTop > lastScroll : isScrollingDown
@@ -229,7 +247,7 @@ function App() {
 
 	useEffect(() => {
 		const logoAnimationId = setInterval(() => {
-			if (scrollProgress <= 20)
+			if (scrollProgress === 20)
 				setAnimationIndex((oldIndex) => oldIndex == 2 ? 0 : oldIndex + 1)
 		}, animationPeriodMillis);
 
@@ -240,13 +258,16 @@ function App() {
 
 	const logoScale = 
 		scrollProgress <= 25 ? 1 :
-		scrollProgress <= 40 ? -(scrollProgress / 20 - 2) : 
 		0
+		// scrollProgress <= 20 ? 1 :
+		// scrollProgress <= 40 ? -(scrollProgress / 20 - 2) : 
+		// 0
+
+		console.log(logoScale, logoScale <= 0 ? 0 : logoScale)
 
 	return (
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": scrollProgress > 30 && scrollProgress < 60 ? "white" : "black", "--scrollbar-background": scrollProgress > 30 && scrollProgress < 60  ? "black" : "white" }}
 			className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory">
-
 			{/* <div
 				id="scrollbar"
 				className="absolute h-screen w-2 z-10 right-0"
@@ -282,7 +303,7 @@ function App() {
 
 			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: ((scrollProgress > 20 && scrollProgress <= 40) || (scrollProgress > 60 && scrollProgress <= 80)) ? "white" : "black" }}></div>
 			<canvas id="background" className="fixed top-0 -z-20" ></canvas>
-			<motion.div animate={{ scale: logoScale < 0 ? 0 : logoScale }} className="h-screen w-screen fixed top-0 -z-10">
+			<motion.div style={{ scale: logoScale <= 0 ? 0 : logoScale, transition: "all .5s ease" }} className="h-screen w-screen fixed top-0 -z-10">
 				<PixelText 
 					id="initial-logo" 
 					text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Your vision. Our expertise." : "Let's build. Together." }
@@ -293,7 +314,7 @@ function App() {
 					textAlign="center"
 					textBaseLine="middle"
 					gradient={ [ [0, '#121517'], [1, '#121517'] ] }
-					gap={ 3 }
+					gap={ 2 }
 					radius={ 20000 }
 					initialAnimation={ true }
 					hoverAnimation={ true }
@@ -328,37 +349,37 @@ function App() {
 					<button onClick={ () => animationBasic = !animationBasic }>Animation</button>
 				</nav>
 			</section>
-			<section className="relative text-white overflow-y-scroll overflow-x-hidden px-48" id="services">
+			<section className="text-white overflow-y-scroll overflow-x-hidden px-48" id="services">
 				{/* <div className="bg-white absolute h-full" style={{ width: "5px", right: "-2px" }}></div> */}
 				<h2 className='mt-8 mb-20 text-5xl akashi'>OUR SERVICES</h2>
 				<div className="grid grid-rows-3 gap-8 mb-8">
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<Lottie lottieRef={ lottieAnimationsRefs[0] } className="w-52" animationData={ projectManagementAnimation } autoplay={ false } />
 						<h4 className='my-auto ml-24 text-4xl flex-1'>Project Management</h4>
 						<p className='my-auto text-lg flex-1'>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<Lottie lottieRef={ lottieAnimationsRefs[1] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
 						<h4 className='my-auto ml-24 text-4xl flex-1'>Graphic Design</h4>
 						<p className='my-auto text-lg flex-1'>We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.</p>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<Lottie lottieRef={ lottieAnimationsRefs[2] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
 						<h4 className='my-auto ml-24 text-4xl flex-1'>Copywriting</h4>
 						<p className='my-auto text-lg flex-1'>We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.</p>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<Lottie lottieRef={ lottieAnimationsRefs[3] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
 						<h4 className='my-auto ml-24 text-4xl flex-1'>Marketing</h4>
 						<p className='my-auto text-lg flex-1'>We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.</p>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<Lottie lottieRef={ lottieAnimationsRefs[4] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
 						<h4 className='my-auto ml-24 text-4xl flex-1'>Web Design</h4>
 						<p className='my-auto text-lg flex-1'>We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.</p>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie className="w-52" animationData={ projectManagementAnimation } loop={ true } />
+						<Lottie lottieRef={ lottieAnimationsRefs[5] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
 						<h4 className='my-auto ml-24 text-4xl flex-1'>Business consulting</h4>
 						<p className='my-auto text-lg flex-1'>Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.</p>
 					</div>
