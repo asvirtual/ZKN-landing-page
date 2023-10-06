@@ -147,6 +147,8 @@ function App() {
 			// else
 			// 	sphere.position.x = - 1 / (scrollPercentage / 15 - 14 / 3)
 
+
+
 			if (scrollPercentage < 30 || (scrollPercentage > 45 && scrollPercentage < 65) || scrollPercentage > 85) { 
 				gsap.to(scene.background, { duration: 0.2, r: 1, g: 1, b: 1 })
 
@@ -349,39 +351,51 @@ function App() {
 					<button onClick={ () => animationBasic = !animationBasic }>Animation</button>
 				</nav>
 			</section>
-			<section className="text-white overflow-y-scroll overflow-x-hidden px-48" id="services">
+			<section className="text-white overflow-y-scroll overflow-x-hidden px-20" id="services">
 				{/* <div className="bg-white absolute h-full" style={{ width: "5px", right: "-2px" }}></div> */}
-				<h2 className='mt-8 mb-20 text-5xl akashi'>OUR SERVICES</h2>
-				<div className="grid grid-rows-3 gap-8 mb-8">
+				<h2 className='mt-8 mb-12 text-5xl akashi'>OUR SERVICES</h2>
+				<div className="grid grid-rows-3 grid-cols-2 gap-4 mb-8">
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
 						<Lottie lottieRef={ lottieAnimationsRefs[0] } className="w-52" animationData={ projectManagementAnimation } autoplay={ false } />
-						<h4 className='my-auto ml-24 text-4xl flex-1'>Project Management</h4>
-						<p className='my-auto text-lg flex-1'>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
+						<div className="flex-1 ml-12 mr-4 my-auto">
+							<h4 className='my-auto ml-24 text-3xl'>Project Management</h4>
+							<p className='my-auto mt-4 text-lg'>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
+						</div>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
 						<Lottie lottieRef={ lottieAnimationsRefs[1] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
-						<h4 className='my-auto ml-24 text-4xl flex-1'>Graphic Design</h4>
-						<p className='my-auto text-lg flex-1'>We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.</p>
+						<div className="flex-1 ml-12 mr-4 my-auto">
+							<h4 className='my-auto ml-24 text-3xl'>Graphic Design</h4>
+							<p className='my-auto mt-4 text-lg'>We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.</p>
+						</div>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
 						<Lottie lottieRef={ lottieAnimationsRefs[2] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
-						<h4 className='my-auto ml-24 text-4xl flex-1'>Copywriting</h4>
-						<p className='my-auto text-lg flex-1'>We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.</p>
+						<div className="flex-1 ml-12 mr-4 my-auto">
+							<h4 className='my-auto ml-24 text-3xl'>Copywriting</h4>
+							<p className='my-auto mt-4 text-lg'>We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.</p>
+						</div>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
 						<Lottie lottieRef={ lottieAnimationsRefs[3] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
-						<h4 className='my-auto ml-24 text-4xl flex-1'>Marketing</h4>
-						<p className='my-auto text-lg flex-1'>We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.</p>
+						<div className="flex-1 ml-12 mr-4 my-auto">
+							<h4 className='my-auto ml-24 text-3xl'>Marketing</h4>
+							<p className='my-auto mt-4 text-lg'>We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.</p>
+						</div>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
 						<Lottie lottieRef={ lottieAnimationsRefs[4] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
-						<h4 className='my-auto ml-24 text-4xl flex-1'>Web Design</h4>
-						<p className='my-auto text-lg flex-1'>We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.</p>
+						<div className="flex-1 ml-12 mr-4 my-auto">
+							<h4 className='my-auto ml-24 text-3xl'>Web Design</h4>
+							<p className='my-auto mt-4 text-lg'>We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.</p>
+						</div>
 					</div>
 					<div className="flex border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
 						<Lottie lottieRef={ lottieAnimationsRefs[5] } className="w-52" animationData={ projectManagementAnimation } loop={ true } autoplay={ false } />
-						<h4 className='my-auto ml-24 text-4xl flex-1'>Business consulting</h4>
-						<p className='my-auto text-lg flex-1'>Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.</p>
+						<div className="flex-1 ml-12 mr-4 my-auto">
+							<h4 className='my-auto ml-24 text-3xl'>Business consulting</h4>
+							<p className='my-auto mt-4 text-lg'>Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.</p>
+						</div>
 					</div>
 				</div>
 			</section>
