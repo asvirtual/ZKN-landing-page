@@ -263,6 +263,7 @@ function App() {
 		}
 	}, [scrollProgress])
 
+
 	const logoScale = 
 		scrollProgress <= 25 ? 1 :
 		0
@@ -270,10 +271,9 @@ function App() {
 		// scrollProgress <= 40 ? -(scrollProgress / 20 - 2) : 
 		// 0
 
-		console.log(logoScale, logoScale <= 0 ? 0 : logoScale)
 
 	return (
-		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": scrollProgress > 30 && scrollProgress < 60 ? "white" : "black", "--scrollbar-background": scrollProgress > 30 && scrollProgress < 60  ? "black" : "white" }}
+		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
 			className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory">
 			{/* <div
 				id="scrollbar"
@@ -308,7 +308,7 @@ function App() {
 				}}>
 			</motion.div> */}
 
-			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: ((scrollProgress > 20 && scrollProgress <= 40) || (scrollProgress > 60 && scrollProgress <= 80)) ? "white" : "black" }}></div>
+			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black" }}></div>
 			<canvas id="background" className="fixed top-0 -z-20" ></canvas>
 			<motion.div style={{ scale: logoScale <= 0 ? 0 : logoScale, transition: "all .5s ease" }} className="h-screen w-screen fixed top-0 -z-10">
 				<PixelText 
@@ -322,7 +322,7 @@ function App() {
 					textBaseLine="middle"
 					gradient={ [ [0, '#121517'], [1, '#121517'] ] }
 					gap={ 2 }
-					radius={ 20000 }
+					radius={ 5000 }
 					initialAnimation={ true }
 					hoverAnimation={ true }
 					vibrateParticles={ true }
@@ -333,7 +333,7 @@ function App() {
 					// randomEase={ 0.1 }
 					randomEase={ 0.05 }
 					// fixedEase={ 0.1 }
-					fixedEase={ 0.05 }
+					fixedEase={ 0.1 }
 					// randomExitAcceleration={ 1 }
 					randomExitAcceleration={ 0.5 }
 					// fixedExitAcceleration={ 0.2 }
@@ -353,52 +353,52 @@ function App() {
 					<a className="text-center akashi my-auto text-black font-bold mx-5">About</a>
 					<a className="text-center akashi my-auto text-black font-bold mx-5">Works</a>
 					<a className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
-					<button onClick={ () => animationBasic = !animationBasic }>Animation</button>
+					{/* <button onClick={ () => animationBasic = !animationBasic }>Animation</button> */}
 				</nav>
 			</section>
 			<section className="text-white overflow-y-scroll overflow-x-hidden px-20" id="services">
 				{/* <div className="bg-white absolute h-full" style={{ width: "5px", right: "-2px" }}></div> */}
 				<h2 className='mt-8 mb-12 text-5xl akashi'>OUR SERVICES</h2>
-				<div className="grid grid-rows-3 grid-cols-2 gap-4 mb-8">
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[0] } className="w-52" animationData={ projectManagementAnimation } autoplay={ false } />
-						<div className="flex-1 ml-12 mr-4 my-auto">
-							<h4 className='my-auto text-3xl text-center'>Project Management</h4>
+				<div className="grid grid-cols-2  gap-4 mb-8">
+					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie lottieRef={ lottieAnimationsRefs[0] } className="w-40 h-40 my-auto" animationData={ projectManagementAnimation } autoplay={ false } />
+						<div className="h-min flex-1 ml-8 mr-2 my-auto">
+							<h4 className='my-auto text-2xl text-center'>Project Management</h4>
 							<p className='my-auto mt-4 text-lg'>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
 						</div>
 					</div>
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[1] } className="w-52" animationData={ graphicDesignAnimation  } loop={ true } autoplay={ false } />
-						<div className="flex-1 ml-12 mr-4 my-auto">
-							<h4 className='my-auto text-3xl text-center'>Graphic Design</h4>
+					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie lottieRef={ lottieAnimationsRefs[1] } className="w-40 h-40 my-auto" animationData={ graphicDesignAnimation  } loop={ true } autoplay={ false } />
+						<div className="h-min flex-1 ml-8 mr-2 my-auto">
+							<h4 className='my-auto text-2xl text-center'>Graphic Design</h4>
 							<p className='my-auto mt-4 text-lg'>We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.</p>
 						</div>
 					</div>
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[2] } className="w-52" animationData={ copywritingAnimation } loop={ true } autoplay={ false } />
-						<div className="flex-1 ml-12 mr-4 my-auto">
-							<h4 className='my-auto text-3xl text-center'>Copywriting</h4>
+					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie lottieRef={ lottieAnimationsRefs[2] } className="w-40 h-40 my-auto" animationData={ copywritingAnimation } loop={ true } autoplay={ false } />
+						<div className="h-min flex-1 ml-8 mr-2 my-auto">
+							<h4 className='my-auto text-2xl text-center'>Copywriting</h4>
 							<p className='my-auto mt-4 text-lg'>We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.</p>
 						</div>
 					</div>
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[3] } className="w-52" animationData={ marketingAnimation } loop={ true } autoplay={ false } />
-						<div className="flex-1 ml-12 mr-4 my-auto">
-							<h4 className='my-auto text-3xl text-center'>Marketing</h4>
+					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie lottieRef={ lottieAnimationsRefs[3] } className="w-40 h-40 my-auto" animationData={ marketingAnimation } loop={ true } autoplay={ false } />
+						<div className="h-min flex-1 ml-8 mr-2 my-auto">
+							<h4 className='my-auto text-2xl text-center'>Marketing</h4>
 							<p className='my-auto mt-4 text-lg'>We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.</p>
 						</div>
 					</div>
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[4] } className="w-52" animationData={ webDesignAnimation } loop={ true } autoplay={ false } />
-						<div className="flex-1 ml-12 mr-4 my-auto">
-							<h4 className='my-auto text-3xl text-center'>Web Design</h4>
+					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie lottieRef={ lottieAnimationsRefs[4] } className="w-40 h-40 my-auto" animationData={ webDesignAnimation } loop={ true } autoplay={ false } />
+						<div className="h-min flex-1 ml-8 mr-2 my-auto">
+							<h4 className='my-auto text-2xl text-center'>Web Design</h4>
 							<p className='my-auto mt-4 text-lg'>We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.</p>
 						</div>
 					</div>
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-8 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[5] } className="w-52" animationData={ businessConsultingAnimation } loop={ true } autoplay={ false } />
-						<div className="flex-1 ml-12 mr-4 my-auto">
-							<h4 className='my-auto text-3xl text-center'>Business consulting</h4>
+					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
+						<Lottie lottieRef={ lottieAnimationsRefs[5] } className="w-40 h-40 my-auto" animationData={ businessConsultingAnimation } loop={ true } autoplay={ false } />
+						<div className="h-min flex-1 ml-8 mr-2 my-auto">
+							<h4 className='my-auto text-2xl text-center'>Business consulting</h4>
 							<p className='my-auto mt-4 text-lg'>Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.</p>
 						</div>
 					</div>
