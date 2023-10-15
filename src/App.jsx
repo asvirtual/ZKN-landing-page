@@ -20,8 +20,8 @@ import businessConsultingAnimation from "./assets/business_consulting.json"
 
 import plasbitLogo from "./assets/plasbit-logo.svg"
 import evoloadLogo from "./assets/evoload-logo.svg"
-import spazioCryptoLogo from "./assets/SpazioCryptoLogo.png"
-import trackxLogo from "./assets/TrackxLogo.png"
+import spazioCryptoLogo from "./assets/spaziocrypto-logo.webp"
+import trackxLogo from "./assets/trackx-logo.svg"
 
 
 gsap.registerPlugin(ScrollTrigger)
