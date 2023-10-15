@@ -18,6 +18,11 @@ import webDesignAnimation from "./assets/web_design.json"
 import marketingAnimation from "./assets/marketing.json"
 import businessConsultingAnimation from "./assets/business_consulting.json"
 
+import plasbitLogo from "./assets/plasbit-logo.svg"
+import evoloadLogo from "./assets/evoload-logo.svg"
+import spazioCryptoLogo from "./assets/SpazioCryptoLogo.png"
+import trackxLogo from "./assets/TrackxLogo.png"
+
 
 gsap.registerPlugin(ScrollTrigger)
 ScrollTrigger.defaults({
@@ -408,13 +413,31 @@ function App() {
 				<div className="cube-container translate-x-56 translate-y-40">
 					<div id="cube">
 						<div className="front">
-							<p>Evoload</p>
+							<img src={ evoloadLogo } className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
+							{/* <h4 className="text-lg">Evoload</h4> */}
 						</div>
-						<div className="back"><p>PlasBit</p></div>
-						<div className="right"><p>Spazio<br></br>Crypto</p></div>
-						<div className="left"><p>Tired Club</p></div>
-						<div className="top"><p>Fiverr</p></div>
-						<div className="bottom"><p>Trakx</p></div>
+						<div className="back">
+							<img src={ plasbitLogo} className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
+							<h3 className="text-center italic" style={{ marginTop: "50%", transform: "translateY(-50%)", fontFamily: "sans-serif" }}>Plas<span className="text-blue-700">Bit</span></h3>
+						</div>
+						<div className="right relative">
+							<img src={ spazioCryptoLogo } className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
+							{/* <img src={ spazioCryptoLogo } className="absolute w-full h-full" ></img> */}
+							{/* <p>SpazioCrypto</p> */}
+						</div>
+						<div className="left relative">
+							<img></img>
+							{/* <p>Tired Club</p> */}
+						</div>
+						<div className="top relative">
+							<img></img>
+							{/* <p>Fiverr</p> */}
+						</div>
+						<div className="bottom relative">
+							<img src={ trackxLogo } className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
+							{/* <img src={ trackxLogo } className="absolute w-full h-full" ></img> */}
+							{/* <p>Trakx</p> */}
+						</div>
 						{/* <div className="front">1</div>
 						<div className="back">2</div>
 						<div className="right">3</div>

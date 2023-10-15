@@ -119,6 +119,10 @@ section {
   -moz-animation: rotatecube 20s infinite ease-in-out forwards;
 }
 
+#cube:hover {
+    animation-play-state: paused;
+}
+
 #cube div {
   width: var(--services-cube-face-dim);
   height: var(--services-cube-face-dim);
@@ -134,8 +138,8 @@ section {
 
 #cube div p {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
 }
 
 @keyframes rotatecube {
@@ -154,34 +158,36 @@ section {
   100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
 }
 
-.front, .back, .right, .left, .top, .bottom {
-  border-radius: 1rem;
-  color: white;
-  /* background: repeating-linear-gradient(#e66465, #e66465 20px, #9198e5 20px, #9198e5 25px); */
-  background: repeating-radial-gradient(circle at 50% 50%, #2f2f2f, #434343 2px, #2f2f2f 5px, #434343 10px);
-  /* background: repeating-linear-gradient(transparent, #2f2f2f 5px), */
-            /* repeating-linear-gradient(0.25turn, transparent, #434343 5px); */
+#cube img {
 }
 
-/* .back {
-  background: rgba(0,255,0,.5);
+.front, .back, .right, .left, .top, .bottom {
+  border-radius: .5rem;
+  color: white;
+
+  /* background: repeating-linear-gradient(#e66465, #e66465 20px, #9198e5 20px, #9198e5 25px); */
+  /* background: repeating-radial-gradient(circle at 50% 50%, #2f2f2f, #434343 2px, #2f2f2f 5px, #434343 10px); */
+  /* background: repeating-linear-gradient(black, #434343 10px),
+            repeating-linear-gradient(0.25turn, #434343, black 30px); */
+
+
+    background: linear-gradient(to right, #434343, black);
+}
+
+.back {
 }
 
 .right {
-  background: rgba(0,0,255,.5);
 }
 
 .left {
-  background: rgba(0,255,255,.5);
 }
 
 .top {
-  background: rgba(255,0,255,.5);
 }
 
 .bottom {
-  background: rgba(255,255,0,.5);
-} */
+}
 
 #cube .front  {
   transform: rotateY(0deg ) translateZ( calc(var(--services-cube-face-dim) / 2) );
