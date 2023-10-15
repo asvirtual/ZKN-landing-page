@@ -418,7 +418,7 @@ function App() {
 						</div>
 						<div className="back">
 							<img src={ plasbitLogo} className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
-							<h3 className="text-center italic" style={{ marginTop: "50%", transform: "translateY(-50%)", fontFamily: "sans-serif" }}>Plas<span className="text-blue-700">Bit</span></h3>
+							{/* <h3 className="text-center italic" style={{ marginTop: "50%", transform: "translateY(-50%)", fontFamily: "sans-serif" }}>Plas<span className="text-blue-700">Bit</span></h3> */}
 						</div>
 						<div className="right relative">
 							<img src={ spazioCryptoLogo } className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
