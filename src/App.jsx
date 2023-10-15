@@ -129,8 +129,48 @@ function App() {
 			renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 		})
 
+		const clientsSection = document.querySelector("#clients");
+		let isInsideClientsSection = false
+		let hasFinishedClientsSectionScrolling = false
+		const observer = new IntersectionObserver((entries) => {
+			if (!isInsideClientsSection && entries.some(entry => entry.isIntersecting)) {
+				hasFinishedClientsSectionScrolling = false
+			}
+			
+			isInsideClientsSection = entries.some(entry => entry.isIntersecting)
+		}, { threshold: [1] });
+
+		observer.observe(clientsSection);
+
+		function transformScroll(event) {
+			if (!event.deltaY) {
+			  return;
+			}
+			
+			// console.log(event.currentTarget.scrollWidth, event.currentTarget.scrollLeft, event.deltaY, event.deltaX)
+			if (event.currentTarget.scrollWidth / 2 <= event.currentTarget.scrollLeft + event.deltaY + event.deltaX || event.currentTarget.scrollLeft + event.deltaY + event.deltaX < 0) {
+				hasFinishedClientsSectionScrolling = true
+				return
+			}
+
+			hasFinishedClientsSectionScrolling = false
+			// event.currentTarget.scrollLeft += (event.deltaY + event.deltaX)
+			event.currentTarget.scrollTo({ left: event.currentTarget.scrollWidth / 2 * (event.deltaY) / Math.abs(event.deltaY), behavior: "smooth" })
+			event.preventDefault();
+		}
+		  
+		clientsSection.addEventListener('wheel', transformScroll);
+
 		const scrollContainer = document.querySelector("#scroll-container")
+		let scrollContainerScrollTop = 0
 		scrollContainer.addEventListener('scroll', e => {
+			if (isInsideClientsSection && !hasFinishedClientsSectionScrolling) {
+				scrollContainer.scrollTop = scrollContainerScrollTop
+				e.preventDefault();
+				return;
+			}
+
+			scrollContainerScrollTop = scrollContainer.scrollTop
 			const scrollPercentage = scrollContainer.scrollTop / (scrollContainer.scrollHeight) * 100 + 20
 			setScrollProgress(scrollPercentage)
 
@@ -408,44 +448,38 @@ function App() {
 					</div>
 				</div>
 			</section>
-			<section className="overflow-y-scroll overflow-x-hidden px-20">
-				<h2 className='mt-8 mb-12 text-5xl akashi'>OUR CLIENTS & WORKS</h2>
+			<section id="clients" className="overflow-x-scroll overflow-y-hidden flex">
+				{/* <h2 className='mt-8 mb-12 text-5xl akashi'>OUR CLIENTS & WORKS</h2>
 				<div className="cube-container translate-x-56 translate-y-40">
 					<div id="cube">
 						<div className="front">
 							<img src={ evoloadLogo } className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
-							{/* <h4 className="text-lg">Evoload</h4> */}
 						</div>
 						<div className="back">
 							<img src={ plasbitLogo} className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
-							{/* <h3 className="text-center italic" style={{ marginTop: "50%", transform: "translateY(-50%)", fontFamily: "sans-serif" }}>Plas<span className="text-blue-700">Bit</span></h3> */}
 						</div>
 						<div className="right relative">
 							<img src={ spazioCryptoLogo } className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
-							{/* <img src={ spazioCryptoLogo } className="absolute w-full h-full" ></img> */}
-							{/* <p>SpazioCrypto</p> */}
 						</div>
 						<div className="left relative">
 							<img></img>
-							{/* <p>Tired Club</p> */}
 						</div>
 						<div className="top relative">
 							<img></img>
-							{/* <p>Fiverr</p> */}
 						</div>
 						<div className="bottom relative">
 							<img src={ trackxLogo } className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
-							{/* <img src={ trackxLogo } className="absolute w-full h-full" ></img> */}
-							{/* <p>Trakx</p> */}
 						</div>
-						{/* <div className="front">1</div>
-						<div className="back">2</div>
-						<div className="right">3</div>
-						<div className="left">4</div>
-						<div className="top">5</div>
-						<div className="bottom">6</div> */}
 					</div>
+				</div> */}
+				<div className="h-full w-full bg-red-900 flex-shrink-0">
+					<h2 className='mt-8 ml-12 text-5xl akashi'>OUR CLIENTS & WORKS</h2>
 				</div>
+				<div className="h-full w-full bg-blue-900 flex-shrink-0">	
+					<h2 className='mt-8 ml-12 text-5xl akashi'>OUR CLIENTS & WORKS</h2>
+				</div>
+
+
 			</section>
 			<section>
 			

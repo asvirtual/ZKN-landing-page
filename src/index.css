@@ -56,6 +56,10 @@
   display: none;
 }
 
+#clients::-webkit-scrollbar {
+  display: none;
+}
+
 /* #scrollbar-handle {
   border-radius: .2rem;
 }
@@ -79,6 +83,17 @@ body {
 section {
   max-height: 100vh;
   height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+#clients {
+  /* overflow-x: scroll;
+  overflow-y: hidden; */
+  /* scroll-snap-type: x mandatory; */
+}
+
+#clients>div {
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -163,13 +178,10 @@ section {
 
 .front, .back, .right, .left, .top, .bottom {
   border-radius: .5rem;
-  color: white;
-
   /* background: repeating-linear-gradient(#e66465, #e66465 20px, #9198e5 20px, #9198e5 25px); */
   /* background: repeating-radial-gradient(circle at 50% 50%, #2f2f2f, #434343 2px, #2f2f2f 5px, #434343 10px); */
   /* background: repeating-linear-gradient(black, #434343 10px),
             repeating-linear-gradient(0.25turn, #434343, black 30px); */
-
 
     background: linear-gradient(to right, #434343, black);
 }
