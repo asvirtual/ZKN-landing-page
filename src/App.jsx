@@ -23,6 +23,9 @@ import evoloadLogo from "./assets/evoload-logo.svg"
 import spazioCryptoLogo from "./assets/spaziocrypto-logo.webp"
 import trackxLogo from "./assets/trackx-logo.svg"
 
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Mousewheel } from "swiper/modules"
+import 'swiper/swiper-bundle.css'
 
 gsap.registerPlugin(ScrollTrigger)
 ScrollTrigger.defaults({
@@ -129,48 +132,56 @@ function App() {
 			renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 		})
 
-		const clientsSection = document.querySelector("#clients");
-		let isInsideClientsSection = false
-		let hasFinishedClientsSectionScrolling = false
-		const observer = new IntersectionObserver((entries) => {
-			if (!isInsideClientsSection && entries.some(entry => entry.isIntersecting)) {
-				hasFinishedClientsSectionScrolling = false
-			}
+		// const clientsSection = document.querySelector("#clients");
+		// let isInsideClientsSection = false
+		// let hasFinishedClientsSectionScrolling = false
+		// const observer = new IntersectionObserver((entries) => {
+		// 	if (!isInsideClientsSection && entries.some(entry => entry.isIntersecting)) {
+		// 		hasFinishedClientsSectionScrolling = false
+		// 	}
 			
-			isInsideClientsSection = entries.some(entry => entry.isIntersecting)
-		}, { threshold: [1] });
+		// 	isInsideClientsSection = entries.some(entry => entry.isIntersecting)
+		// }, { threshold: [1] });
 
-		observer.observe(clientsSection);
+		// observer.observe(clientsSection);
 
-		function transformScroll(event) {
-			if (!event.deltaY) {
-			  return;
-			}
+		// function transformScroll(event) {
+		// 	if (!event.deltaY) {
+		// 		return;
+		// 	}
 			
-			// console.log(event.currentTarget.scrollWidth, event.currentTarget.scrollLeft, event.deltaY, event.deltaX)
-			if (event.currentTarget.scrollWidth / 2 <= event.currentTarget.scrollLeft + event.deltaY + event.deltaX || event.currentTarget.scrollLeft + event.deltaY + event.deltaX < 0) {
-				hasFinishedClientsSectionScrolling = true
-				return
-			}
+		// 	// let currentScrollNormalized = event.currentTarget.scrollLeft !== 0 ? currentScrollNormalized
+		// 	let scrollLeft
+		// 	const currentPage = parseInt(parseInt(event.currentTarget.scrollLeft) / parseInt(parseInt(event.currentTarget.scrollWidth) / 6))
 
-			hasFinishedClientsSectionScrolling = false
-			// event.currentTarget.scrollLeft += (event.deltaY + event.deltaX)
-			event.currentTarget.scrollTo({ left: event.currentTarget.scrollWidth / 2 * (event.deltaY) / Math.abs(event.deltaY), behavior: "smooth" })
-			event.preventDefault();
-		}
+		// 	if (event.deltaY > 0) scrollLeft = ((currentPage + 1) * parseInt(parseInt(event.currentTarget.scrollWidth) / 6))
+		// 	else scrollLeft = ((currentPage - 1) * parseInt(parseInt(event.currentTarget.scrollWidth) / 6))
+
+		// 	console.log(currentPage, event.deltaY)
+
+		// 	if ((currentPage === 5 && event.deltaY > 0) || (currentPage === 0 && event.deltaY < 0)) {
+		// 		hasFinishedClientsSectionScrolling = true
+		// 		return
+		// 	}
+
+		// 	hasFinishedClientsSectionScrolling = false
+		// 	event.currentTarget.scrollTo({ left: scrollLeft })
+		// 	event.preventDefault();
+		// }
 		  
-		clientsSection.addEventListener('wheel', transformScroll);
+		// clientsSection.addEventListener('wheel', transformScroll);
 
 		const scrollContainer = document.querySelector("#scroll-container")
-		let scrollContainerScrollTop = 0
+		// let scrollContainerScrollTop = 0
 		scrollContainer.addEventListener('scroll', e => {
-			if (isInsideClientsSection && !hasFinishedClientsSectionScrolling) {
-				scrollContainer.scrollTop = scrollContainerScrollTop
-				e.preventDefault();
-				return;
-			}
+			// if (isInsideClientsSection && !hasFinishedClientsSectionScrolling) {
+			// 	scrollContainer.scrollTop = scrollContainerScrollTop
+			// 	e.preventDefault();
+			// 	return;
+			// }
 
-			scrollContainerScrollTop = scrollContainer.scrollTop
+			// scrollContainerScrollTop = scrollContainer.scrollTop
+
 			const scrollPercentage = scrollContainer.scrollTop / (scrollContainer.scrollHeight) * 100 + 20
 			setScrollProgress(scrollPercentage)
 
@@ -448,7 +459,8 @@ function App() {
 					</div>
 				</div>
 			</section>
-			<section id="clients" className="overflow-x-scroll overflow-y-hidden flex">
+			{/* <section id="clients" className="overflow-x-scroll overflow-y-hidden flex"> */}
+			<section>
 				{/* <h2 className='mt-8 mb-12 text-5xl akashi'>OUR CLIENTS & WORKS</h2>
 				<div className="cube-container translate-x-56 translate-y-40">
 					<div id="cube">
@@ -472,12 +484,45 @@ function App() {
 						</div>
 					</div>
 				</div> */}
-				<div className="h-full w-full bg-red-900 flex-shrink-0">
-					<h2 className='mt-8 ml-12 text-5xl akashi'>OUR CLIENTS & WORKS</h2>
+				<Swiper direction="horizontal" mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ 1 } className="h-screen w-screen" modules={[ Mousewheel ]}>
+					<SwiperSlide className="h-screen w-screen">
+						<h2 className='mt-8 ml-12 text-5xl akashi'>Evoload</h2>
+					</SwiperSlide>
+					<SwiperSlide className="h-screen w-screen">	
+						<h2 className='mt-8 ml-12 text-5xl akashi'>PlasBit</h2>
+					</SwiperSlide>
+					<SwiperSlide className="h-screen w-screen">	
+						<h2 className='mt-8 ml-12 text-5xl akashi'>SpazioCrypto</h2>
+					</SwiperSlide>
+					<SwiperSlide className="h-screen w-screen">	
+						<h2 className='mt-8 ml-12 text-5xl akashi'>Tired Club</h2>
+					</SwiperSlide>
+					<SwiperSlide className="h-screen w-screen">	
+						<h2 className='mt-8 ml-12 text-5xl akashi'>Fiverr</h2>
+					</SwiperSlide>
+					<SwiperSlide className="h-screen w-screen">	
+						<h2 className='mt-8 ml-12 text-5xl akashi'>Trackx</h2>
+					</SwiperSlide>
+					
+				</Swiper>
+				{/* <div className="h-full w-full flex-shrink-0">
+					<h2 className='mt-8 ml-12 text-5xl akashi'>Evoload</h2>
 				</div>
-				<div className="h-full w-full bg-blue-900 flex-shrink-0">	
-					<h2 className='mt-8 ml-12 text-5xl akashi'>OUR CLIENTS & WORKS</h2>
+				<div className="h-full w-full flex-shrink-0">	
+					<h2 className='mt-8 ml-12 text-5xl akashi'>PlasBit</h2>
 				</div>
+				<div className="h-full w-full flex-shrink-0">	
+					<h2 className='mt-8 ml-12 text-5xl akashi'>SpazioCrypto</h2>
+				</div>
+				<div className="h-full w-full flex-shrink-0">	
+					<h2 className='mt-8 ml-12 text-5xl akashi'>Tired Club</h2>
+				</div>
+				<div className="h-full w-full flex-shrink-0">	
+					<h2 className='mt-8 ml-12 text-5xl akashi'>Fiverr</h2>
+				</div>
+				<div className="h-full w-full flex-shrink-0">	
+					<h2 className='mt-8 ml-12 text-5xl akashi'>Trackx</h2>
+				</div> */}
 
 
 			</section>
