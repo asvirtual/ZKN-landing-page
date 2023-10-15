@@ -348,18 +348,17 @@ function App() {
 					<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
 					<div></div> { /* Fill space */ }
 					<a className="text-center akashi my-auto text-black font-extrabold mr-5">Services</a>
+					<a className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
 					<a className="text-center akashi my-auto text-black font-bold mx-5">Products</a>
-					<a className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
 					<a className="text-center akashi my-auto text-black font-bold mx-5">About</a>
-					<a className="text-center akashi my-auto text-black font-bold mx-5">Works</a>
+					<a className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
 					<a className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
 					{/* <button onClick={ () => animationBasic = !animationBasic }>Animation</button> */}
 				</nav>
 			</section>
-			<section className="text-white overflow-y-scroll overflow-x-hidden px-20" id="services">
-				{/* <div className="bg-white absolute h-full" style={{ width: "5px", right: "-2px" }}></div> */}
+			<section className="text-white overflow-y-scroll overflow-x-hidden px-20">
 				<h2 className='mt-8 mb-12 text-5xl akashi'>OUR SERVICES</h2>
-				<div className="grid grid-cols-2  gap-4 mb-8">
+				<div className="grid grid-cols-2 gap-4 mb-8 grid-rows-none">
 					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
 						<Lottie lottieRef={ lottieAnimationsRefs[0] } className="w-40 h-40 my-auto" animationData={ projectManagementAnimation } autoplay={ false } />
 						<div className="h-min flex-1 ml-8 mr-2 my-auto">
@@ -404,15 +403,24 @@ function App() {
 					</div>
 				</div>
 			</section>
-			<section>
-				<div className="cube-container">
+			<section className="overflow-y-scroll overflow-x-hidden px-20">
+				<h2 className='mt-8 mb-12 text-5xl akashi'>OUR CLIENTS & WORKS</h2>
+				<div className="cube-container translate-x-56 translate-y-40">
 					<div id="cube">
-						<div className="front">1</div>
+						<div className="front">
+							<p>Evoload</p>
+						</div>
+						<div className="back"><p>PlasBit</p></div>
+						<div className="right"><p>Spazio<br></br>Crypto</p></div>
+						<div className="left"><p>Tired Club</p></div>
+						<div className="top"><p>Fiverr</p></div>
+						<div className="bottom"><p>Trakx</p></div>
+						{/* <div className="front">1</div>
 						<div className="back">2</div>
 						<div className="right">3</div>
 						<div className="left">4</div>
 						<div className="top">5</div>
-						<div className="bottom">6</div>
+						<div className="bottom">6</div> */}
 					</div>
 				</div>
 			</section>
