@@ -19,10 +19,9 @@ import marketingAnimation from "./assets/marketing.json"
 import businessConsultingAnimation from "./assets/business_consulting.json"
 import workInProgressAnimaation from "./assets/work_in_progress.json"
 
-import plasbitLogo from "./assets/plasbit-logo.svg"
-import evoloadLogo from "./assets/evoload-logo.svg"
-import spazioCryptoLogo from "./assets/spaziocrypto-logo.webp"
-import trackxLogo from "./assets/trackx-logo.svg"
+import xLogo from "./assets/xLogo.png"
+import discordLogo from "./assets/discordLogo.svg"
+import gmailLogo from "./assets/gmailLogo.svg"
 
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Mousewheel } from "swiper/modules"
@@ -336,7 +335,15 @@ function App() {
 		// 0
 
 	if (window.location.pathname != "" && window.location.pathname != "/")
-		return <Lottie lottieRef={ workInProgressAnimaation } className="w-screen h-screen" animationData={ workInProgressAnimaation } loop={ true } autoplay={ true } />
+		return <>
+			<Lottie lottieRef={ workInProgressAnimaation } style={{ height: "70vh" }} animationData={ workInProgressAnimaation } loop={ true } autoplay={ true } />
+			<h1 className="text-center akashi text-3xl mt-6 mb-10">Contact us:</h1>
+			<div className="flex justify-center mt-4">
+				<a href="https://twitter.com/ZikenLabs" target="_blank"><img src={ xLogo } className="w-16 h-16 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
+				<a href="https://discord.gg/kYn7jkRemT" target="_blank"><img src={ discordLogo } className="w-16 h-16 ml-4 hover:scale-110 transition-all"></img></a>
+				<a href="mailto:info@zikenlabs.com" target="_blank"><img src={ gmailLogo } className="w-16 h-16 ml-4 hover:scale-110 transition-all"></img></a>
+			</div>
+		</>
 
 	return (
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
@@ -516,7 +523,12 @@ function App() {
 					
 				</Swiper>
 				<footer style={{ background: "rgba(235, 235, 235, 0.7)" }} className="bg-cover backdrop-filter backdrop-blur-sm px-8 py-4 h-1/5">
-					<h1>test</h1>
+					{/* <h5 className="text-center">Contact us</h5> */}
+					<div className="flex justify-center mt-4">
+						<a href="https://twitter.com/ZikenLabs" target="_blank"><img src={ xLogo } className="w-8 h-8 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
+						<a href="https://discord.gg/kYn7jkRemT" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+						<a href="mailto:info@zikenlabs.com" target="_blank"><img src={ gmailLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+					</div>
 				</footer>
 			</section>
 		</div>
