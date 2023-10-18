@@ -460,7 +460,7 @@ function App() {
 				</div>
 			</section>
 			{/* <section id="clients" className="overflow-x-scroll overflow-y-hidden flex"> */}
-			<section>
+			<section className="pt-5">
 				{/* <h2 className='mt-8 mb-12 text-5xl akashi'>OUR CLIENTS & WORKS</h2>
 				<div className="cube-container translate-x-56 translate-y-40">
 					<div id="cube">
@@ -484,27 +484,51 @@ function App() {
 						</div>
 					</div>
 				</div> */}
-				<Swiper direction="horizontal" mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ 1 } className="h-screen w-screen" modules={[ Mousewheel ]}>
-					<SwiperSlide className="h-screen w-screen">
-						<h2 className='mt-8 ml-12 text-5xl akashi'>Evoload</h2>
-					</SwiperSlide>
-					<SwiperSlide className="h-screen w-screen">	
-						<h2 className='mt-8 ml-12 text-5xl akashi'>PlasBit</h2>
-					</SwiperSlide>
-					<SwiperSlide className="h-screen w-screen">	
-						<h2 className='mt-8 ml-12 text-5xl akashi'>SpazioCrypto</h2>
-					</SwiperSlide>
-					<SwiperSlide className="h-screen w-screen">	
-						<h2 className='mt-8 ml-12 text-5xl akashi'>Tired Club</h2>
-					</SwiperSlide>
-					<SwiperSlide className="h-screen w-screen">	
-						<h2 className='mt-8 ml-12 text-5xl akashi'>Fiverr</h2>
-					</SwiperSlide>
-					<SwiperSlide className="h-screen w-screen">	
-						<h2 className='mt-8 ml-12 text-5xl akashi'>Trackx</h2>
-					</SwiperSlide>
-					
-				</Swiper>
+					<h2 className='text-3xl ml-10 akashi'>OUR CLIENTS & WORKS</h2>
+					<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ 1.25 } className="px-20 pt-10 pb-20 h-full" modules={[ Mousewheel ]} 
+						onReachBeginning={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) }
+						onReachEnd={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) } 
+						onSlideChange={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = false, 500) }>
+						<SwiperSlide className="bg-black rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
+							style={{ background: "rgba(100, 150, 255, 0.3)" }} // "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
+						>
+							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Evoload: (October 2022 - Now)</h2>
+							<h3 className='text-black my-4 mx-4 akashi text-center'>Social Media Management - Blog Management - Community Management - Graphic Design</h3>
+							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
+							</div>
+						</SwiperSlide>
+						<SwiperSlide style={{ background: "rgba(252, 115, 3, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>PlasBit: (October 2022 - Now)</h2>
+							<h3 className='text-black my-4 mx-4 akashi text-center'>SEO Web3 Blog articles</h3>
+							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(PlasBitClientsImage.png)" }}>
+							</div>
+						</SwiperSlide>
+						<SwiperSlide style={{ background: "rgba(252, 115, 3, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>SpazioCrypto: (October 2022 - Now)</h2>
+							<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Blog Management - Community Management - Graphic Design - SEO Strategies</h3>
+							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(SpazioCryptoClientsImage.png)" }}>
+							</div>
+						</SwiperSlide>
+						<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Tired Club: (October 2022 - Now)</h2>
+							<h3 className='text-black my-4 mx-4 akashi text-center'>Social Media Management - Community Management - Marketing Strategies - Graphic Design</h3>
+							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(TiredClubClientsImage.jpg)" }}>
+							</div>
+						</SwiperSlide>
+						<SwiperSlide style={{ background: "rgba(2, 150, 76, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Fiverr: (October 2022 - Now)</h2>
+							<h3 className='text-black my-4 mx-4 akashi text-center'>Graphic Desgin - SEO Copywriting - Discord Building</h3>
+							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(FiverrClientsImage.png)" }}>
+							</div>
+						</SwiperSlide>
+						<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Trakx: (October 2022 - Now)</h2>
+							<h3 className='text-black my-4 mx-4 akashi text-center'>SEO Strategies - Blog Management</h3>
+							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(TrakxClientsImage.png)" }}>
+							</div>
+						</SwiperSlide>
+						
+					</Swiper>
 				{/* <div className="h-full w-full flex-shrink-0">
 					<h2 className='mt-8 ml-12 text-5xl akashi'>Evoload</h2>
 				</div>
