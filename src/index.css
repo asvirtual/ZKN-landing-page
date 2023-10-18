@@ -52,11 +52,7 @@
   background: var(--scrollbar-hover-color);
 }
 
-#services::-webkit-scrollbar {
-  display: none;
-}
-
-#clients::-webkit-scrollbar {
+#services::-webkit-scrollbar, #clients::-webkit-scrollbar {
   display: none;
 }
 

@@ -17,6 +17,7 @@ import copywritingAnimation from "./assets/copywriting.json"
 import webDesignAnimation from "./assets/web_design.json"
 import marketingAnimation from "./assets/marketing.json"
 import businessConsultingAnimation from "./assets/business_consulting.json"
+import workInProgressAnimaation from "./assets/work_in_progress.json"
 
 import plasbitLogo from "./assets/plasbit-logo.svg"
 import evoloadLogo from "./assets/evoload-logo.svg"
@@ -41,11 +42,10 @@ function App() {
 	let lastScroll = 0
 	let isScrollingDown = false
 
-	const [dragging, setDragging] = useState(false)
 	let animationBasic = true
 
 	const [animationIndex, setAnimationIndex] = useState(0)
-	const [scrollProgress, setScrollProgress] = useState(20)
+	const [scrollProgress, setScrollProgress] = useState(33)
 
 	const scrollContainer = useRef()
 
@@ -61,6 +61,9 @@ function App() {
 
 
 	useEffect(() => {
+		if (window.location.pathname != "" && window.location.pathname != "/")
+			return
+
 		const canvas = document.querySelector("#background")
 		canvas.width = window.innerWidth
 		canvas.height = window.innerHeight
@@ -182,14 +185,14 @@ function App() {
 
 			// scrollContainerScrollTop = scrollContainer.scrollTop
 
-			const scrollPercentage = scrollContainer.scrollTop / (scrollContainer.scrollHeight) * 100 + 20
+			const scrollPercentage = parseInt(scrollContainer.scrollTop) / parseInt(scrollContainer.scrollHeight) * 100 + 33
 			setScrollProgress(scrollPercentage)
 
 			// Lottie animations controls
-			if (scrollPercentage >= 40 && scrollPercentage <= 60 && lottieAnimationsRefs[0].current?.animationItem?.isPaused)
+			if (scrollPercentage >= 60 && scrollPercentage <= 70 && lottieAnimationsRefs[0].current?.animationItem?.isPaused)
 				lottieAnimationsRefs.forEach(anim => anim.current.play())
 			
-			if ((scrollPercentage < 40 || scrollPercentage > 60) && !lottieAnimationsRefs[0].current?.animationItem?.isPaused)
+			if ((scrollPercentage < 60 || scrollPercentage > 70) && !lottieAnimationsRefs[0].current?.animationItem?.isPaused)
 				lottieAnimationsRefs.forEach(anim => anim.current.stop())
 
 			// const scrollRange = (scrollPercentage - 50) / 25
@@ -210,33 +213,34 @@ function App() {
 
 
 
-			if (scrollPercentage < 30 || (scrollPercentage > 45 && scrollPercentage < 65) || scrollPercentage > 85) { 
+			if (scrollPercentage < 40 || scrollPercentage > 85) { 
 				gsap.to(scene.background, { duration: 0.2, r: 1, g: 1, b: 1 })
 
 				if (sphere.material.color.r === 1 && sphere.material.color.g === 1 && sphere.material.color.b === 1) {
 					sphere.material = sphereMaterial
 					particlesMesh.material = material
 				}
-			} else if ((scrollPercentage > 30 && scrollPercentage < 45) || (scrollPercentage > 65 && scrollPercentage < 85)) {
+			} else if (scrollPercentage > 40 && scrollPercentage < 75) {
 				gsap.to(scene.background, { duration: 0.2, r: 0, g: 0, b: 0 })
 
 				if (sphere.material.color.r === 0 && sphere.material.color.g === 0 && sphere.material.color.b === 0) {
  					sphere.material = new THREE.PointsMaterial({ size: 0.005, color: 0xffffff, sizeAttenuation: true })
 					particlesMesh.material = new THREE.PointsMaterial({ size: 0.005, color: 0xffffff, sizeAttenuation: true })
 				}
-			} else if (scrollPercentage > 45) {
-				gsap.to(scene.background, { duration: 0.2, r: 1	, g: 1, b: 1 })
-
-				if (sphere.material.color.r === 1 && sphere.material.color.g === 1 && sphere.material.color.b === 1) {
-					sphere.material = sphereMaterial
-					particlesMesh.material = material
-				}
 			}
+			//  else if (scrollPercentage > 45) {
+			// 	gsap.to(scene.background, { duration: 0.2, r: 1	, g: 1, b: 1 })
+
+			// 	if (sphere.material.color.r === 1 && sphere.material.color.g === 1 && sphere.material.color.b === 1) {
+			// 		sphere.material = sphereMaterial
+			// 		particlesMesh.material = material
+			// 	}
+			// }
 
 			lastScroll = scrollContainer.scrollTop
 
 			if (animationBasic) {
-				sphere.position.z = scrollPercentage <= 20 ? -1 : scrollPercentage <= 60 ? scrollPercentage / 20 - 2 : scrollPercentage / 60
+				sphere.position.z = scrollPercentage <= 33 ? -1 : scrollPercentage <= 60 ? scrollPercentage / 20 - 2 : scrollPercentage / 60
 				sphere.rotation.z = scrollPercentage / 5
 				return
 			}
@@ -309,6 +313,9 @@ function App() {
 	}, [])
 
 	useEffect(() => {
+		if (window.location.pathname != "" && window.location.pathname != "/")
+			return
+
 		const logoAnimationId = setInterval(() => {
 			if (scrollProgress === 20)
 				setAnimationIndex((oldIndex) => oldIndex == 2 ? 0 : oldIndex + 1)
@@ -317,16 +324,19 @@ function App() {
 		return () => {
 			clearInterval(logoAnimationId)
 		}
+
 	}, [scrollProgress])
 
 
 	const logoScale = 
-		scrollProgress <= 25 ? 1 :
+		scrollProgress <= 35 ? 1 :
 		0
 		// scrollProgress <= 20 ? 1 :
 		// scrollProgress <= 40 ? -(scrollProgress / 20 - 2) : 
 		// 0
 
+	if (window.location.pathname != "" && window.location.pathname != "/")
+		return <Lottie lottieRef={ workInProgressAnimaation } className="w-screen h-screen" animationData={ workInProgressAnimaation } loop={ true } autoplay={ true } />
 
 	return (
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
@@ -403,16 +413,16 @@ function App() {
 				<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
 					<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
 					<div></div> { /* Fill space */ }
-					<a className="text-center akashi my-auto text-black font-extrabold mr-5">Services</a>
-					<a className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
-					<a className="text-center akashi my-auto text-black font-bold mx-5">Products</a>
-					<a className="text-center akashi my-auto text-black font-bold mx-5">About</a>
-					<a className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
-					<a className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
+					<a href="/services" className="text-center akashi my-auto text-black font-extrabold mr-5">Services</a>
+					<a href="/clients" className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
+					<a href="/products" className="text-center akashi my-auto text-black font-bold mx-5">Products</a>
+					<a href="/about" className="text-center akashi my-auto text-black font-bold mx-5">About</a>
+					<a href="/blog" className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
+					<a href="/contact" className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
 					{/* <button onClick={ () => animationBasic = !animationBasic }>Animation</button> */}
 				</nav>
 			</section>
-			<section className="text-white overflow-y-scroll overflow-x-hidden px-20">
+			<section id="services" className="text-white overflow-y-scroll overflow-x-hidden px-20">
 				<h2 className='mt-8 mb-12 text-5xl akashi'>OUR SERVICES</h2>
 				<div className="grid grid-cols-2 gap-4 mb-8 grid-rows-none">
 					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
@@ -459,102 +469,55 @@ function App() {
 					</div>
 				</div>
 			</section>
-			{/* <section id="clients" className="overflow-x-scroll overflow-y-hidden flex"> */}
-			<section className="pt-5">
-				{/* <h2 className='mt-8 mb-12 text-5xl akashi'>OUR CLIENTS & WORKS</h2>
-				<div className="cube-container translate-x-56 translate-y-40">
-					<div id="cube">
-						<div className="front">
-							<img src={ evoloadLogo } className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
+			<section id="clients" className="pt-5 overflow-y-scroll overflow-x-hidden">
+				<h2 className='text-3xl ml-10 akashi'>OUR CLIENTS & WORKS</h2>
+				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ 1.25 } className="px-40 pt-5 pb-20 h-4/5" modules={[ Mousewheel ]} 
+					onReachBeginning={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) }
+					onReachEnd={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) } 
+					onSlideChange={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = false, 500) }>
+					<SwiperSlide className="bg-black rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
+						style={{ background: "rgba(100, 150, 255, 0.3)" }} // "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
+					>
+						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Evoload: (October 2022 - Now)</h2>
+						<h3 className='text-black my-4 mx-4 akashi text-center'>Social Media Management - Blog Management - Community Management - Graphic Design</h3>
+						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
 						</div>
-						<div className="back">
-							<img src={ plasbitLogo} className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
+					</SwiperSlide>
+					<SwiperSlide style={{ background: "rgba(235, 235, 235, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>PlasBit: (October 2022 - Now)</h2>
+						<h3 className='text-black my-4 mx-4 akashi text-center'>SEO Web3 Blog articles</h3>
+						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(PlasBitClientsImage.png)" }}>
 						</div>
-						<div className="right relative">
-							<img src={ spazioCryptoLogo } className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
+					</SwiperSlide>
+					<SwiperSlide style={{ background: "rgba(252, 115, 3, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>SpazioCrypto: (October 2022 - Now)</h2>
+						<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Blog Management - Community Management - Graphic Design - SEO Strategies</h3>
+						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(SpazioCryptoClientsImage.png)" }}>
 						</div>
-						<div className="left relative">
-							<img></img>
+					</SwiperSlide>
+					<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Tired Club: (October 2022 - Now)</h2>
+						<h3 className='text-black my-4 mx-4 akashi text-center'>Social Media Management - Community Management - Marketing Strategies - Graphic Design</h3>
+						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(TiredClubClientsImage.jpg)" }}>
 						</div>
-						<div className="top relative">
-							<img></img>
+					</SwiperSlide>
+					<SwiperSlide style={{ background: "rgba(2, 150, 76, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Fiverr: (October 2022 - Now)</h2>
+						<h3 className='text-black my-4 mx-4 akashi text-center'>Graphic Desgin - SEO Copywriting - Discord Building</h3>
+						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(FiverrClientsImage.png)" }}>
 						</div>
-						<div className="bottom relative">
-							<img src={ trackxLogo } className="mx-auto block w-80" style={{ marginTop: "50%", transform: "translateY(-50%)" }} alt="Evoload logo"></img>
+					</SwiperSlide>
+					<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Trakx: (October 2022 - Now)</h2>
+						<h3 className='text-black my-4 mx-4 akashi text-center'>SEO Strategies - Blog Management</h3>
+						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(TrakxClientsImage.png)" }}>
 						</div>
-					</div>
-				</div> */}
-					<h2 className='text-3xl ml-10 akashi'>OUR CLIENTS & WORKS</h2>
-					<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ 1.25 } className="px-20 pt-10 pb-20 h-full" modules={[ Mousewheel ]} 
-						onReachBeginning={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) }
-						onReachEnd={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) } 
-						onSlideChange={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = false, 500) }>
-						<SwiperSlide className="bg-black rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
-							style={{ background: "rgba(100, 150, 255, 0.3)" }} // "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
-						>
-							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Evoload: (October 2022 - Now)</h2>
-							<h3 className='text-black my-4 mx-4 akashi text-center'>Social Media Management - Blog Management - Community Management - Graphic Design</h3>
-							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide style={{ background: "rgba(252, 115, 3, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>PlasBit: (October 2022 - Now)</h2>
-							<h3 className='text-black my-4 mx-4 akashi text-center'>SEO Web3 Blog articles</h3>
-							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(PlasBitClientsImage.png)" }}>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide style={{ background: "rgba(252, 115, 3, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>SpazioCrypto: (October 2022 - Now)</h2>
-							<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Blog Management - Community Management - Graphic Design - SEO Strategies</h3>
-							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(SpazioCryptoClientsImage.png)" }}>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Tired Club: (October 2022 - Now)</h2>
-							<h3 className='text-black my-4 mx-4 akashi text-center'>Social Media Management - Community Management - Marketing Strategies - Graphic Design</h3>
-							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(TiredClubClientsImage.jpg)" }}>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide style={{ background: "rgba(2, 150, 76, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Fiverr: (October 2022 - Now)</h2>
-							<h3 className='text-black my-4 mx-4 akashi text-center'>Graphic Desgin - SEO Copywriting - Discord Building</h3>
-							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(FiverrClientsImage.png)" }}>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-							<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Trakx: (October 2022 - Now)</h2>
-							<h3 className='text-black my-4 mx-4 akashi text-center'>SEO Strategies - Blog Management</h3>
-							<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(TrakxClientsImage.png)" }}>
-							</div>
-						</SwiperSlide>
-						
-					</Swiper>
-				{/* <div className="h-full w-full flex-shrink-0">
-					<h2 className='mt-8 ml-12 text-5xl akashi'>Evoload</h2>
-				</div>
-				<div className="h-full w-full flex-shrink-0">	
-					<h2 className='mt-8 ml-12 text-5xl akashi'>PlasBit</h2>
-				</div>
-				<div className="h-full w-full flex-shrink-0">	
-					<h2 className='mt-8 ml-12 text-5xl akashi'>SpazioCrypto</h2>
-				</div>
-				<div className="h-full w-full flex-shrink-0">	
-					<h2 className='mt-8 ml-12 text-5xl akashi'>Tired Club</h2>
-				</div>
-				<div className="h-full w-full flex-shrink-0">	
-					<h2 className='mt-8 ml-12 text-5xl akashi'>Fiverr</h2>
-				</div>
-				<div className="h-full w-full flex-shrink-0">	
-					<h2 className='mt-8 ml-12 text-5xl akashi'>Trackx</h2>
-				</div> */}
-
-
-			</section>
-			<section>
-			
-			</section>
-			<section>
-			
+					</SwiperSlide>
+					
+				</Swiper>
+				<footer style={{ background: "rgba(235, 235, 235, 0.7)" }} className="bg-cover backdrop-filter backdrop-blur-sm px-8 py-4 h-1/5">
+					<h1>test</h1>
+				</footer>
 			</section>
 		</div>
 	)
