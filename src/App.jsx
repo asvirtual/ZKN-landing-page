@@ -316,7 +316,7 @@ function App() {
 			return
 
 		const logoAnimationId = setInterval(() => {
-			if (scrollProgress === 20)
+			if (scrollProgress <= 35)
 				setAnimationIndex((oldIndex) => oldIndex == 2 ? 0 : oldIndex + 1)
 		}, animationPeriodMillis);
 
