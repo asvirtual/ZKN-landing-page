@@ -22,6 +22,10 @@ import workInProgressAnimaation from "./assets/work_in_progress.json"
 import xLogo from "./assets/xLogo.png"
 import discordLogo from "./assets/discordLogo.svg"
 import gmailLogo from "./assets/gmailLogo.svg"
+import telegramLogo from "./assets/telegram_logo.svg"
+import linkedinLogo from "./assets/linkedin_logo.svg"
+import worldIcon from "./assets/world_icon.svg"
+import instagramLogo from "./assets/instagram_icon.svg"
 
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Mousewheel } from "swiper/modules"
@@ -478,7 +482,7 @@ function App() {
 			</section>
 			<section id="clients" className="pt-5 overflow-y-scroll overflow-x-hidden">
 				<h2 className='text-3xl ml-10 akashi'>OUR CLIENTS & WORKS</h2>
-				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ 1.25 } className="px-40 pt-5 pb-20 h-4/5" modules={[ Mousewheel ]} 
+				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ 2.25 } className="px-40 pt-5 pb-20 h-4/5" modules={[ Mousewheel ]} 
 					onReachBeginning={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) }
 					onReachEnd={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) } 
 					onSlideChange={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = false, 500) }>
@@ -487,37 +491,70 @@ function App() {
 					>
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Evoload: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>Social Media Management - Blog Management - Community Management - Graphic Design</h3>
-						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
+						<div className="flex-1 bg-cover rounded-b-lg relative" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
+							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
+								<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
+								<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+								<a href="https://twitter.com/evoload" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
+								<a href="https://discord.com/invite/Dka6HAZzYH" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+								<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+							</div>
 						</div>
 					</SwiperSlide>
 					<SwiperSlide style={{ background: "rgba(235, 235, 235, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>PlasBit: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>SEO Web3 Blog articles</h3>
 						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(PlasBitClientsImage.png)" }}>
+							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
+								<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
+								<a href="https://telegram.me/Plasbit_Community" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+								<a href="https://twitter.com/plasbit" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
+								<a href="https://www.linkedin.com/company/plasbitsp/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+							</div>
 						</div>
 					</SwiperSlide>
 					<SwiperSlide style={{ background: "rgba(252, 115, 3, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>SpazioCrypto: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Blog Management - Community Management - Graphic Design - SEO Strategies</h3>
 						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(SpazioCryptoClientsImage.png)" }}>
+							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
+								<a href="https://www.spaziocrypto.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
+								<a href="https://www.instagram.com/spaziocrypto/" target="_blank"><img src={ instagramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+								<a href="https://twitter.com/Spaziocrypto" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
+								<a href="https://discord.com/invite/" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+								<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+							</div>
 						</div>
 					</SwiperSlide>
 					<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Tired Club: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>Social Media Management - Community Management - Marketing Strategies - Graphic Design</h3>
 						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(TiredClubClientsImage.jpg)" }}>
+							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
+								<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
+								<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
+								<a href="https://discord.com/invite/pCGYfbmHH3" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+							</div>
 						</div>
 					</SwiperSlide>
 					<SwiperSlide style={{ background: "rgba(2, 150, 76, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Fiverr: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>Graphic Desgin - SEO Copywriting - Discord Building</h3>
 						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(FiverrClientsImage.png)" }}>
+							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
+								<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
+							</div>
 						</div>
 					</SwiperSlide>
 					<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Trakx: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>SEO Strategies - Blog Management</h3>
 						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(TrakxClientsImage.png)" }}>
+							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
+								<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
+								<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
+								<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+							</div>
 						</div>
 					</SwiperSlide>
 					
