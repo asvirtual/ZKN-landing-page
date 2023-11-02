@@ -437,7 +437,7 @@ function App() {
 				<h2 className='mt-8 mb-12 text-5xl akashi'>OUR SERVICES</h2>
 				<div className="grid grid-cols-2 gap-4 mb-8 grid-rows-none">
 					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[0] } className="w-36 h-36 my-auto" animationData={ projectManagementAnimation } autoplay={ false } />
+						<Lottie lottieRef={ lottieAnimationsRefs[0] } className="w-32 h-32 my-auto" animationData={ projectManagementAnimation } autoplay={ false } />
 						<div className="h-min flex-1 ml-8 mr-2 my-auto">
 							<h4 className='my-auto text-2xl text-center'>Project Management</h4>
 							<p className='my-auto mt-4 text-lg'>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
@@ -491,7 +491,7 @@ function App() {
 					>
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Evoload: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>Social Media Management - Blog Management - Community Management - Graphic Design</h3>
-						<div className="flex-1 bg-cover rounded-b-lg relative" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
+						<div className="flex-1 bg-center bg-cover rounded-b-lg relative" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
 							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
 								<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
 								<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
@@ -504,7 +504,7 @@ function App() {
 					<SwiperSlide style={{ background: "rgba(235, 235, 235, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>PlasBit: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>SEO Web3 Blog articles</h3>
-						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(PlasBitClientsImage.png)" }}>
+						<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(PlasBitClientsImage.png)" }}>
 							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
 								<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
 								<a href="https://telegram.me/Plasbit_Community" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
@@ -516,12 +516,12 @@ function App() {
 					<SwiperSlide style={{ background: "rgba(252, 115, 3, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>SpazioCrypto: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Blog Management - Community Management - Graphic Design - SEO Strategies</h3>
-						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(SpazioCryptoClientsImage.png)" }}>
+						<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(SpazioCryptoClientsImage.png)" }}>
 							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
 								<a href="https://www.spaziocrypto.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
 								<a href="https://www.instagram.com/spaziocrypto/" target="_blank"><img src={ instagramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
 								<a href="https://twitter.com/Spaziocrypto" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-								<a href="https://discord.com/invite/" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+								<a href="https://discord.gg/BgYQQzst9v" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
 								<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
 							</div>
 						</div>
@@ -529,7 +529,7 @@ function App() {
 					<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Tired Club: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>Social Media Management - Community Management - Marketing Strategies - Graphic Design</h3>
-						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(TiredClubClientsImage.jpg)" }}>
+						<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(TiredClubClientsImage.jpg)" }}>
 							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
 								<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
 								<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
@@ -540,7 +540,7 @@ function App() {
 					<SwiperSlide style={{ background: "rgba(2, 150, 76, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Fiverr: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>Graphic Desgin - SEO Copywriting - Discord Building</h3>
-						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(FiverrClientsImage.png)" }}>
+						<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(FiverrClientsImage.png)" }}>
 							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
 								<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
 							</div>
@@ -549,7 +549,7 @@ function App() {
 					<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Trakx: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>SEO Strategies - Blog Management</h3>
-						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(TrakxClientsImage.png)" }}>
+						<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(TrakxClientsImage.png)" }}>
 							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
 								<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
 								<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
