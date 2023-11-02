@@ -491,7 +491,7 @@ function App() {
 					>
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>Evoload: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>Social Media Management - Blog Management - Community Management - Graphic Design</h3>
-						<div className="flex-1 bg-center bg-cover rounded-b-lg relative" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
+						<div className="flex-1 bg-cover rounded-b-lg relative" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
 							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
 								<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
 								<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
@@ -504,7 +504,7 @@ function App() {
 					<SwiperSlide style={{ background: "rgba(235, 235, 235, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
 						<h2 className='text-black mt-4 mx-4 text-2xl akashi text-center'>PlasBit: (October 2022 - Now)</h2>
 						<h3 className='text-black my-4 mx-4 akashi text-center'>SEO Web3 Blog articles</h3>
-						<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(PlasBitClientsImage.png)" }}>
+						<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(PlasBitClientsImage.png)" }}>
 							<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
 								<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
 								<a href="https://telegram.me/Plasbit_Community" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
