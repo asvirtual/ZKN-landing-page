@@ -309,7 +309,7 @@ function App() {
 			renderer.dispose()
 			cancelAnimationFrame(animationFrameId)
 		}
-	}, [])
+	}, [isTouchDevice])
 
 	useEffect(() => {
 		if (window.location.pathname != "" && window.location.pathname != "/")
