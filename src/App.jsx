@@ -243,7 +243,8 @@ function App() {
 
 			lastScroll = scrollContainer.scrollTop
 
-			sphere.position.z = scrollPercentage <= 33 ? -1 : scrollPercentage <= 60 ? scrollPercentage / 20 - 2 : scrollPercentage / 60
+			if (isTouchDevice) sphere.position.z = scrollPercentage <= 35 ? -1 : scrollPercentage <= 60 ? scrollPercentage / 40 - 2 : scrollPercentage / 80
+			else sphere.position.z = scrollPercentage <= 35 ? -1 : scrollPercentage <= 60 ? scrollPercentage / 60 - 2 : scrollPercentage / 60 - 1
 			sphere.rotation.z = scrollPercentage / 5
 			return
 
@@ -343,6 +344,8 @@ function App() {
 				<a href="mailto:info@zikenlabs.com" target="_blank"><img src={ gmailLogo } className="w-16 h-16 ml-4 hover:scale-110 transition-all"></img></a>
 			</div>
 		</>
+
+	console.log(isTouchDevice)
 
 	return (
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
