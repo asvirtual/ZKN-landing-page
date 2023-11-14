@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from 'react'
 import PixelText from './components/PixelText/PixelText'
 
+import useDeviceDetect from './hooks/useDeviceDetect'
+
 import logo from "./assets/logo.png"
 import * as THREE from "three"
 import { gsap } from 'gsap'
@@ -45,10 +47,9 @@ function App() {
 	let lastScroll = 0
 	let isScrollingDown = false
 
-	let animationBasic = true
-
 	const [animationIndex, setAnimationIndex] = useState(0)
 	const [scrollProgress, setScrollProgress] = useState(33)
+	const isTouchDevice = useDeviceDetect()
 
 	const scrollContainer = useRef()
 
@@ -242,11 +243,9 @@ function App() {
 
 			lastScroll = scrollContainer.scrollTop
 
-			if (animationBasic) {
-				sphere.position.z = scrollPercentage <= 33 ? -1 : scrollPercentage <= 60 ? scrollPercentage / 20 - 2 : scrollPercentage / 60
-				sphere.rotation.z = scrollPercentage / 5
-				return
-			}
+			sphere.position.z = scrollPercentage <= 33 ? -1 : scrollPercentage <= 60 ? scrollPercentage / 20 - 2 : scrollPercentage / 60
+			sphere.rotation.z = scrollPercentage / 5
+			return
 
 			if (scrollPercentage < 39) {
 				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 0.5, x: 1.5 })
@@ -273,12 +272,12 @@ function App() {
 		const tick = () => {
 			let elapsedTime = clock.getElapsedTime()
 
-			if (animationBasic) {
-				sphere.rotation.x = 0
-				sphere.rotation.y = 0
-			} else {
+			if (isTouchDevice) {
 				sphere.rotation.x = .5 * elapsedTime
 				sphere.rotation.y = .5 * elapsedTime
+			} else {
+				sphere.rotation.x = -(mouseY - window.innerHeight / 2) * 0.0005
+				sphere.rotation.y = (mouseX - window.innerWidth / 2) * 0.0005
 			}
 
 			// sphere.rotation.z = .5 * elapsedTime
@@ -286,22 +285,18 @@ function App() {
 			particlesMesh.rotation.y = -.1 * elapsedTime
 			particlesMesh.rotation.x = .1 * elapsedTime
 
-			if (animationBasic) {
-				sphere.rotation.x = -(mouseY - window.innerHeight / 2) * 0.0005
-				sphere.rotation.y = (mouseX - window.innerWidth / 2) * 0.0005
+			// if (mouseX > 0) {
+			// 	// 	particlesMesh.rotation.x = -mouseY * 0.00008 * elapsedTime
+			// 	// 	particlesMesh.rotation.y = mouseX * 0.00008 * elapsedTime
 
-				if (mouseX > 0) {
-					// 	particlesMesh.rotation.x = -mouseY * 0.00008 * elapsedTime
-					// 	particlesMesh.rotation.y = mouseX * 0.00008 * elapsedTime
-
-					// 	sphere.rotation.x = -mouseY * 0.00008 * elapsedTime
-					// sphere.rotation.y = mouseX * 0.00008 * elapsedTime
-				} else {
-					// 	sphere.rotation.x = .05 * elapsedTime
-					// 	sphere.rotation.y = .5 * elapsedTime
-					// 	particlesMesh.rotation.y = -.1 * elapsedTime
-				}
-			}
+			// 	// 	sphere.rotation.x = -mouseY * 0.00008 * elapsedTime
+			// 	// sphere.rotation.y = mouseX * 0.00008 * elapsedTime
+			// } else {
+			// 	// 	sphere.rotation.x = .05 * elapsedTime
+			// 	// 	sphere.rotation.y = .5 * elapsedTime
+			// 	// 	particlesMesh.rotation.y = -.1 * elapsedTime
+			// }
+				
 
 			renderer.render(scene, camera)
 			animationFrameId = window.requestAnimationFrame(tick)
@@ -390,10 +385,10 @@ function App() {
 			<motion.div style={{ scale: logoScale <= 0 ? 0 : logoScale, transition: "all .5s ease" }} className="h-screen w-screen fixed top-0 -z-10">
 				<PixelText 
 					id="initial-logo" 
-					text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? "Your vision. Our expertise." : "Let's build. Together." }
+					text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? `Your vision. Our expertise.` : `Let's build. Together.` }
 					width={ window.innerWidth }
 					height={ window.innerHeight }
-					fontSize={ animationIndex == 0 ? 220 : 120 }
+					fontSize={ animationIndex == 0 ? window.innerWidth / 5 <= 220 ? window.innerWidth / 5 : 220 : window.innerWidth / 10 }
 					fontFamily="Akashi"
 					textAlign="center"
 					textBaseLine="middle"
@@ -416,26 +411,30 @@ function App() {
 					// fixedExitAcceleration={ 0.2 }
 					fixedExitAcceleration={ 0.5 }
 					exitDelay={ animationPeriodMillis / 2 }
-					maxTextWidth={ animationIndex == 0 ? 100 : animationIndex == 1 ? 1000 : 1000 }
+					maxTextWidth={ animationIndex == 0 ? 100 : isTouchDevice ? 350 : 1000 }
 					paused={ scrollProgress > 35 }
 				/>
 			</motion.div>
 			<section className="relative">
-				<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
-					<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
-					<div></div> { /* Fill space */ }
-					<a href="/services" className="text-center akashi my-auto text-black font-extrabold mr-5">Services</a>
-					<a href="/clients" className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
-					<a href="/products" className="text-center akashi my-auto text-black font-bold mx-5">Products</a>
-					<a href="/about" className="text-center akashi my-auto text-black font-bold mx-5">About</a>
-					<a href="/blog" className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
-					<a href="/contact" className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
-					{/* <button onClick={ () => animationBasic = !animationBasic }>Animation</button> */}
-				</nav>
+				{ isTouchDevice ? 
+					<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
+						<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
+					</nav> :
+					<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
+						<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
+						<div></div> { /* Fill space */ }
+						<a href="/services" className="text-center akashi my-auto text-black font-extrabold mr-5">Services</a>
+						<a href="/clients" className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
+						<a href="/products" className="text-center akashi my-auto text-black font-bold mx-5">Products</a>
+						<a href="/about" className="text-center akashi my-auto text-black font-bold mx-5">About</a>
+						<a href="/blog" className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
+						<a href="/contact" className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
+					</nav> 
+				}
 			</section>
 			<section id="services" className="text-white overflow-y-scroll overflow-x-hidden px-20">
 				<h2 className='mt-8 mb-12 text-5xl akashi'>OUR SERVICES</h2>
-				<div className="grid grid-cols-2 gap-4 mb-8 grid-rows-none">
+				<div className={ `grid ${ isTouchDevice ? "" : "grid-cols-2"} gap-4 mb-8 grid-rows-none` }>
 					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
 						<Lottie lottieRef={ lottieAnimationsRefs[0] } className="w-28 h-28 my-auto" animationData={ projectManagementAnimation } autoplay={ false } />
 						<div className="h-min flex-1 ml-8 mr-2 my-auto">
