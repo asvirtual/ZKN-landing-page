@@ -385,7 +385,7 @@ function App() {
 				}}>
 			</motion.div> */}
 
-			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black" }}></div>
+			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: (Math.trunc(scrollProgress) > 33 && Math.trunc(scrollProgress) <= 66) ? "white" : "black" }}></div>
 			<canvas id="background" className="fixed top-0 -z-20" ></canvas>
 			<motion.div style={{ scale: logoScale <= 0 ? 0 : logoScale, transition: "all .5s ease" }} className="h-screen w-screen fixed top-0 -z-10">
 				<PixelText 
@@ -482,7 +482,7 @@ function App() {
 			</section>
 			<section id="clients" className="pt-5 overflow-y-scroll overflow-x-hidden">
 				<h2 className='text-3xl ml-10 akashi'>OUR CLIENTS & WORKS</h2>
-				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ 2.25 } className="px-40 pt-5 pb-20 h-4/5" modules={[ Mousewheel ]} 
+				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ 1.25 } className="px-40 pt-5 pb-20 h-4/5" modules={[ Mousewheel ]} 
 					onReachBeginning={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) }
 					onReachEnd={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) } 
 					onSlideChange={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = false, 500) }>
