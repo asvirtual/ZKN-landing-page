@@ -3,7 +3,7 @@ import PixelText from './components/PixelText/PixelText'
 
 import useDeviceDetect from './hooks/useDeviceDetect'
 
-import logo from "./assets/logo.png"
+import logo from "./assets/Ziken Labs.png"
 import * as THREE from "three"
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger" 
@@ -297,7 +297,6 @@ function App() {
 			// 	// 	sphere.rotation.y = .5 * elapsedTime
 			// 	// 	particlesMesh.rotation.y = -.1 * elapsedTime
 			// }
-				
 
 			renderer.render(scene, camera)
 			animationFrameId = window.requestAnimationFrame(tick)
@@ -344,8 +343,6 @@ function App() {
 				<a href="mailto:info@zikenlabs.com" target="_blank"><img src={ gmailLogo } className="w-16 h-16 ml-4 hover:scale-110 transition-all"></img></a>
 			</div>
 		</>
-
-	console.log(isTouchDevice)
 
 	return (
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
