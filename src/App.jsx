@@ -522,66 +522,70 @@ function App() {
 					onSlideChange={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = false, 500) }>
 					{ isMobile ?
 						<>
-							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
-								// "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
-							>	
-								<div style={{ backgroundImage: "url('EvoloadClientsImage.png')" }} className="bg-cover rounded-lg relative mb-2 h-4/5 flex flex-col">
-									<h2 className='text-white mt-3 mx-4 text-xl akashi text-center flex-1'>Evoload</h2>
+							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" >
+								<div className="bg-cover rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(100, 150, 255, 0.3)" }}>
+									<h2 className="text-black my-1 text-base akashi text-center">Evoload</h2>
+									<div style={{ backgroundImage: "url('EvoloadClientsImage.png')" }}  className='z-10 bg-cover mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/evoload" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-2 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/Dka6HAZzYH" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/evoload" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://discord.com/invite/Dka6HAZzYH" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
-								<div style={{ backgroundImage: "url('PlasBitClientsImage.png')" }} className="bg-cover rounded-lg relative mb-2 h-4/5 flex flex-col">
-									<div className='text-black mt-3 mx-4 text-xl akashi text-center flex-1'></div>
+								<div className="bg-cover rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(215, 215, 205, 0.5)" }}>
+									<h2 className="text-black my-1 text-base akashi text-center">PlasBit</h2>
+									<div style={{ backgroundImage: "url('PlasBitClientsImage.png')" }}  className='z-10 bg-cover mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://telegram.me/Plasbit_Community" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/plasbit" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-2 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/plasbitsp/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
-								// "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
-							>	
-								<div style={{ backgroundImage: "url('SpazioCryptoClientsImage.png')" }} className="bg-cover bg-center rounded-lg relative mb-2 h-4/5 flex flex-col">
-									<div className='text-black mt-3 mx-4 text-xl akashi text-center flex-1'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://www.spaziocrypto.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.instagram.com/spaziocrypto/" target="_blank"><img src={ instagramLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Spaziocrypto" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-2 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.gg/BgYQQzst9v" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-								<div style={{ backgroundImage: "url('TiredClubClientsImage.jpg')" }} className="bg-cover bg-center rounded-lg relative mb-2 h-4/5 flex flex-col">
-									<div className='text-black mt-3 mx-4 text-xl akashi text-center flex-1'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-2 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/pCGYfbmHH3" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://telegram.me/Plasbit_Community" target="_blank"><img src={ telegramLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/plasbit" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.linkedin.com/company/plasbitsp/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
 							</SwiperSlide>
 							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
 								// "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
 							>	
-								<div style={{ backgroundImage: "url('FiverrClientsImage.png')" }} className="bg-cover bg-center rounded-lg relative mb-2 h-4/5 flex flex-col">
-									<div className='text-black mt-3 mx-4 text-xl akashi text-center flex-1'></div>
+								<div className="rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(252, 115, 3, 0.5)" }}>
+									<h2 className="text-black my-1 text-base akashi text-center">SpazioCrypto</h2>
+									<div style={{ backgroundImage: "url('SpazioCryptoClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.spaziocrypto.com/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.instagram.com/spaziocrypto/" target="_blank"><img src={ instagramLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/Spaziocrypto" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://discord.gg/BgYQQzst9v" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+									</div>
 								</div>
-								</div>
-								<div style={{ backgroundImage: "url('TrakxClientsImage.png')" }} className="bg-cover bg-center rounded-lg relative mb-2 h-4/5 flex flex-col">
-									<div className='text-black mt-3 mx-4 text-xl akashi text-center flex-1'></div>
+								<div className="rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
+									<h2 className="text-black my-1 text-base akashi text-center">Tired Club</h2>
+									<div style={{ backgroundImage: "url('TiredClubClientsImage.jpg')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-2 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://discord.com/invite/pCGYfbmHH3" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+									</div>
+								</div>
+							</SwiperSlide>
+							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
+								// "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
+							>	
+								<div className="rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(2, 150, 76, 0.5)" }}>
+									<h2 className="text-black my-1 text-base akashi text-center">Fiverr</h2>
+									<div style={{ backgroundImage: "url('FiverrClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
+									<div className="flex justify-center mx-auto mb-3">
+										<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>	
+									</div>
+								</div>
+								<div className="rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
+									<h2 className="text-black my-1 text-base akashi text-center">TrakX</h2>
+									<div style={{ backgroundImage: "url('TrakxClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
+									<div className="flex justify-center mx-auto mb-3">
+										<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
 							</SwiperSlide>
@@ -594,11 +598,11 @@ function App() {
 								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Blog Management - Community Management - Graphic Design</h3>
 								<div className="flex-1 bg-cover rounded-b-lg relative" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
 									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/evoload" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/Dka6HAZzYH" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+										<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-4 h-4 ml-4 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/evoload" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://discord.com/invite/Dka6HAZzYH" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-4 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-4 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
 							</SwiperSlide>
@@ -607,10 +611,10 @@ function App() {
 								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>SEO Web3 Blog articles</h3>
 								<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(PlasBitClientsImage.png)" }}>
 									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://telegram.me/Plasbit_Community" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/plasbit" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/plasbitsp/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+										<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://telegram.me/Plasbit_Community" target="_blank"><img src={ telegramLogo } className="w-4 h-4 ml-4 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/plasbit" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.linkedin.com/company/plasbitsp/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-4 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
 							</SwiperSlide>
@@ -619,11 +623,11 @@ function App() {
 								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Blog Management - Community Management - Graphic Design - SEO Strategies</h3>
 								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(SpazioCryptoClientsImage.png)" }}>
 									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://www.spaziocrypto.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.instagram.com/spaziocrypto/" target="_blank"><img src={ instagramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Spaziocrypto" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.gg/BgYQQzst9v" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.spaziocrypto.com/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.instagram.com/spaziocrypto/" target="_blank"><img src={ instagramLogo } className="w-4 h-4 ml-4 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/Spaziocrypto" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://discord.gg/BgYQQzst9v" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-4 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-4 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
 							</SwiperSlide>
@@ -632,9 +636,9 @@ function App() {
 								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Community Management - Marketing Strategies - Graphic Design</h3>
 								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(TiredClubClientsImage.jpg)" }}>
 									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/pCGYfbmHH3" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+										<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://discord.com/invite/pCGYfbmHH3" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-4 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
 							</SwiperSlide>
@@ -643,7 +647,7 @@ function App() {
 								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Graphic Desgin - SEO Copywriting - Discord Building</h3>
 								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(FiverrClientsImage.png)" }}>
 									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
 							</SwiperSlide>
@@ -652,9 +656,9 @@ function App() {
 								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>SEO Strategies - Blog Management</h3>
 								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(TrakxClientsImage.png)" }}>
 									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+										<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-4 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
 							</SwiperSlide>
