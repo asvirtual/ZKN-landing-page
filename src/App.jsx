@@ -488,9 +488,9 @@ function App() {
 					</div>
 					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
-							<h4 className={ `my-auto text-center text-2xl` }>Project Management</h4>
+							<h4 className={ `my-auto text-center text-2xl` }>Web Design</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[4] } className={ `w-52 h-52 mx-auto my-4` } animationData={ webDesignAnimation } loop={ true } autoplay={ false } />
-							<p className={ `my-auto mt-4 text-base` }>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
+							<p className={ `my-auto mt-4 text-base` }>We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.</p>
 						</> : <>
 							<Lottie lottieRef={ lottieAnimationsRefs[4] } className="w-28 h-28 my-auto" animationData={ webDesignAnimation } loop={ true } autoplay={ false } />
 							<div className="h-min flex-1 ml-8 mr-2 my-auto">
@@ -515,8 +515,8 @@ function App() {
 				</div>
 			</section>
 			<section id="clients" className="pt-5 overflow-y-scroll overflow-x-hidden">
-				<h2 className={ `mt-2 mb-4 ${ isMobile ? "text-2xl text-center" : "text-4xl ml-20" } akashi` }>OUR CLIENTS & WORKS</h2>
-				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ isMobile ? 1.1 : 1.25 } className={ isMobile ? "px-10 h-4/5 py-10" : "px-40 pt-5 pb-20 h-4/5" } modules={[ Mousewheel ]} 
+				<h2 className={ `mt-2 ${ isMobile ? "text-2xl text-center" : "text-4xl ml-20" } akashi` }>OUR CLIENTS & WORKS</h2>
+				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ isMobile ? 1.1 : 1.25 } className={ isMobile ? "px-10 h-5/6 py-10" : "px-40 pt-5 pb-20 h-4/5" } modules={[ Mousewheel ]} 
 					onReachBeginning={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) }
 					onReachEnd={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) } 
 					onSlideChange={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = false, 500) }>
@@ -534,7 +534,7 @@ function App() {
 										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
-								<div className="bg-cover rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(215, 215, 205, 0.5)" }}>
+								<div className="bg-cover rounded-lg relative mt-6 mb-2 flex flex-col h-full" style={{ background: "rgba(215, 215, 205, 0.5)" }}>
 									<h2 className="text-black my-1 text-base akashi text-center">PlasBit</h2>
 									<div style={{ backgroundImage: "url('PlasBitClientsImage.png')" }}  className='z-10 bg-cover mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
@@ -559,7 +559,7 @@ function App() {
 										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
-								<div className="rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
+								<div className="rounded-lg relative mt-6 mb-2 flex flex-col h-full" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
 									<h2 className="text-black my-1 text-base akashi text-center">Tired Club</h2>
 									<div style={{ backgroundImage: "url('TiredClubClientsImage.jpg')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
@@ -579,7 +579,7 @@ function App() {
 										<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>	
 									</div>
 								</div>
-								<div className="rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
+								<div className="rounded-lg relative mt-6 mb-2 flex flex-col h-full" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
 									<h2 className="text-black my-1 text-base akashi text-center">TrakX</h2>
 									<div style={{ backgroundImage: "url('TrakxClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
