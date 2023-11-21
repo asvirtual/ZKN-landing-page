@@ -525,7 +525,7 @@ function App() {
 							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
 								// "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
 							>	
-								<div className="bg-cover rounded-lg relative mb-2 bg-[url('EvoloadClientsImage.png')] h-4/5 flex flex-col">
+								<div style={{ backgroundImage: "url('EvoloadClientsImage.png')" }} className="bg-cover rounded-lg relative mb-2 h-4/5 flex flex-col">
 									<h2 className='text-white mt-3 mx-4 text-xl akashi text-center flex-1'>Evoload</h2>
 									<div className="flex justify-center mx-auto mb-3">
 										<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
@@ -535,7 +535,7 @@ function App() {
 										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
-								<div className="bg-cover rounded-lg relative mb-2 bg-[url('PlasBitClientsImage.png')] h-4/5 flex flex-col">
+								<div style={{ backgroundImage: "url('PlasBitClientsImage.png')" }} className="bg-cover rounded-lg relative mb-2 h-4/5 flex flex-col">
 									<div className='text-black mt-3 mx-4 text-xl akashi text-center flex-1'></div>
 									<div className="flex justify-center mx-auto mb-3">
 										<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
@@ -548,7 +548,7 @@ function App() {
 							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
 								// "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
 							>	
-								<div className="bg-cover bg-center rounded-lg relative mb-2 bg-[url('SpazioCryptoClientsImage.png')] h-4/5 flex flex-col">
+								<div style={{ backgroundImage: "url('SpazioCryptoClientsImage.png')" }} className="bg-cover bg-center rounded-lg relative mb-2 h-4/5 flex flex-col">
 									<div className='text-black mt-3 mx-4 text-xl akashi text-center flex-1'></div>
 									<div className="flex justify-center mx-auto mb-3">
 										<a href="https://www.spaziocrypto.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
@@ -558,7 +558,7 @@ function App() {
 										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
-								<div className="bg-cover bg-center rounded-lg relative mb-2 bg-[url('TiredClubClientsImage.jpg')] h-4/5 flex flex-col">
+								<div style={{ backgroundImage: "url('TiredClubClientsImage.jpg')" }} className="bg-cover bg-center rounded-lg relative mb-2 h-4/5 flex flex-col">
 									<div className='text-black mt-3 mx-4 text-xl akashi text-center flex-1'></div>
 									<div className="flex justify-center mx-auto mb-3">
 										<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
@@ -570,13 +570,13 @@ function App() {
 							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
 								// "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
 							>	
-								<div className="bg-cover bg-center rounded-lg relative mb-2 bg-[url('FiverrClientsImage.png')] h-4/5 flex flex-col">
+								<div style={{ backgroundImage: "url('FiverrClientsImage.png')" }} className="bg-cover bg-center rounded-lg relative mb-2 h-4/5 flex flex-col">
 									<div className='text-black mt-3 mx-4 text-xl akashi text-center flex-1'></div>
 									<div className="flex justify-center mx-auto mb-3">
 										<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
 								</div>
 								</div>
-								<div className="bg-cover bg-center rounded-lg relative mb-2 bg-[url('TrakxClientsImage.png')] h-4/5 flex flex-col">
+								<div style={{ backgroundImage: "url('TrakxClientsImage.png')" }} className="bg-cover bg-center rounded-lg relative mb-2 h-4/5 flex flex-col">
 									<div className='text-black mt-3 mx-4 text-xl akashi text-center flex-1'></div>
 									<div className="flex justify-center mx-auto mb-3">
 										<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-2 hover:scale-110 transition-all"></img></a>
