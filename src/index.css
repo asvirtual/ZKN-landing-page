@@ -70,14 +70,16 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  cursor: url("assets/cursor.png"), auto;
+  cursor: url("assets/cursor.svg"), auto;
   /* height: 100vh; */
   /* scroll-snap-type: y mandatory; */
   color: black;
 }
 
 a {
-  cursor: url("assets/cursor.png"), auto;
+  /* cursor: url("assets/cursor.svg"), auto; */
+  /* cursor: pointer; */
+  /* cursor: url("assets/cursor.png"), auto; */
 }
 
 section {

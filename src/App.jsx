@@ -313,6 +313,12 @@ function App() {
 		if (window.location.pathname != "" && window.location.pathname != "/")
 			return
 
+		const cursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+		const rotatedCursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 32 32" fill="none"><path transform="rotate(45, 16, 16)" d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+		document.body.style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG)}'), auto`;
+		document.querySelectorAll("a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`);
+
+
 		const logoAnimationId = setInterval(() => {
 			if (scrollProgress <= 35)
 				setAnimationIndex((oldIndex) => oldIndex == 2 ? 0 : oldIndex + 1)
@@ -323,7 +329,6 @@ function App() {
 		}
 
 	}, [scrollProgress])
-
 
 	const logoScale = 
 		scrollProgress <= 35 ? 1 :
@@ -522,8 +527,8 @@ function App() {
 					onSlideChange={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = false, 500) }>
 					{ isMobile ?
 						<>
-							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" >
-								<div className="rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
+							<SwiperSlide className="bg-transparent rounded-lg transition-all flex flex-col backdrop-filter backdrop-blur-sm" >
+								<div className="rounded-lg relative mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
 									<h2 className="text-black my-1 text-base akashi text-center">TrakX</h2>
 									<div style={{ backgroundImage: "url('TrakxClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
@@ -532,7 +537,7 @@ function App() {
 										<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
-								<div className="bg-cover rounded-lg relative mt-8 mb-2 flex flex-col h-full" style={{ background: "rgba(215, 215, 205, 0.5)" }}>
+								<div className="bg-cover rounded-lg relative mt-8 mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(215, 215, 205, 0.5)" }}>
 									<h2 className="text-black my-1 text-base akashi text-center">PlasBit</h2>
 									<div style={{ backgroundImage: "url('PlasBitClientsImage.png')" }}  className='z-10 bg-cover mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
@@ -543,10 +548,8 @@ function App() {
 									</div>
 								</div>
 							</SwiperSlide>
-							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
-								// "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
-							>	
-								<div className="rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(252, 115, 3, 0.5)" }}>
+							<SwiperSlide className="bg-transparent rounded-lg transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+								<div className="rounded-lg relative mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(252, 115, 3, 0.5)" }}>
 									<h2 className="text-black my-1 text-base akashi text-center">SpazioCrypto</h2>
 									<div style={{ backgroundImage: "url('SpazioCryptoClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
@@ -557,7 +560,7 @@ function App() {
 										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
-								<div className="bg-cover rounded-lg relative mt-8 mb-2 flex flex-col h-full" style={{ background: "rgba(100, 150, 255, 0.3)" }}>
+								<div className="bg-cover rounded-lg relative mt-8 mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(100, 150, 255, 0.3)" }}>
 									<h2 className="text-black my-1 text-base akashi text-center">Evoload</h2>
 									<div style={{ backgroundImage: "url('EvoloadClientsImage.png')" }}  className='z-10 bg-cover mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
@@ -569,17 +572,15 @@ function App() {
 									</div>
 								</div>
 							</SwiperSlide>
-							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
-								// "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
-							>	
-								<div className="rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(2, 150, 76, 0.5)" }}>
+							<SwiperSlide className="bg-transparent rounded-lg transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
+								<div className="rounded-lg relative mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(2, 150, 76, 0.5)" }}>
 									<h2 className="text-black my-1 text-base akashi text-center">Fiverr</h2>
 									<div style={{ backgroundImage: "url('FiverrClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
 										<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>	
 									</div>
 								</div>
-								<div className="rounded-lg relative mt-8 mb-2 flex flex-col h-full" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
+								<div className="rounded-lg relative mt-8 mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
 									<h2 className="text-black my-1 text-base akashi text-center">Tired Club</h2>
 									<div style={{ backgroundImage: "url('TiredClubClientsImage.jpg')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
