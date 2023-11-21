@@ -523,15 +523,13 @@ function App() {
 					{ isMobile ?
 						<>
 							<SwiperSlide className="bg-transparent rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" >
-								<div className="bg-cover rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(100, 150, 255, 0.3)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">Evoload</h2>
-									<div style={{ backgroundImage: "url('EvoloadClientsImage.png')" }}  className='z-10 bg-cover mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
+								<div className="rounded-lg relative mb-2 flex flex-col h-full" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
+									<h2 className="text-black my-1 text-base akashi text-center">TrakX</h2>
+									<div style={{ backgroundImage: "url('TrakxClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/evoload" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/Dka6HAZzYH" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
 								<div className="bg-cover rounded-lg relative mt-6 mb-2 flex flex-col h-full" style={{ background: "rgba(215, 215, 205, 0.5)" }}>
@@ -559,13 +557,15 @@ function App() {
 										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
-								<div className="rounded-lg relative mt-6 mb-2 flex flex-col h-full" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">Tired Club</h2>
-									<div style={{ backgroundImage: "url('TiredClubClientsImage.jpg')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
+								<div className="bg-cover rounded-lg relative mt-6 mb-2 flex flex-col h-full" style={{ background: "rgba(100, 150, 255, 0.3)" }}>
+									<h2 className="text-black my-1 text-base akashi text-center">Evoload</h2>
+									<div style={{ backgroundImage: "url('EvoloadClientsImage.png')" }}  className='z-10 bg-cover mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/pCGYfbmHH3" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/evoload" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://discord.com/invite/Dka6HAZzYH" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
 							</SwiperSlide>
@@ -580,12 +580,12 @@ function App() {
 									</div>
 								</div>
 								<div className="rounded-lg relative mt-6 mb-2 flex flex-col h-full" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">TrakX</h2>
-									<div style={{ backgroundImage: "url('TrakxClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
+									<h2 className="text-black my-1 text-base akashi text-center">Tired Club</h2>
+									<div style={{ backgroundImage: "url('TiredClubClientsImage.jpg')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
 									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
+										<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
+										<a href="https://discord.com/invite/pCGYfbmHH3" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
 									</div>
 								</div>
 							</SwiperSlide>
