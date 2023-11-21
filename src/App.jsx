@@ -318,7 +318,6 @@ function App() {
 		document.body.style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG)}'), auto`;
 		document.querySelectorAll("a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`);
 
-
 		const logoAnimationId = setInterval(() => {
 			if (scrollProgress <= 35)
 				setAnimationIndex((oldIndex) => oldIndex == 2 ? 0 : oldIndex + 1)
@@ -347,6 +346,15 @@ function App() {
 				<a href="mailto:info@zikenlabs.com" target="_blank"><img src={ gmailLogo } className="w-16 h-16 ml-4 hover:scale-110 transition-all"></img></a>
 			</div>
 		</>
+
+	let pixelTextFontSize = 220;
+	if (animationIndex === 0) {
+		if (window.innerWidth / 5 <= 120) pixelTextFontSize = window.innerWidth / 5;
+		else pixelTextFontSize = 220
+	} else {
+		if (window.innerWidth / 10 <= 120) pixelTextFontSize = window.innerWidth / 10;
+		else pixelTextFontSize = 120
+	}
 
 	return (
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
@@ -392,7 +400,8 @@ function App() {
 					text={ animationIndex == 0 ? "ZKN LBS" : animationIndex == 1 ? `Your vision. Our expertise.` : `Let's build. Together.` }
 					width={ window.innerWidth }
 					height={ window.innerHeight }
-					fontSize={ animationIndex == 0 ? window.innerWidth / 5 <= 220 ? window.innerWidth / 5 : 220 : window.innerWidth / 10 }
+					fontSize={ pixelTextFontSize }
+					// fontSize={ animationIndex == 0 ? 220 : 120 }
 					fontFamily="Akashi"
 					textAlign="center"
 					textBaseLine="middle"
@@ -415,7 +424,7 @@ function App() {
 					// fixedExitAcceleration={ 0.2 }
 					fixedExitAcceleration={ 0.5 }
 					exitDelay={ animationPeriodMillis / 2 }
-					maxTextWidth={ animationIndex == 0 ? 100 : isMobile ? 350 : 1000 }
+					maxTextWidth={ animationIndex == 0 ? 100 : (isMobile ? 350 : 1000) }
 					paused={ scrollProgress > 35 }
 				/>
 			</motion.div>
