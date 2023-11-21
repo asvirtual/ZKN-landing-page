@@ -1,8 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import PixelText from './components/PixelText/PixelText'
 
-import useDeviceDetect from './hooks/useDeviceDetect'
-
 import logo from "./assets/Ziken Labs.png"
 import * as THREE from "three"
 import { gsap } from 'gsap'
@@ -11,6 +9,8 @@ import dot from "./assets/dot.png"
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
 import { motion, scroll } from 'framer-motion'
+
+import { isMobile } from 'react-device-detect';
 
 import Lottie from "lottie-react";
 import projectManagementAnimation from "./assets/project_management.json"
@@ -49,7 +49,6 @@ function App() {
 
 	const [animationIndex, setAnimationIndex] = useState(0)
 	const [scrollProgress, setScrollProgress] = useState(33)
-	const isTouchDevice = useDeviceDetect()
 
 	const scrollContainer = useRef()
 
@@ -243,7 +242,7 @@ function App() {
 
 			lastScroll = scrollContainer.scrollTop
 
-			if (isTouchDevice) sphere.position.z = scrollPercentage <= 35 ? -1 : scrollPercentage <= 60 ? scrollPercentage / 40 - 2 : scrollPercentage / 80
+			if (isMobile) sphere.position.z = scrollPercentage <= 35 ? -1 : scrollPercentage / 30 - 2 
 			else sphere.position.z = scrollPercentage <= 35 ? -1 : scrollPercentage <= 60 ? scrollPercentage / 60 - 2 : scrollPercentage / 60 - 1
 			sphere.rotation.z = scrollPercentage / 5
 			return
@@ -273,7 +272,7 @@ function App() {
 		const tick = () => {
 			let elapsedTime = clock.getElapsedTime()
 
-			if (isTouchDevice) {
+			if (isMobile) {
 				sphere.rotation.x = .5 * elapsedTime
 				sphere.rotation.y = .5 * elapsedTime
 			} else {
@@ -308,7 +307,7 @@ function App() {
 			renderer.dispose()
 			cancelAnimationFrame(animationFrameId)
 		}
-	}, [isTouchDevice])
+	}, [isMobile])
 
 	useEffect(() => {
 		if (window.location.pathname != "" && window.location.pathname != "/")
@@ -393,7 +392,7 @@ function App() {
 					textAlign="center"
 					textBaseLine="middle"
 					gradient={ [ [0, '#121517'], [1, '#121517'] ] }
-					gap={ 2 }
+					gap={ isMobile ? 1 :2 }
 					radius={ 5000 }
 					initialAnimation={ true }
 					hoverAnimation={ true }
@@ -411,12 +410,12 @@ function App() {
 					// fixedExitAcceleration={ 0.2 }
 					fixedExitAcceleration={ 0.5 }
 					exitDelay={ animationPeriodMillis / 2 }
-					maxTextWidth={ animationIndex == 0 ? 100 : isTouchDevice ? 350 : 1000 }
+					maxTextWidth={ animationIndex == 0 ? 100 : isMobile ? 350 : 1000 }
 					paused={ scrollProgress > 35 }
 				/>
 			</motion.div>
 			<section className="relative">
-				{ isTouchDevice ? 
+				{ isMobile ? 
 					<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
 						<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
 					</nav> :
@@ -432,50 +431,86 @@ function App() {
 					</nav> 
 				}
 			</section>
-			<section id="services" className="text-white overflow-y-scroll overflow-x-hidden px-20">
-				<h2 className='mt-8 mb-12 text-5xl akashi'>OUR SERVICES</h2>
-				<div className={ `grid ${ isTouchDevice ? "" : "grid-cols-2"} gap-4 mb-8 grid-rows-none` }>
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[0] } className="w-28 h-28 my-auto" animationData={ projectManagementAnimation } autoplay={ false } />
-						<div className="h-min flex-1 ml-8 mr-2 my-auto">
-							<h4 className='my-auto text-2xl text-center'>Project Management</h4>
-							<p className='my-auto mt-4 text-lg'>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
-						</div>
+			<section id="services" className={ `text-white overflow-y-scroll overflow-x-hidden ${ isMobile ? "px-4" : "px-20" }` }>
+				<h2 className={ `mt-8 mb-12 ${ isMobile ? "text-4xl text-center" : "text-5xl" } akashi` }>OUR SERVICES</h2>
+				<div className={ `grid gap-4 mb-8 ${ isMobile ? "" : "grid-cols-2" } grid-rows-none` }>
+					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+						{ isMobile ? <>
+							<h4 className={ `my-auto text-center text-2xl` }>Project Management</h4>
+							<Lottie lottieRef={ lottieAnimationsRefs[0] } className={ `w-52 h-52 mx-auto my-4` } animationData={ projectManagementAnimation } autoplay={ false } />
+							<p className={ `my-auto mt-4 text-base` }>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
+						</> : <>
+							<Lottie lottieRef={ lottieAnimationsRefs[0] } className="w-28 h-28 my-auto" animationData={ projectManagementAnimation } autoplay={ false } />
+							<div className="h-min flex-1 ml-8 mr-2 my-auto">
+								<h4 className={ `my-auto text-2xl text-center` }>Project Management</h4>
+								<p className={ `my-auto mt-4 text-lg` }>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
+							</div>
+						</> }
 					</div>
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[1] } className="w-28 h-28 my-auto" animationData={ graphicDesignAnimation  } loop={ true } autoplay={ false } />
-						<div className="h-min flex-1 ml-8 mr-2 my-auto">
-							<h4 className='my-auto text-2xl text-center'>Graphic Design</h4>
-							<p className='my-auto mt-4 text-lg'>We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.</p>
-						</div>
+					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+						{ isMobile ? <>
+							<h4 className={ `my-auto text-center text-2xl` }>Graphic Design</h4>
+							<Lottie lottieRef={ lottieAnimationsRefs[1] } className={ `w-52 h-52 mx-auto my-4` } animationData={ graphicDesignAnimation  } loop={ true } autoplay={ false } />
+							<p className={ `my-auto mt-4 text-base` }>We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.</p>
+						</> : <>
+							<Lottie lottieRef={ lottieAnimationsRefs[1] } className="w-28 h-28 my-auto" animationData={ graphicDesignAnimation  } loop={ true } autoplay={ false } />
+							<div className="h-min flex-1 ml-8 mr-2 my-auto">
+								<h4 className={ `my-auto text-2xl text-center` }>Graphic Design</h4>
+								<p className={ `my-auto mt-4 text-lg` }>We build your graphic and visual brand identity, creating your logo, banners, templates, and more. The awareness and professionalism of your project will be taken to the next level.</p>
+							</div>
+						</> }
 					</div>
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[2] } className="w-28 h-28 my-auto" animationData={ copywritingAnimation } loop={ true } autoplay={ false } />
-						<div className="h-min flex-1 ml-8 mr-2 my-auto">
-							<h4 className='my-auto text-2xl text-center'>Copywriting</h4>
-							<p className='my-auto mt-4 text-lg'>We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.</p>
-						</div>
+					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+						{ isMobile ? <>
+							<h4 className={ `my-auto text-center text-2xl` }>Copywriting</h4>
+							<Lottie lottieRef={ lottieAnimationsRefs[2] } className={ `w-52 h-52 mx-auto my-4` } animationData={ copywritingAnimation } loop={ true } autoplay={ false } />
+							<p className={ `my-auto mt-4 text-base` }>We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.</p>
+						</> : <>
+							<Lottie lottieRef={ lottieAnimationsRefs[2] } className="w-28 h-28 my-auto" animationData={ copywritingAnimation } loop={ true } autoplay={ false } />
+							<div className="h-min flex-1 ml-8 mr-2 my-auto">
+								<h4 className={ `my-auto text-2xl text-center` }>Copywriting</h4>
+								<p className={ `my-auto mt-4 text-lg` }>We are the voice of your project. We will write SEO optimized articles for your blog and help get you to the top of Google results. We will also take care of your social media communication.</p>
+							</div>
+						</> }
 					</div>
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[3] } className="w-28 h-28 my-auto" animationData={ marketingAnimation } loop={ true } autoplay={ false } />
-						<div className="h-min flex-1 ml-8 mr-2 my-auto">
-							<h4 className='my-auto text-2xl text-center'>Marketing</h4>
-							<p className='my-auto mt-4 text-lg'>We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.</p>
-						</div>
+					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+						{ isMobile ? <>
+							<h4 className={ `my-auto text-center text-2xl` }>Marketing</h4>
+							<Lottie lottieRef={ lottieAnimationsRefs[3] } className={ `w-52 h-52 mx-auto my-4` } animationData={ marketingAnimation } loop={ true } autoplay={ false } />
+							<p className={ `my-auto mt-4 text-base` }>We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.</p>
+						</> : <>
+							<Lottie lottieRef={ lottieAnimationsRefs[3] } className="w-28 h-28 my-auto" animationData={ marketingAnimation } loop={ true } autoplay={ false } />
+							<div className="h-min flex-1 ml-8 mr-2 my-auto">
+								<h4 className={ `my-auto text-2xl text-center` }>Marketing</h4>
+								<p className={ `my-auto mt-4 text-lg` }>We will help you make your project known and scale. We will do our best to make your vision come true and bring in more users and profits. Your project just needs to get visibility and scale.</p>
+							</div>
+						</> }
 					</div>
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[4] } className="w-28 h-28 my-auto" animationData={ webDesignAnimation } loop={ true } autoplay={ false } />
-						<div className="h-min flex-1 ml-8 mr-2 my-auto">
-							<h4 className='my-auto text-2xl text-center'>Web Design</h4>
-							<p className='my-auto mt-4 text-lg'>We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.</p>
-						</div>
+					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+						{ isMobile ? <>
+							<h4 className={ `my-auto text-center text-2xl` }>Project Management</h4>
+							<Lottie lottieRef={ lottieAnimationsRefs[4] } className={ `w-52 h-52 mx-auto my-4` } animationData={ webDesignAnimation } loop={ true } autoplay={ false } />
+							<p className={ `my-auto mt-4 text-base` }>We are here to build.  You can entrust your project to us and we will make it prosper and grow. With knowledge, hard work, and determination, we will create the strategy tailored to you and take you through the growth.</p>
+						</> : <>
+							<Lottie lottieRef={ lottieAnimationsRefs[4] } className="w-28 h-28 my-auto" animationData={ webDesignAnimation } loop={ true } autoplay={ false } />
+							<div className="h-min flex-1 ml-8 mr-2 my-auto">
+								<h4 className={ `my-auto text-2xl text-center` }>Web Design</h4>
+								<p className={ `my-auto mt-4 text-lg` }>We will program your website from scratch according to your needs. From the most complex animations to responsive interactions, we'll concretize your ideas into the perfect online storefront.</p>
+							</div>
+						</> }
 					</div>
-					<div className="flex bg-neutral-700 bg-opacity-20 border-neutral-700 border-2 rounded-lg p-4 hover:bg-neutral-700 transition-colors duration-500">
-						<Lottie lottieRef={ lottieAnimationsRefs[5] } className="w-28 h-28 my-auto" animationData={ businessConsultingAnimation } loop={ true } autoplay={ false } />
-						<div className="h-min flex-1 ml-8 mr-2 my-auto">
-							<h4 className='my-auto text-2xl text-center'>Business consulting</h4>
-							<p className='my-auto mt-4 text-lg'>Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.</p>
-						</div>
+					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+						{ isMobile ? <>
+							<h4 className={ `my-auto text-center text-2xl` }>Business consulting</h4>
+							<Lottie lottieRef={ lottieAnimationsRefs[5] } className={ `w-52 h-52 mx-auto my-4` } animationData={ businessConsultingAnimation } loop={ true } autoplay={ false } />
+							<p className={ `my-auto mt-4 text-base` }>Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.</p>
+						</> : <>
+							<Lottie lottieRef={ lottieAnimationsRefs[5] } className="w-28 h-28 my-auto" animationData={ businessConsultingAnimation } loop={ true } autoplay={ false } />
+							<div className="h-min flex-1 ml-8 mr-2 my-auto">
+								<h4 className={ `my-auto text-2xl text-center` }>Business consulting</h4>
+								<p className={ `my-auto mt-4 text-lg` }>Let's make a free call to get to know each other and understand your business problems. Based on the premises, we will help you develop new growth strategies that will enable you to improve your situation and scale your business.</p>
+							</div>
+						</> }
 					</div>
 				</div>
 			</section>
