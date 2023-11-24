@@ -329,6 +329,29 @@ function App() {
 
 	}, [scrollProgress])
 
+	useEffect(() => {
+		switch (window.location.pathname) {
+			case "/services": 
+				document.title = "Services - Ziken Labs"
+				break;
+			case "/clients": 
+				document.title = "Clients - Ziken Labs"
+				break;
+			case "/products": 
+				document.title = "Products - Ziken Labs"
+				break;
+			case "/about": 
+				document.title = "About - Ziken Labs"
+				break;
+			case "/blog": 
+				document.title = "Blog - Ziken Labs"
+				break;
+			case "/contact": 
+				document.title = "Contact - Ziken Labs"
+				break;
+		}
+	}, []);
+
 	const logoScale = 
 		scrollProgress <= 35 ? 1 :
 		0
