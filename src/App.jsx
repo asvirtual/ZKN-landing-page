@@ -475,8 +475,8 @@ function App() {
 				}
 			</section>
 			<section id="services" className={ `text-white overflow-y-scroll overflow-x-hidden ${ isMobile ? "px-4" : "px-20" }` }>
-				<h2 className={ `mt-8 mb-12 ${ isMobile ? "text-4xl text-center" : "text-5xl" } akashi` }>OUR SERVICES</h2>
-				<div className={ `grid gap-4 mb-8 ${ isMobile ? "" : "grid-cols-2" } grid-rows-none` }>
+				<h2 className={ `mt-6 mb-6 ${ isMobile ? "text-4xl text-center" : "text-5xl" } akashi` }>OUR SERVICES</h2>
+				<div className={ `grid gap-4 ${ isMobile ? "" : "grid-cols-2" } grid-rows-none` }>
 					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Project Management</h4>
