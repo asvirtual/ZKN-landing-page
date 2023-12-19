@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import PixelText from './components/PixelText/PixelText'
+import About from './pages/About'
 
 import logo from "./assets/Ziken Labs.png"
 import * as THREE from "three"
@@ -357,6 +358,9 @@ function App() {
 				break;
 		}
 	}, []);
+
+	if (window.location.href.includes("/about"))
+		return <About />;
 
 	const logoScale = 
 		scrollProgress <= 35 ? 1 :
