@@ -34,6 +34,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Mousewheel } from "swiper/modules"
 import 'swiper/swiper-bundle.css'
 
+
 gsap.registerPlugin(ScrollTrigger)
 ScrollTrigger.defaults({
 	immediateRender: false,
@@ -65,6 +66,12 @@ function App() {
 
 
 	useEffect(() => {
+		if (localStorage.getItem("technical-cookies-accepted") === "true") document.getElementById("cookies-banner").style.display = "none"
+		document.getElementById("cookies-banner-accept").addEventListener("click", e => {
+			localStorage.setItem("technical-cookies-accepted", "true")
+			document.getElementById("cookies-banner").style.display = "none"
+		})
+
 		if (window.location.pathname != "" && window.location.pathname != "/")
 			return
 
@@ -139,56 +146,8 @@ function App() {
 			renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 		})
 
-		// const clientsSection = document.querySelector("#clients");
-		// let isInsideClientsSection = false
-		// let hasFinishedClientsSectionScrolling = false
-		// const observer = new IntersectionObserver((entries) => {
-		// 	if (!isInsideClientsSection && entries.some(entry => entry.isIntersecting)) {
-		// 		hasFinishedClientsSectionScrolling = false
-		// 	}
-			
-		// 	isInsideClientsSection = entries.some(entry => entry.isIntersecting)
-		// }, { threshold: [1] });
-
-		// observer.observe(clientsSection);
-
-		// function transformScroll(event) {
-		// 	if (!event.deltaY) {
-		// 		return;
-		// 	}
-			
-		// 	// let currentScrollNormalized = event.currentTarget.scrollLeft !== 0 ? currentScrollNormalized
-		// 	let scrollLeft
-		// 	const currentPage = parseInt(parseInt(event.currentTarget.scrollLeft) / parseInt(parseInt(event.currentTarget.scrollWidth) / 6))
-
-		// 	if (event.deltaY > 0) scrollLeft = ((currentPage + 1) * parseInt(parseInt(event.currentTarget.scrollWidth) / 6))
-		// 	else scrollLeft = ((currentPage - 1) * parseInt(parseInt(event.currentTarget.scrollWidth) / 6))
-
-		// 	console.log(currentPage, event.deltaY)
-
-		// 	if ((currentPage === 5 && event.deltaY > 0) || (currentPage === 0 && event.deltaY < 0)) {
-		// 		hasFinishedClientsSectionScrolling = true
-		// 		return
-		// 	}
-
-		// 	hasFinishedClientsSectionScrolling = false
-		// 	event.currentTarget.scrollTo({ left: scrollLeft })
-		// 	event.preventDefault();
-		// }
-		  
-		// clientsSection.addEventListener('wheel', transformScroll);
-
 		const scrollContainer = document.querySelector("#scroll-container")
-		// let scrollContainerScrollTop = 0
 		scrollContainer.addEventListener('scroll', e => {
-			// if (isInsideClientsSection && !hasFinishedClientsSectionScrolling) {
-			// 	scrollContainer.scrollTop = scrollContainerScrollTop
-			// 	e.preventDefault();
-			// 	return;
-			// }
-
-			// scrollContainerScrollTop = scrollContainer.scrollTop
-
 			const scrollPercentage = parseInt(scrollContainer.scrollTop) / parseInt(scrollContainer.scrollHeight) * 100 + 33
 			setScrollProgress(scrollPercentage)
 
@@ -214,8 +173,6 @@ function App() {
 			// 	sphere.position.x = - 1 / (scrollPercentage * 4 / 100 - 1) * 6
 			// else
 			// 	sphere.position.x = - 1 / (scrollPercentage / 15 - 14 / 3)
-
-
 
 			if (scrollPercentage < 40 || scrollPercentage > 85) { 
 				gsap.to(scene.background, { duration: 0.2, r: 1, g: 1, b: 1 })
@@ -318,6 +275,7 @@ function App() {
 		const rotatedCursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 32 32" fill="none"><path transform="rotate(45, 16, 16)" d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
 		document.body.style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG)}'), auto`;
 		document.querySelectorAll("a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`);
+		document.querySelector("#cookies-banner-accept").style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`;
 
 		const logoAnimationId = setInterval(() => {
 			if (scrollProgress <= 35)
@@ -392,39 +350,11 @@ function App() {
 	return (
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
 			className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory">
-			{/* <div
-				id="scrollbar"
-				className="absolute h-screen w-2 z-10 right-0"
-				style={{
-					background: scrollProgress > 30 && scrollProgress < 60 ? "black" : "white"
-				}}>
+			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pt-2 pb-2 pl-8 pr-8 z-10" style={{ background: "rgba(255, 255, 255, 0.2)" }} id="cookies-banner">
+				<h3 className="text-center akashi">Cookie Notice</h3>
+				<p className="mt-4">🍪 This website uses technical cookies to ensure a smooth user experience. By continuing to browse, you agree to the use of these cookies.</p>
+				<div id="cookies-banner-accept" className="mt-8 ml-auto mr-auto text-center text-white rounded p-1 bg-green-800 w-fit pt-2 pb-2 pl-8 pr-8">Got it</div>
 			</div>
-			<motion.div 
-				id="scrollbar-handle" 
-				draggable
-				drag="y"
-				dragMomentum={ false }
-				dragConstraints={ scrollContainer }
-				onDragStart={ () => setDragging(true) }
-				onDragEnd={ (e, info) => {
-					setDragging(false)
-					const section = Math.round(e.clientY / (scrollContainer.current?.clientHeight / (numberOfSections - 1)))
-					scrollContainer.current?.scrollTo({ top: scrollContainer.current?.scrollHeight / numberOfSections * section, behavior: "smooth" })
-				} }
-				className="absolute h-10 w-2 z-20 right-0"
-				style={{ 
-					// top: dragging ? mouseY : scrollProgress > 10 ? `calc(${scrollProgress}vh - 40px)` : 0,
-					// y: scrollProgress > 10 ? `calc(${scrollProgress}vh - 40px)` : 0,
-					// transform: `none`,
-					background: scrollProgress > 30 && scrollProgress < 60 ? "white" : "black",
-				}}
-				// animate={{ x: !dragging && 0, y: !dragging && 0, transform: !dragging && "none" }}
-				animate={{
-					y: dragging ? mouseY : scrollProgress > 10 ? `calc(${scrollProgress}vh - 40px)` : 0, 
-					transform: dragging && `translateY(${mouseY})`
-				}}>
-			</motion.div> */}
-
 			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: (Math.trunc(scrollProgress) > 33 && Math.trunc(scrollProgress) <= 66) ? "white" : "black" }}></div>
 			<canvas id="background" className="fixed top-0 -z-20" ></canvas>
 			<motion.div style={{ scale: logoScale <= 0 ? 0 : logoScale, transition: "all .5s ease" }} className="h-screen w-screen fixed top-0 -z-10">
