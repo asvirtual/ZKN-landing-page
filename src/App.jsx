@@ -66,14 +66,14 @@ function App() {
 
 
 	useEffect(() => {
+		if (window.location.pathname != "" && window.location.pathname != "/")
+			return
+
 		if (localStorage.getItem("technical-cookies-accepted") === "true") document.getElementById("cookies-banner").style.display = "none"
 		document.getElementById("cookies-banner-accept").addEventListener("click", e => {
 			localStorage.setItem("technical-cookies-accepted", "true")
 			document.getElementById("cookies-banner").style.display = "none"
 		})
-
-		if (window.location.pathname != "" && window.location.pathname != "/")
-			return
 
 		const canvas = document.querySelector("#background")
 		canvas.width = window.innerWidth
