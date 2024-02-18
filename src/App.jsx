@@ -350,10 +350,10 @@ function App() {
 	return (
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
 			className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory">
-			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pt-2 pb-2 pl-8 pr-8 z-10" style={{ background: "rgba(255, 255, 255, 0.2)" }} id="cookies-banner">
+			<div className="absolute bottom-8 right-8 pt-2 pb-2 pl-8 pr-8 z-10 w-1/6" style={{ background: "rgba(255, 255, 255, 0.2)" }} id="cookies-banner">
 				<h3 className="text-center akashi">Cookie Notice</h3>
 				<p className="mt-4">🍪 This website uses technical cookies to ensure a smooth user experience. By continuing to browse, you agree to the use of these cookies.</p>
-				<div id="cookies-banner-accept" className="mt-8 ml-auto mr-auto text-center text-white rounded p-1 bg-green-800 w-fit pt-2 pb-2 pl-8 pr-8">Got it</div>
+				<div id="cookies-banner-accept" className="mt-8 mb-2 ml-auto mr-auto text-center text-white rounded p-1 bg-green-800 w-fit pt-2 pb-2 pl-8 pr-8">Got it</div>
 			</div>
 			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: (Math.trunc(scrollProgress) > 33 && Math.trunc(scrollProgress) <= 66) ? "white" : "black" }}></div>
 			<canvas id="background" className="fixed top-0 -z-20" ></canvas>
