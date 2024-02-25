@@ -22,31 +22,6 @@ const About = () => {
 
             <li>Blockchain Development</li>
             <li>Smart Contract Development</li>
-            <li>This was coded while using a Meta Quest 2 in VR via the Immersed application</li>
-            <li>Will I feel tired after some time coding in VR? It is possible. The lenses are not exactly great, you can sense some lag or delay between the
-                computer and the monitors on the VR. The annoying thing is the fact that only the focal point where you are looking at is clear, the 
-                rest is kind of rendered blurry. I am not sure if this is a limitation of the Quest 2 or the Immersed application. I will have to try
-                with other applications to see if the same happens. I really want to be working in VR because of the perks of having three huge monitors
-                around me. I am not sure if I will be able to work for long periods of time in VR, but I will try. I will be updating this section as I
-                get more experience working in VR.
-                Actually my roommate is very kind and he let me use his Oculus Quest 2. 
-                I mean I still think I'd have to get used to it, but I think it is a great tool for productivity.
-                Also, tweaking interpupillary distance is a must and will help in making the experience better overall.
-                Apparently it is also demanding on the battery which would be something to consider. I've only used it for
-                about an hour and it drained almost half of my battery.
-                It's so cool though and I feel like I'm already getting used to it.
-                The quality is not that of a monitor, it's kind of bad, but at the same time I don't feel like it's a DEAL-BREAKER which sounds weird.
-                My eyes are kind of starting to feel weird now and I'm maybe starting to have some kind of headache, I don't know.
-                Something that could change after some time getting used to it though. It's 11:09 PM now and I started using it at 9:45 PM.
-                The passthrough is NOT great, can't read the symbols. Luckily I know how to touch type.
-                The strap as I had didn't help as well, I needed to losen it up a bit
-                Overall it feels like a beta tester experience, but it's doable. I think I could get used to it.
-                Maybe not replace entirly working with a monitor, but slowly starting to.
-                Is it good for my eyesight? Who knows. It's soooo cool though wow.
-                Definitly gotta get used to it, but OMG once you do I can see how it can boost your productivity sooooo much.
-                A new way of experiencing coding for sure so cool.
-                
-            </li>
         </ul>
         <h3>
             We are the preferred partner for clients like <a href="https://trakx.io/" target="_blank">Trakx</a>, <a href="https://plasbit.com/" target="_blank">PlasBit</a>, <a href="https://www.spaziocrypto.com/" target="_blank">Spaziocrypto</a>, and <a href="https://evoload.co/" target="_blank">Evoload</a>. We are also honored to have reached over 100 orders and achieved level 2 on <a href="https://www.fiverr.com/pp_studios" target="_blank">our Fiverr profile</a>!<br></br>

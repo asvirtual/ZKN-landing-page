@@ -3,6 +3,7 @@ import PixelText from './components/PixelText/PixelText'
 import About from './pages/About'
 
 import logo from "./assets/Ziken Labs.png"
+import whiteLogo from "./assets/whiteLogo.png"
 import * as THREE from "three"
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger" 
@@ -270,12 +271,14 @@ function App() {
 	useEffect(() => {
 		if (window.location.pathname != "" && window.location.pathname != "/")
 			return
-
+		
 		const cursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
 		const rotatedCursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 32 32" fill="none"><path transform="rotate(45, 16, 16)" d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
 		document.body.style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG)}'), auto`;
 		document.querySelectorAll("a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`);
 		document.querySelector("#cookies-banner-accept").style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`;
+		document.querySelector("#footer").style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG.replace("black", "white"))}'), auto`;
+		document.querySelectorAll("#footer a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG.replace("black", "white"))}'), auto`);
 
 		const logoAnimationId = setInterval(() => {
 			if (scrollProgress <= 35)
@@ -493,7 +496,10 @@ function App() {
 			</section>
 			<section id="clients" className="pt-5 overflow-y-scroll overflow-x-hidden">
 				<h2 className={ `mt-2 ${ isMobile ? "text-2xl text-center" : "text-4xl ml-20" } akashi` }>OUR CLIENTS & WORKS</h2>
-				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }} slidesPerView={ isMobile ? 1.1 : 1.25 } className={ isMobile ? "px-10 h-5/6 py-8" : "px-40 pt-5 pb-20 h-4/5" } modules={[ Mousewheel ]} 
+				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } 
+					// mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }}
+					mousewheel={{ forceToAxis: true, sensitivity: 1, releaseOnEdges: true, invert: false }}
+					slidesPerView={ isMobile ? 1.1 : 1.25 } className={ isMobile ? "px-10 h-5/6 py-8" : "px-40 pt-5 pb-20 h-4/5" } modules={[ Mousewheel ]} 
 					onReachBeginning={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) }
 					onReachEnd={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) } 
 					onSlideChange={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = false, 500) }>
@@ -638,9 +644,8 @@ function App() {
 						</>
 					}					
 				</Swiper>
-				{ isMobile ? 
+				{/* { isMobile ? 
 					<footer style={{ background: "rgba(235, 235, 235, 0.7)" }} className="bg-cover backdrop-filter backdrop-blur-sm px-8 py-4 h-1/5">
-						{/* <h5 className="text-center">Contact us</h5> */}
 						<div className="flex justify-center mt-4">
 							<a href="https://twitter.com/ZikenLabs" target="_blank"><img src={ xLogo } className="w-8 h-8 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
 							<a href="https://discord.gg/kYn7jkRemT" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
@@ -648,15 +653,38 @@ function App() {
 						</div>
 					</footer> :
 					<footer style={{ background: "rgba(235, 235, 235, 0.7)" }} className="bg-cover backdrop-filter backdrop-blur-sm px-8 py-4 h-1/5">
-					{/* <h5 className="text-center">Contact us</h5> */}
 					<div className="flex justify-center mt-4">
 						<a href="https://twitter.com/ZikenLabs" target="_blank"><img src={ xLogo } className="w-8 h-8 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
 						<a href="https://discord.gg/kYn7jkRemT" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
 						<a href="mailto:info@zikenlabs.com" target="_blank"><img src={ gmailLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
 					</div>
 				</footer>
-				}
+				} */}
+				{/* <footer className="bg-black pb-5" id="footer"> */}
+				<footer className="pb-5" style={{ background: "rgba(0, 0, 0, 0.7)" }} id="footer">
+					<img src={ whiteLogo } className="ml-auto mr-auto w-60"></img>
+					<div className="flex text-gray-100 ml-auto mr-auto text-center w-fit">
+						<h4><a href="https://twitter.com/ZikenLabs" target="_blank" className="ml-4 mr-4">Twitter</a></h4>
+						<h4><a href="https://discord.gg/kYn7jkRemT" target="_blank" className="ml-4 mr-4">Discord</a></h4>
+						<h4><a href="" target="_blank" className="ml-4 mr-4">Youtube</a></h4>
+						<h4><a href="" target="_blank" className="ml-4 mr-4">Telegram</a></h4>
+						<h4><a href="" target="_blank" className="ml-4 mr-4">TikTok</a></h4>
+					</div>
+					<div className="grid grid-cols-3 mt-20">
+						<h3 className="text-white akashi ml-5 text-3xl">ZIKEN LABS</h3>
+						{/* <img src={ whiteLogo } className="w-20 ml-10"></img> */}
+						<h5 className="text-center text-gray-400 mt-auto mb-auto">© 2023 Ziken Labs</h5>
+						<div className="text-right text-white mt-auto mb-auto mr-10">
+							<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
+							<a href="/products" target="_blank" className="ml-4 mr-4">Products</a>
+							<a href="/blog" target="_blank" className="ml-4 mr-4">Blog</a>
+							<a href="/about" target="_blank" className="ml-4 mr-4">About</a>
+						</div>
+					</div>
+				</footer>
 			</section>
+			{/* <section id="footer" className="pt-5 overflow-y-scroll overflow-x-hidden">
+			</section> */}
 		</div>
 	)
 }
