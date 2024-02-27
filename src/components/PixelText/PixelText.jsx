@@ -100,7 +100,7 @@ function PixelText(props) {
             this.ctx = ctx
             this.canvasWidth = canvasWidth
             this.canvasHeight = canvasHeight
-            this.textX = canvasWidth / 2
+            this.textX = canvasWidth / 1.9
             this.textY = canvasHeight / 2
             this.maxTextWidth = maxTextWidth
     

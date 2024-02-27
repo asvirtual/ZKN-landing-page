@@ -18,8 +18,6 @@ const About = () => {
             <li>Website Building</li>
             <li>Workflow Improvement through AI</li>
             <li>Bot and Software Development</li>
-
-
             <li>Blockchain Development</li>
             <li>Smart Contract Development</li>
         </ul>

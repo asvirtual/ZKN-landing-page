@@ -353,9 +353,9 @@ function App() {
 	return (
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
 			className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory">
-			<div className="absolute bottom-8 right-8 pt-2 pb-2 pl-8 pr-8 z-10 w-1/6" style={{ background: "rgba(255, 255, 255, 0.2)" }} id="cookies-banner">
+			<div className={ isMobile ? "absolute bottom-0 pt-2 pb-2 pl-6 pr-6 z-10" : "absolute bottom-8 right-8 pt-2 pb-2 pl-8 pr-8 z-10 w-1/6"} style={{ background: "rgba(255, 255, 255, 0.2)" }} id="cookies-banner">
 				<h3 className="text-center akashi">Cookie Notice</h3>
-				<p className="mt-4">🍪 This website uses technical cookies to ensure a smooth user experience. By continuing to browse, you agree to the use of these cookies.</p>
+				<p className="mt-4 text-center">🍪 This website uses technical cookies to ensure a smooth user experience. By continuing to browse, you agree to the use of these cookies.</p>
 				<div id="cookies-banner-accept" className="mt-8 mb-2 ml-auto mr-auto text-center text-white rounded p-1 bg-green-800 w-fit pt-2 pb-2 pl-8 pr-8">Got it</div>
 			</div>
 			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: (Math.trunc(scrollProgress) > 33 && Math.trunc(scrollProgress) <= 66) ? "white" : "black" }}></div>
@@ -497,8 +497,8 @@ function App() {
 			<section id="clients" className="pt-5 overflow-y-scroll overflow-x-hidden">
 				<h2 className={ `mt-2 ${ isMobile ? "text-2xl text-center" : "text-4xl ml-20" } akashi` }>OUR CLIENTS & WORKS</h2>
 				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } 
-					// mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }}
-					mousewheel={{ forceToAxis: true, sensitivity: 1, releaseOnEdges: true, invert: false }}
+					mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }}
+					// mousewheel={{ forceToAxis: true, sensitivity: 1, releaseOnEdges: true, invert: false }}
 					slidesPerView={ isMobile ? 1.1 : 1.25 } className={ isMobile ? "px-10 h-5/6 py-8" : "px-40 pt-5 pb-20 h-4/5" } modules={[ Mousewheel ]} 
 					onReachBeginning={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) }
 					onReachEnd={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) } 
@@ -662,24 +662,23 @@ function App() {
 				} */}
 				{/* <footer className="bg-black pb-5" id="footer"> */}
 				<footer className="pb-5" style={{ background: "rgba(0, 0, 0, 0.7)" }} id="footer">
-					<img src={ whiteLogo } className="ml-auto mr-auto w-60"></img>
-					<div className="flex text-gray-100 ml-auto mr-auto text-center w-fit">
-						<h4><a href="https://twitter.com/ZikenLabs" target="_blank" className="ml-4 mr-4">Twitter</a></h4>
-						<h4><a href="https://discord.gg/kYn7jkRemT" target="_blank" className="ml-4 mr-4">Discord</a></h4>
-						<h4><a href="" target="_blank" className="ml-4 mr-4">Youtube</a></h4>
-						<h4><a href="" target="_blank" className="ml-4 mr-4">Telegram</a></h4>
-						<h4><a href="" target="_blank" className="ml-4 mr-4">TikTok</a></h4>
+					<img src={ whiteLogo } className={ `ml-auto mr-auto ${isMobile ? "w-40" : "w-60"}` }></img>
+					<div className={ `${isMobile ? "" : "flex"} text-gray-100 ml-auto mr-auto text-center w-fit` }>
+						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://it.linkedin.com/company/ziken-labs" target="_blank">LinkedIn</a></h4>
+						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://discord.gg/kYn7jkRemT" target="_blank" className={ isMobile ? "" : "ml-4 mr-4" }>Discord</a></h4>
+						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://twitter.com/ZikenLabs" target="_blank">Twitter</a></h4>
+						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="" target="_blank">Instagram</a></h4>
 					</div>
-					<div className="grid grid-cols-3 mt-20">
-						<h3 className="text-white akashi ml-5 text-3xl">ZIKEN LABS</h3>
+					<div className={ isMobile ? "mt-8" : `grid grid-cols-3 mt-20` }>
+						{ isMobile ? <></> : <h3 className="text-white akashi ml-5 text-3xl">ZIKEN LABS</h3> }
 						{/* <img src={ whiteLogo } className="w-20 ml-10"></img> */}
-						<h5 className="text-center text-gray-400 mt-auto mb-auto">© 2023 Ziken Labs</h5>
-						<div className="text-right text-white mt-auto mb-auto mr-10">
+						<h5 className="text-center text-gray-400 mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs</h5>
+						{ isMobile ? <></> : <div className="text-right text-white mt-auto mb-auto mr-10">
 							<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
 							<a href="/products" target="_blank" className="ml-4 mr-4">Products</a>
 							<a href="/blog" target="_blank" className="ml-4 mr-4">Blog</a>
 							<a href="/about" target="_blank" className="ml-4 mr-4">About</a>
-						</div>
+						</div> }
 					</div>
 				</footer>
 			</section>
