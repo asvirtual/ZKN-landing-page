@@ -673,11 +673,11 @@ function Home() {
 						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://it.linkedin.com/company/ziken-labs" target="_blank">LinkedIn</a></h4>
 						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://discord.gg/kYn7jkRemT" target="_blank" className={ isMobile ? "" : "ml-4 mr-4" }>Discord</a></h4>
 						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://twitter.com/ZikenLabs" target="_blank">Twitter</a></h4>
-						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://www.instagram.com/zikenlabs/" target="_blank">Instagram</a></h4>
+						<h4 className={ isMobile ? "mb-6" : "ml-4 mr-4" }><a href="https://www.instagram.com/zikenlabs/" target="_blank">Instagram</a></h4>
 					</div>
 					<div className={ `${isMobile ? "" : "flex" + " mt-6" } text-gray-100 ml-auto mr-auto text-center w-fit` }>
-						<a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a>
-						<a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms Of Service</a>
+						<h4 className={ `ml-4 mr-4 ${isMobile ? "mb-2" : ""}` }><a href="/privacy" target="_blank">Privacy</a></h4>
+						<h4 className="ml-4 mr-4"><a href="/termsofservice" target="_blank">Terms Of Service</a></h4>
 					</div>
 					<div className={ isMobile ? "mt-8" : `grid grid-cols-3 mt-20` }>
 						{ isMobile ? <></> : <h3 className="text-white akashi ml-5 text-3xl">ZIKEN LABS</h3> }

@@ -7,6 +7,7 @@ import {
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import Temp from './pages/Temp/Temp'
+import NotFound from './pages/NotFound/NotFound'
 
 function App() {
 	const router = createBrowserRouter([
@@ -38,7 +39,11 @@ function App() {
 		  path: "/products",
 		  element: <Temp />,
 		},
-	])
+		{
+			path: "*",
+			element: <NotFound />
+		}
+	]);
 	
 	return (
 		<RouterProvider router={router} />
