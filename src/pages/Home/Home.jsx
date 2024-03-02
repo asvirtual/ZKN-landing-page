@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
 import PixelText from '../../components/PixelText/PixelText'
 import About from '../About/About'
 
@@ -44,6 +44,8 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Mousewheel } from "swiper/modules"
 import 'swiper/swiper-bundle.css'
 
+import { CursorContext } from "../../App"
+
 
 gsap.registerPlugin(ScrollTrigger)
 ScrollTrigger.defaults({
@@ -74,6 +76,7 @@ function Home() {
 		useRef()
 	]
 
+	const { cursorEnter, cursorLeave, setCursorColor } = useContext(CursorContext)
 
 	useEffect(() => {
 		if (window.location.pathname != "" && window.location.pathname != "/")
@@ -280,14 +283,16 @@ function Home() {
 	useEffect(() => {
 		if (window.location.pathname != "" && window.location.pathname != "/")
 			return
+
+		setCursorColor((scrollProgress > 35 && scrollProgress < 70) ? "bg-white" : "bg-black")
 		
-		const cursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-		const rotatedCursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 32 32" fill="none"><path transform="rotate(45, 16, 16)" d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-		document.body.style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG)}'), auto`;
-		document.querySelectorAll("a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`);
-		document.querySelector("#cookies-banner-accept").style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`;
-		document.querySelector("#footer").style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG.replace("black", "white"))}'), auto`;
-		document.querySelectorAll("#footer a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG.replace("black", "white"))}'), auto`);
+		// const cursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+		// const rotatedCursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 32 32" fill="none"><path transform="rotate(45, 16, 16)" d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+		// document.body.style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG)}'), auto`;
+		// document.querySelectorAll("a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`);
+		// document.querySelector("#cookies-banner-accept").style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`;
+		// document.querySelector("#footer").style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG.replace("black", "white"))}'), auto`;
+		// document.querySelectorAll("#footer a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG.replace("black", "white"))}'), auto`);
 
 		const logoAnimationId = setInterval(() => {
 			if (scrollProgress <= 35)
@@ -358,7 +363,6 @@ function Home() {
 		if (window.innerWidth / 10 <= 120) pixelTextFontSize = window.innerWidth / 10;
 		else pixelTextFontSize = 120
 	}
-
 	return (    
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
 			className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory">
@@ -412,12 +416,12 @@ function Home() {
 					<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
 						<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
 						<div></div> { /* Fill space */ }
-						<a href="/services" className="text-center akashi my-auto text-black font-extrabold mr-5">Services</a>
-						<a href="/clients" className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
-						<a href="/products" className="text-center akashi my-auto text-black font-bold mx-5">Products</a>
-						<a href="/about" className="text-center akashi my-auto text-black font-bold mx-5">About</a>
-						<a href="/blog" className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
-						<a href="/contact" className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }  href="/services" className="text-center akashi my-auto text-black font-extrabold mr-5">Services</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/clients" className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/products" className="text-center akashi my-auto text-black font-bold mx-5">Products</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/about" className="text-center akashi my-auto text-black font-bold mx-5">About</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/blog" className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/contact" className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
 					</nav> 
 				}
 			</section>
@@ -774,13 +778,13 @@ function Home() {
 						<img src={ xWhiteLogo } className="w-8 h-8 ml-2 mr-2"></img>
 						<img src={ instagramWhiteLogo } className="w-8 h-8 ml-2 mr-2"></img>
 					</div> */}
-					<div className={ `${isMobile ? "" : "flex"} text-gray-100 ml-auto mr-auto text-center w-fit` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${isMobile ? "" : "flex"} text-gray-100 ml-auto mr-auto text-center w-fit` }>
 						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" + " text-black" }><a href="https://it.linkedin.com/company/ziken-labs" target="_blank">LinkedIn</a></h4>
 						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" + " text-black" }><a href="https://discord.gg/kYn7jkRemT" target="_blank" className={ isMobile ? "" : "ml-4 mr-4" }>Discord</a></h4>
 						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" + " text-black" }><a href="https://twitter.com/ZikenLabs" target="_blank">Twitter</a></h4>
 						<h4 className={ isMobile ? "mb-6" : "ml-4 mr-4" + " text-black" }><a href="https://www.instagram.com/zikenlabs/" target="_blank">Instagram</a></h4>
 					</div>
-					<div className={ `${isMobile ? "" : "flex" + " mt-6" } text-gray-100 ml-auto mr-auto text-center w-fit` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${isMobile ? "" : "flex" + " mt-6" } text-gray-100 ml-auto mr-auto text-center w-fit` }>
 						<h4 className={ `ml-4 mr-4 ${isMobile ? "mb-2" : ""} text-black` }><a href="/privacy" target="_blank">Privacy</a></h4>
 						<h4 className="ml-4 mr-4 text-black"><a href="/termsofservice" target="_blank">Terms Of Service</a></h4>
 					</div>
@@ -788,7 +792,7 @@ function Home() {
 						{ isMobile ? <></> : <h3 className="text-black akashi ml-5 text-3xl">ZIKEN LABS</h3> }
 						{/* <img src={ whiteLogo } className="w-20 ml-10"></img> */}
 						<h5 className="text-center text-gray-400 mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs</h5>
-						{ isMobile ? <></> : <div className="text-right text-black mt-auto mb-auto mr-10">
+						{ isMobile ? <></> : <div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }className="text-right text-black mt-auto mb-auto mr-10">
 							<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
 							<a href="/products" target="_blank" className="ml-4 mr-4">Products</a>
 							<a href="/blog" target="_blank" className="ml-4 mr-4">Blog</a>
