@@ -1,4 +1,3 @@
-import { useEffect, useState, useRef } from 'react'
 import {
 	createBrowserRouter,
 	RouterProvider,
