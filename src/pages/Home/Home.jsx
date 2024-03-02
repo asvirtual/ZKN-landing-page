@@ -753,7 +753,13 @@ function Home() {
 				</footer>
 				} */}
 				{/* <footer className="bg-black pb-5" id="footer"> */}
-				<footer className="pb-5" style={{ background: "rgba(0, 0, 0, 0.8)" }} id="footer">
+				<footer className="pb-5" id="footer" style={{ 
+					background: "rgba(0, 0, 0, 0.8)",
+					boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+					backdropFilter: "blur(2px)",
+					webkitBackdropFilter: "blur(2px)",
+					border: "1px solid rgba(0, 0, 0, 0.3)"
+				}}>
 					<img src={ whiteLogo } className={ `ml-auto mr-auto ${isMobile ? "w-40" : "w-60"}` }></img>
 					{/* <div className="text-center text-white mt-auto mb-auto mr-10">
 						<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
