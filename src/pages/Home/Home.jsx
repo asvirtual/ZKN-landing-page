@@ -504,7 +504,7 @@ function Home() {
 					</div>
 				</div>
 			</section>
-			<section id="clients" className="px-12 pt-5 overflow-y-scroll overflow-x-hidden">
+			<section id="clients" className="pt-5 overflow-y-scroll overflow-x-hidden">
 				{/* <h2 className={ `mt-2 ${ isMobile ? "text-2xl text-center" : "text-4xl ml-20" } akashi` }>OUR CLIENTS & WORKS</h2>
 				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } 
 					mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }}
@@ -654,7 +654,7 @@ function Home() {
 						</>
 					}					
 				</Swiper> */}
-				<div className="grid grid-cols-2 h-4/5">
+				<div className="grid grid-cols-2 h-4/5 mx-12">
 					<h2 className="text-6xl ml-12 mt-auto mb-12">Our clients</h2>
 					<div className="grid grid-cols-2 grid-rows-3 gap-4 mb-4">
 						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
@@ -694,8 +694,8 @@ function Home() {
 							</div>
 						</motion.div>
 					</div>
-				</div>
-				<div className="grid grid-cols-2 h-4/5">
+				</div> 
+				<div className="grid grid-cols-2 h-4/5  mx-12">
 					<div className="grid grid-cols-2 grid-rows-3 gap-4 mb-4">
 						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 							<div className="m-auto">
