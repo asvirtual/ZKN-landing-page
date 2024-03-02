@@ -753,14 +753,15 @@ function Home() {
 				</footer>
 				} */}
 				{/* <footer className="bg-black pb-5" id="footer"> */}
-				<footer className="pb-5" id="footer" style={{ 
-					background: "rgba(0, 0, 0, 0.8)",
+				<footer className="pb-5 " id="footer" style={{ 
+					background: "rgba(255, 255, 255, 0.8)",
 					boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
 					backdropFilter: "blur(2px)",
 					webkitBackdropFilter: "blur(2px)",
-					border: "1px solid rgba(0, 0, 0, 0.3)"
+					border: "1px solid rgba(0, 0, 0, 0.3)",
+					mixBlendMode: "difference"
 				}}>
-					<img src={ whiteLogo } className={ `ml-auto mr-auto ${isMobile ? "w-40" : "w-60"}` }></img>
+					<img src={ logo } className={ `ml-auto mr-auto ${isMobile ? "w-40" : "w-60"}` }></img>
 					{/* <div className="text-center text-white mt-auto mb-auto mr-10">
 						<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
 						<a href="/products" target="_blank" className="ml-4 mr-4">Products</a>
@@ -774,20 +775,20 @@ function Home() {
 						<img src={ instagramWhiteLogo } className="w-8 h-8 ml-2 mr-2"></img>
 					</div> */}
 					<div className={ `${isMobile ? "" : "flex"} text-gray-100 ml-auto mr-auto text-center w-fit` }>
-						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://it.linkedin.com/company/ziken-labs" target="_blank">LinkedIn</a></h4>
-						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://discord.gg/kYn7jkRemT" target="_blank" className={ isMobile ? "" : "ml-4 mr-4" }>Discord</a></h4>
-						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://twitter.com/ZikenLabs" target="_blank">Twitter</a></h4>
-						<h4 className={ isMobile ? "mb-6" : "ml-4 mr-4" }><a href="https://www.instagram.com/zikenlabs/" target="_blank">Instagram</a></h4>
+						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" + " text-black" }><a href="https://it.linkedin.com/company/ziken-labs" target="_blank">LinkedIn</a></h4>
+						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" + " text-black" }><a href="https://discord.gg/kYn7jkRemT" target="_blank" className={ isMobile ? "" : "ml-4 mr-4" }>Discord</a></h4>
+						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" + " text-black" }><a href="https://twitter.com/ZikenLabs" target="_blank">Twitter</a></h4>
+						<h4 className={ isMobile ? "mb-6" : "ml-4 mr-4" + " text-black" }><a href="https://www.instagram.com/zikenlabs/" target="_blank">Instagram</a></h4>
 					</div>
 					<div className={ `${isMobile ? "" : "flex" + " mt-6" } text-gray-100 ml-auto mr-auto text-center w-fit` }>
-						<h4 className={ `ml-4 mr-4 ${isMobile ? "mb-2" : ""}` }><a href="/privacy" target="_blank">Privacy</a></h4>
-						<h4 className="ml-4 mr-4"><a href="/termsofservice" target="_blank">Terms Of Service</a></h4>
+						<h4 className={ `ml-4 mr-4 ${isMobile ? "mb-2" : ""} text-black` }><a href="/privacy" target="_blank">Privacy</a></h4>
+						<h4 className="ml-4 mr-4 text-black"><a href="/termsofservice" target="_blank">Terms Of Service</a></h4>
 					</div>
 					<div className={ isMobile ? "mt-8" : `grid grid-cols-3 mt-20` }>
-						{ isMobile ? <></> : <h3 className="text-white akashi ml-5 text-3xl">ZIKEN LABS</h3> }
+						{ isMobile ? <></> : <h3 className="text-black akashi ml-5 text-3xl">ZIKEN LABS</h3> }
 						{/* <img src={ whiteLogo } className="w-20 ml-10"></img> */}
 						<h5 className="text-center text-gray-400 mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs</h5>
-						{ isMobile ? <></> : <div className="text-right text-white mt-auto mb-auto mr-10">
+						{ isMobile ? <></> : <div className="text-right text-black mt-auto mb-auto mr-10">
 							<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
 							<a href="/products" target="_blank" className="ml-4 mr-4">Products</a>
 							<a href="/blog" target="_blank" className="ml-4 mr-4">Blog</a>
