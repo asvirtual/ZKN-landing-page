@@ -1,21 +1,14 @@
 import { useEffect, useState, useRef, useContext } from 'react'
+
 import PixelText from '../../components/PixelText/PixelText'
 import About from '../About/About'
 
-import logo from "../../assets/Ziken Labs.png"
-import whiteLogo from "../../assets/whiteLogo.png"
 import * as THREE from "three"
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger" 
-import dot from "../../assets/dot.png"
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
-import { motion, scroll } from 'framer-motion'
-
-import {
-	createBrowserRouter,
-	RouterProvider,
-} from "react-router-dom"
+import { motion } from 'framer-motion'
 
 import { isMobile } from 'react-device-detect';
 
@@ -39,10 +32,8 @@ import linkedinWhiteLogo from "../../assets/linkedInWhiteLogo.svg"
 import worldIcon from "../../assets/world_icon.svg"
 import instagramLogo from "../../assets/instagram_icon.svg"
 import instagramWhiteLogo from "../../assets/instagramWhiteLogo.svg"
-
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Mousewheel } from "swiper/modules"
-import 'swiper/swiper-bundle.css'
+import dot from "../../assets/dot.png"
+import logo from "../../assets/Ziken Labs.png"
 
 import { CursorContext } from "../../App"
 
@@ -285,14 +276,6 @@ function Home() {
 			return
 
 		setCursorColor((scrollProgress > 35 && scrollProgress < 70) ? "bg-white" : "bg-black")
-		
-		// const cursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-		// const rotatedCursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 32 32" fill="none"><path transform="rotate(45, 16, 16)" d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-		// document.body.style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG)}'), auto`;
-		// document.querySelectorAll("a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`);
-		// document.querySelector("#cookies-banner-accept").style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`;
-		// document.querySelector("#footer").style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG.replace("black", "white"))}'), auto`;
-		// document.querySelectorAll("#footer a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG.replace("black", "white"))}'), auto`);
 
 		const logoAnimationId = setInterval(() => {
 			if (scrollProgress <= 35)
@@ -385,22 +368,16 @@ function Home() {
 					textAlign="center"
 					textBaseLine="middle"
 					gradient={ [ [0, '#121517'], [1, '#121517'] ] }
-					gap={ isMobile ? 1 :2 }
+					gap={ isMobile ? 1 : 3 }
 					radius={ 5000 }
 					initialAnimation={ true }
 					hoverAnimation={ true }
 					vibrateParticles={ true }
-					// randomFriction={ 0.5 }
 					randomFriction={ 0.25 }
-					// fixedFriction={ 0.15 }
 					fixedFriction={ 0.05 }
-					// randomEase={ 0.1 }
 					randomEase={ 0.05 }
-					// fixedEase={ 0.1 }
 					fixedEase={ 0.1 }
-					// randomExitAcceleration={ 1 }
 					randomExitAcceleration={ 0.5 }
-					// fixedExitAcceleration={ 0.2 }
 					fixedExitAcceleration={ 0.5 }
 					exitDelay={ animationPeriodMillis / 2 }
 					maxTextWidth={ animationIndex == 0 ? 100 : (isMobile ? 350 : 1000) }
@@ -509,155 +486,6 @@ function Home() {
 				</div>
 			</section>
 			<section id="clients" className="pt-5 overflow-y-scroll overflow-x-hidden">
-				{/* <h2 className={ `mt-2 ${ isMobile ? "text-2xl text-center" : "text-4xl ml-20" } akashi` }>OUR CLIENTS & WORKS</h2>
-				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } 
-					mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }}
-					// mousewheel={{ forceToAxis: true, sensitivity: 1, releaseOnEdges: true, invert: false }}
-					slidesPerView={ isMobile ? 1.1 : 1.25 } className={ isMobile ? "px-10 h-5/6 py-8" : "px-40 pt-5 pb-20 h-4/5" } modules={[ Mousewheel ]} 
-					onReachBeginning={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) }
-					onReachEnd={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) } 
-					onSlideChange={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = false, 500) }>
-					{ isMobile ?
-						<>
-							<SwiperSlide className="bg-transparent rounded-lg transition-all flex flex-col backdrop-filter backdrop-blur-sm" >
-								<div className="rounded-lg relative mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">TrakX</h2>
-									<div style={{ backgroundImage: "url('TrakxClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-								<div className="bg-cover rounded-lg relative mt-8 mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(215, 215, 205, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">PlasBit</h2>
-									<div style={{ backgroundImage: "url('PlasBitClientsImage.png')" }}  className='z-10 bg-cover mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://telegram.me/Plasbit_Community" target="_blank"><img src={ telegramLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/plasbit" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/plasbitsp/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide className="bg-transparent rounded-lg transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<div className="rounded-lg relative mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(252, 115, 3, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">SpazioCrypto</h2>
-									<div style={{ backgroundImage: "url('SpazioCryptoClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://www.spaziocrypto.com/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.instagram.com/spaziocrypto/" target="_blank"><img src={ instagramLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Spaziocrypto" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.gg/BgYQQzst9v" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-								<div className="bg-cover rounded-lg relative mt-8 mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(100, 150, 255, 0.3)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">Evoload</h2>
-									<div style={{ backgroundImage: "url('EvoloadClientsImage.png')" }}  className='z-10 bg-cover mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/evoload" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/Dka6HAZzYH" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide className="bg-transparent rounded-lg transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<div className="rounded-lg relative mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(2, 150, 76, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">Fiverr</h2>
-									<div style={{ backgroundImage: "url('FiverrClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>	
-									</div>
-								</div>
-								<div className="rounded-lg relative mt-8 mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">Tired Club</h2>
-									<div style={{ backgroundImage: "url('TiredClubClientsImage.jpg')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/pCGYfbmHH3" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-						</> :
-						<>
-							<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>Trakx: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>SEO Strategies - Blog Management</h3>
-								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(TrakxClientsImage.png)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide style={{ background: "rgba(235, 235, 235, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>PlasBit: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>SEO Web3 Blog articles</h3>
-								<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(PlasBitClientsImage.png)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://telegram.me/Plasbit_Community" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/plasbit" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/plasbitsp/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide style={{ background: "rgba(252, 115, 3, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>SpazioCrypto: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Blog Management - Community Management - Graphic Design - SEO Strategies</h3>
-								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(SpazioCryptoClientsImage.png)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://www.spaziocrypto.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.instagram.com/spaziocrypto/" target="_blank"><img src={ instagramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Spaziocrypto" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.gg/BgYQQzst9v" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide className="bg-black rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
-								style={{ background: "rgba(100, 150, 255, 0.3)" }} // "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
-							>
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>Evoload: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Blog Management - Community Management - Graphic Design</h3>
-								<div className="flex-1 bg-cover rounded-b-lg relative" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/evoload" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/Dka6HAZzYH" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide style={{ background: "rgba(2, 150, 76, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>Fiverr: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Graphic Desgin - SEO Copywriting - Discord Building</h3>
-								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(FiverrClientsImage.png)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>Tired Club: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Community Management - Marketing Strategies - Graphic Design</h3>
-								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(TiredClubClientsImage.jpg)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/pCGYfbmHH3" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-						</>
-					}					
-				</Swiper> */}
 				<div className="grid grid-cols-2 h-4/5 mx-12">
 					<h2 className="text-6xl ml-12 mt-auto mb-12">Our clients</h2>
 					<div className="grid grid-cols-2 grid-rows-3 gap-4 mb-4">
@@ -801,8 +629,6 @@ function Home() {
 					</div>
 				</footer>
 			</section>
-			{/* <section id="footer" className="pt-5 overflow-y-scroll overflow-x-hidden">
-			</section> */}
 		</div>
 	)
 }

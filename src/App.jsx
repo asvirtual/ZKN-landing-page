@@ -50,6 +50,10 @@ function App() {
 		  element: <Temp />,
 		},
 		{
+		  path: "/clients",
+		  element: <Temp />,
+		},
+		{
 			path: "*",
 			element: <NotFound />
 		}
