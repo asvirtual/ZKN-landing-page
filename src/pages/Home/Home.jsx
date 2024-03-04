@@ -486,105 +486,167 @@ function Home() {
 				</div>
 			</section>
 			<section id="clients" className="pt-5 overflow-y-scroll overflow-x-hidden">
-				<div className="grid grid-cols-2 h-4/5 mx-12">
-					<h2 className="text-6xl ml-12 mt-auto mb-12">Our clients</h2>
-					<div className="grid grid-cols-2 grid-rows-3 gap-4 mb-4">
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
+				{ isMobile ? <>
+					<div className="mb-4">
+						<h2 className="text-4xl text-center mt-4 mb-4">Our clients</h2>
+						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
+						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
+						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
+						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
+						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
+						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+								<h4 className="text-center">First client</h4>
+							</div>
+						</motion.div>
+						<h2 className="text-4xl text-center mt-4 mb-4">Our products</h2>
+						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+								<h4 className="text-center">First client</h4>
+							</div>
+						</motion.div>
+						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+								<h4 className="text-center">First client</h4>
+							</div>
+						</motion.div>
+						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+								<h4 className="text-center">First client</h4>
+							</div>
+						</motion.div>
+						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+								<h4 className="text-center">First client</h4>
+							</div>
+						</motion.div>
+						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+								<h4 className="text-center">First client</h4>
+							</div>
+						</motion.div>
+						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
 					</div>
-				</div> 
-				<div className="grid grid-cols-2 h-4/5  mx-12">
-					<div className="grid grid-cols-2 grid-rows-3 gap-4 mb-4">
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
-								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
-								<h4 className="text-center">First client</h4>
-							</div>
-						</motion.div>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
-								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
-								<h4 className="text-center">First client</h4>
-							</div>
-						</motion.div>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
-								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
-								<h4 className="text-center">First client</h4>
-							</div>
-						</motion.div>
-						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
-								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
-								<h4 className="text-center">First client</h4>
-							</div>
-						</motion.div>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
-								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
-								<h4 className="text-center">First client</h4>
-							</div>
-						</motion.div>
-						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
-							<div className="m-auto">
-								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
-								<h4 className="text-center">First client</h4>
-							</div>
-						</motion.div>
-					</div>
-					<h2 className="text-6xl ml-12 mt-auto mb-12">Our Products</h2>
-				</div>
-				{/* { isMobile ? 
-					<footer style={{ background: "rgba(235, 235, 235, 0.7)" }} className="bg-cover backdrop-filter backdrop-blur-sm px-8 py-4 h-1/5">
-						<div className="flex justify-center mt-4">
-							<a href="https://twitter.com/ZikenLabs" target="_blank"><img src={ xLogo } className="w-8 h-8 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-							<a href="https://discord.gg/kYn7jkRemT" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-							<a href="mailto:info@zikenlabs.com" target="_blank"><img src={ gmailLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+				</> : <>
+					<div className="grid grid-cols-2 h-4/5 mx-12">
+						<h2 className="text-center text-6xl ml-12 mt-auto mb-auto">Our clients</h2>
+						<div className="grid grid-cols-2 grid-rows-3 gap-4 mb-4">
+							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
+							<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
+							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
+							<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
+							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
+							<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
 						</div>
-					</footer> :
-					<footer style={{ background: "rgba(235, 235, 235, 0.7)" }} className="bg-cover backdrop-filter backdrop-blur-sm px-8 py-4 h-1/5">
-					<div className="flex justify-center mt-4">
-						<a href="https://twitter.com/ZikenLabs" target="_blank"><img src={ xLogo } className="w-8 h-8 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-						<a href="https://discord.gg/kYn7jkRemT" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-						<a href="mailto:info@zikenlabs.com" target="_blank"><img src={ gmailLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+					</div> 
+					<div className="grid grid-cols-2 h-4/5  mx-12">
+						<div className="grid grid-cols-2 grid-rows-3 gap-4 mb-4">
+							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
+							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
+							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
+							<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
+							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
+							<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+								<div className="m-auto">
+									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
+									<h4 className="text-center">First client</h4>
+								</div>
+							</motion.div>
+						</div>
+						<h2 className="text-center text-6xl ml-12 mt-auto mb-auto">Our Products</h2>
 					</div>
-				</footer>
-				} */}
-				{/* <footer className="bg-black pb-5" id="footer"> */}
+				</> }
 				<footer className="pb-5 " id="footer" style={{ 
 					background: "rgba(255, 255, 255, 0.8)",
 					boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
@@ -594,39 +656,29 @@ function Home() {
 					mixBlendMode: "difference"
 				}}>
 					<img src={ logo } className={ `ml-auto mr-auto ${isMobile ? "w-40" : "w-60"}` }></img>
-					{/* <div className="text-center text-white mt-auto mb-auto mr-10">
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="text-center text-black mt-auto mb-auto mr-10">
 						<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
 						<a href="/products" target="_blank" className="ml-4 mr-4">Products</a>
 						<a href="/blog" target="_blank" className="ml-4 mr-4">Blog</a>
 						<a href="/about" target="_blank" className="ml-4 mr-4">About</a>
 					</div>
-					<div className="flex justify-center">
-						<img src={ linkedinWhiteLogo } className="w-8 h-8 ml-2 mr-2"></img>
-						<img src={ discordWhiteLogo } className="w-8 h-8 ml-2 mr-2"></img>
-						<img src={ xWhiteLogo } className="w-8 h-8 ml-2 mr-2"></img>
-						<img src={ instagramWhiteLogo } className="w-8 h-8 ml-2 mr-2"></img>
-					</div> */}
-					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${isMobile ? "" : "flex"} text-gray-100 ml-auto mr-auto text-center w-fit` }>
-						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" + " text-black" }><a href="https://it.linkedin.com/company/ziken-labs" target="_blank">LinkedIn</a></h4>
-						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" + " text-black" }><a href="https://discord.gg/kYn7jkRemT" target="_blank" className={ isMobile ? "" : "ml-4 mr-4" }>Discord</a></h4>
-						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" + " text-black" }><a href="https://twitter.com/ZikenLabs" target="_blank">Twitter</a></h4>
-						<h4 className={ isMobile ? "mb-6" : "ml-4 mr-4" + " text-black" }><a href="https://www.instagram.com/zikenlabs/" target="_blank">Instagram</a></h4>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="flex justify-center mt-4">
+						<img src={ linkedinWhiteLogo } className="mix-blend-difference w-8 h-8 ml-2 mr-2"></img>
+						<img src={ discordWhiteLogo } className="mix-blend-difference w-8 h-8 ml-2 mr-2"></img>
+						<img src={ xWhiteLogo } className="mix-blend-difference w-8 h-8 ml-2 mr-2"></img>
+						<img src={ instagramWhiteLogo } className="mix-blend-difference w-8 h-8 ml-2 mr-2"></img>
 					</div>
-					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${isMobile ? "" : "flex" + " mt-6" } text-gray-100 ml-auto mr-auto text-center w-fit` }>
-						<h4 className={ `ml-4 mr-4 ${isMobile ? "mb-2" : ""} text-black` }><a href="/privacy" target="_blank">Privacy</a></h4>
-						<h4 className="ml-4 mr-4 text-black"><a href="/termsofservice" target="_blank">Terms Of Service</a></h4>
-					</div>
-					<div className={ isMobile ? "mt-8" : `grid grid-cols-3 mt-20` }>
-						{ isMobile ? <></> : <h3 className="text-black akashi ml-5 text-3xl">ZIKEN LABS</h3> }
-						{/* <img src={ whiteLogo } className="w-20 ml-10"></img> */}
-						<h5 className="text-center text-gray-400 mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs</h5>
-						{ isMobile ? <></> : <div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }className="text-right text-black mt-auto mb-auto mr-10">
-							<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
-							<a href="/products" target="_blank" className="ml-4 mr-4">Products</a>
-							<a href="/blog" target="_blank" className="ml-4 mr-4">Blog</a>
-							<a href="/about" target="_blank" className="ml-4 mr-4">About</a>
-						</div> }
-					</div>
+					{ isMobile ? <div className="mt-4">
+						<h5 className="text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls <br /> Via della Badia di Cava 82, 00142, Rome, Italy <br /> VAT: IT 17351991009</h5>
+					</div> :
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ isMobile ? "mt-8" : `flex mt-20` }>
+						<h3 className="text-black akashi ml-5 text-3xl">ZIKEN LABS</h3>
+						<h5 className="flex-1 text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls - Via della Badia di Cava 82, 00142, Rome, Italy - VAT: IT 17351991009</h5>
+						<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="text-right text-black mt-auto mb-auto mr-5">
+							<a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a>
+							<a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms of Service</a>
+						</div>
+					</div> }
 				</footer>
 			</section>
 		</div>
