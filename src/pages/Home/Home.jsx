@@ -628,7 +628,7 @@ function Home() {
 					mixBlendMode: "difference"
 				}}>
 					<img src={ logo } className={ `ml-auto mr-auto ${isMobile ? "w-40" : "w-60"}` }></img>
-					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="text-center text-black mt-auto mb-auto mr-10">
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="ml-auto mr-auto text-center text-black mt-auto mb-auto">
 						<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
 						<a href="/products" target="_blank" className="ml-4 mr-4">Products</a>
 						<a href="/blog" target="_blank" className="ml-4 mr-4">Blog</a>
@@ -642,6 +642,10 @@ function Home() {
 					</div>
 					{ isMobile ? <div className="mt-4">
 						<h5 className="text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls <br /> Via della Badia di Cava 82, 00142, Rome, Italy <br /> VAT: IT 17351991009</h5>
+						<div className="text-center text-black mt-6">
+							<a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a>
+							<a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms of Service</a>
+						</div>
 					</div> :
 					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ isMobile ? "mt-8" : `flex mt-20` }>
 						<h3 className="text-black akashi ml-5 text-3xl">ZIKEN LABS</h3>
