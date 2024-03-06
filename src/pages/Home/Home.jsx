@@ -288,35 +288,6 @@ function Home() {
 
 	}, [scrollProgress])
 
-	useEffect(() => {
-		switch (window.location.pathname) {
-			case "/services": 
-				document.title = "Services | Ziken Labs"
-				document.getElementsByTagName("META")[2].content = "Discover all the services offered by Ziken Labs. Starting with your vision, we can turn your idea into reality with our experience."
-				break;
-			case "/clients": 
-				document.title = "Clients | Ziken Labs"
-				document.getElementsByTagName("META")[2].content = "Browse the projects to which Ziken Labs has already contributed. You will find detailed reports on how we can help you grow your project."
-				break;
-			case "/products": 
-				document.title = "Products | Ziken Labs"
-				document.getElementsByTagName("META")[2].content = "Discover all the products that Ziken Labs has built. Discord bots, customized GPTs, and graphic templates are just some of the products offered!"
-				break;
-			case "/about": 
-				document.title = "About | Ziken Labs"
-				document.getElementsByTagName("META")[2].content = "Find out who the team behind Ziken Labs is. You will understand how much perseverance and effort it takes to succeed in the competitive digital world."
-				break;
-			case "/blog": 
-				document.title = "Blog | Ziken Labs"
-				document.getElementsByTagName("META")[2].content = "Read all the latest publications on the Ziken Labs Blog. You will find interesting articles, insights, research, interviews and analysis."
-				break;
-			case "/contact": 
-				document.title = "Contact | Ziken Labs"
-				document.getElementsByTagName("META")[2].content = "Need a hand to grow your project? You are in the right section. Get in touch with Ziken Labs for collaborations or requests for quotes!"
-				break;
-		}
-	}, []);
-
 	if (window.location.href.includes("/about"))
 		return <About />;
 
@@ -346,6 +317,7 @@ function Home() {
 		if (window.innerWidth / 10 <= 120) pixelTextFontSize = window.innerWidth / 10;
 		else pixelTextFontSize = 120
 	}
+	
 	return (    
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
 			className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory">
@@ -662,11 +634,11 @@ function Home() {
 						<a href="/blog" target="_blank" className="ml-4 mr-4">Blog</a>
 						<a href="/about" target="_blank" className="ml-4 mr-4">About</a>
 					</div>
-					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="flex justify-center mt-4">
-						<img src={ linkedinWhiteLogo } className="mix-blend-difference w-8 h-8 ml-2 mr-2"></img>
-						<img src={ discordWhiteLogo } className="mix-blend-difference w-8 h-8 ml-2 mr-2"></img>
-						<img src={ xWhiteLogo } className="mix-blend-difference w-8 h-8 ml-2 mr-2"></img>
-						<img src={ instagramWhiteLogo } className="mix-blend-difference w-8 h-8 ml-2 mr-2"></img>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="flex justify-center mt-6">
+						<img src={ linkedinWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
+						<img src={ discordWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
+						<img src={ xWhiteLogo } className="mix-blend-difference w-8 h-8 ml-2 mr-2 mt-1"></img>
+						<img src={ instagramWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
 					</div>
 					{ isMobile ? <div className="mt-4">
 						<h5 className="text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls <br /> Via della Badia di Cava 82, 00142, Rome, Italy <br /> VAT: IT 17351991009</h5>
