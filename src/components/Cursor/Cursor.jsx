@@ -34,18 +34,17 @@ export default function Cursor(props) {
 
 	return <motion.div 
 		id="cursor" 
-		className={ `overflow-y-auto z-10 h-6 w-6 rounded-full fixed top-0 left-0 mix-blend-difference ${props.cursorColor}` }
+		className={ `overflow-y-auto z-10 h-6 w-6 rounded-full fixed top-0 left-0 ${props.cursorColor}` }
 		variants={ cursorVariants } 
 		animate={ props.cursorVariant } 
 		transition={{ duration: 0.1, stiffness: 600, damping: 25 }}  
 		style={{ 
 			backgroundBlendMode: "difference",
-			background: "rgba(255, 255, 255, 1)",
 			boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
 			backdropFilter: "blur(2px)",
 			webkitBackdropFilter: "blur(2px)",
 			border: "1px solid rgba(0, 0, 0, 0.3)",
-			mixBlendMode: "difference !important"
+			// mixBlendMode: "difference !important"
 		}}
 	></motion.div>
 }

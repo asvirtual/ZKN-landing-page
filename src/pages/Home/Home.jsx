@@ -377,7 +377,7 @@ function Home() {
 			<section id="services" className={ `text-white overflow-y-scroll overflow-x-hidden ${ isMobile ? "px-4" : "px-20" }` }>
 				<h2 className={ `mt-6 mb-6 ${ isMobile ? "text-4xl text-center" : "text-5xl" } akashi` }>OUR SERVICES</h2>
 				<div className={ `grid gap-4 ${ isMobile ? "" : "grid-cols-2 h-5/6" }` } style={{ gridTemplateRows: isMobile ? "" : "33% 33% 33%" }}>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Project Management</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[0] } className={ `w-52 h-52 mx-auto my-4` } animationData={ projectManagementAnimation } autoplay={ false } />
@@ -390,7 +390,7 @@ function Home() {
 							</div>
 						</> }
 					</div>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Graphic Design</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[1] } className={ `w-52 h-52 mx-auto my-4` } animationData={ graphicDesignAnimation  } loop={ true } autoplay={ false } />
@@ -403,7 +403,7 @@ function Home() {
 							</div>
 						</> }
 					</div>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Copywriting</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[2] } className={ `w-52 h-52 mx-auto my-4` } animationData={ copywritingAnimation } loop={ true } autoplay={ false } />
@@ -416,7 +416,7 @@ function Home() {
 							</div>
 						</> }
 					</div>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Marketing</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[3] } className={ `w-52 h-52 mx-auto my-4` } animationData={ marketingAnimation } loop={ true } autoplay={ false } />
@@ -429,7 +429,7 @@ function Home() {
 							</div>
 						</> }
 					</div>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Web Design</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[4] } className={ `w-52 h-52 mx-auto my-4` } animationData={ webDesignAnimation } loop={ true } autoplay={ false } />
@@ -442,7 +442,7 @@ function Home() {
 							</div>
 						</> }
 					</div>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Business consulting</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[5] } className={ `w-52 h-52 mx-auto my-4` } animationData={ businessConsultingAnimation } loop={ true } autoplay={ false } />
@@ -461,74 +461,74 @@ function Home() {
 				{ isMobile ? <>
 					<div className="mb-4">
 						<h2 className="text-4xl text-center mt-4 mb-4">Our clients</h2>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
 						<h2 className="text-4xl text-center mt-4 mb-4">Our products</h2>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
 							</div>
 						</motion.div>
-						<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 								<h4 className="text-center">First client</h4>
@@ -539,37 +539,37 @@ function Home() {
 					<div className="grid grid-cols-2 h-4/5 mx-12">
 						<h2 className="text-center text-6xl ml-12 mt-auto mb-auto">Our clients</h2>
 						<div className="grid grid-cols-2 grid-rows-3 gap-4 mb-4">
-							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
 								</div>
 							</motion.div>
-							<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
 								</div>
 							</motion.div>
-							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
 								</div>
 							</motion.div>
-							<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
 								</div>
 							</motion.div>
-							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
 								</div>
 							</motion.div>
-							<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
@@ -579,37 +579,37 @@ function Home() {
 					</div> 
 					<div className="grid grid-cols-2 h-4/5  mx-12">
 						<div className="grid grid-cols-2 grid-rows-3 gap-4 mb-4">
-							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
 								</div>
 							</motion.div>
-							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
 								</div>
 							</motion.div>
-							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
 								</div>
 							</motion.div>
-							<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
 								</div>
 							</motion.div>
-							<motion.div initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
 								</div>
 							</motion.div>
-							<motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg">
 								<div className="m-auto">
 									<img src={ instagramWhiteLogo } className="w-12 m-auto"></img>
 									<h4 className="text-center">First client</h4>
