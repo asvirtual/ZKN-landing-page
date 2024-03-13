@@ -369,10 +369,10 @@ function Home() {
 			<section className="relative">
 				{ isMobile ? 
 					<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
-						<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
+						<img src={ logo } className="my-auto block h-20 w-20" alt="logo"></img>
 					</nav> :
 					<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
-						<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
+						<img src={ logo } className="my-auto block h-20 w-20" alt="logo"></img>
 						<div></div> { /* Fill space */ }
 						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }  href="/services" className="text-center akashi my-auto text font-extrabold mr-5">Services</a>
 						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/clients" className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
