@@ -513,12 +513,6 @@ function Home() {
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
-						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
-							<div className="mx-auto">
-								<img src={ nextIdeaLogo } className="w-12 m-auto"></img>
-								{/* <h4 className="text-center">First client</h4> */}
-							</div>
-						</motion.div>
 						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ votexLogo } className="w-12 m-auto"></img>
