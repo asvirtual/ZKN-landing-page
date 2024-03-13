@@ -635,7 +635,7 @@ function Home() {
 					webkitBackdropFilter: "blur(2px)",
 					border: "1px solid rgba(0, 0, 0, 0.3)",
 					mixBlendMode: "difference",
-					background: "linear-gradient(to top, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0.8) 70%", 
+					background: "linear-gradient(to top, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0.8)", 
 				}} onMouseEnter={ () => setCursorColor("bg-white") } onMouseLeave={ () => setCursorColor("bg-black") }>
 					<img src={ logo } className={ `ml-auto mr-auto ${isMobile ? "w-40" : "w-60"}` }></img>
 					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="ml-auto mr-auto text-center text-black mt-auto mb-auto">
