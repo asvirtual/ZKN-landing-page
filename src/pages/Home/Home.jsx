@@ -572,7 +572,7 @@ function Home() {
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
-							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
 									<img src={ plasbitLogo } className="w-12 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
@@ -584,13 +584,13 @@ function Home() {
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
-							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
 									<img src={ trakXLogo } className="w-12 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
-							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
 									<img src={ nextIdeaLogo } className="w-12 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
@@ -606,7 +606,7 @@ function Home() {
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
-							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
 									<img src={ trackerXLogo } className="w-12 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
