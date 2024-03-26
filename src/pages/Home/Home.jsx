@@ -1,21 +1,14 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
+
 import PixelText from '../../components/PixelText/PixelText'
 import About from '../About/About'
 
-import logo from "../../assets/Ziken Labs.png"
-import whiteLogo from "../../assets/whiteLogo.png"
 import * as THREE from "three"
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger" 
-import dot from "../../assets/dot.png"
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
-import { motion, scroll } from 'framer-motion'
-
-import {
-	createBrowserRouter,
-	RouterProvider,
-} from "react-router-dom"
+import { motion } from 'framer-motion'
 
 import { isMobile } from 'react-device-detect';
 
@@ -29,16 +22,29 @@ import businessConsultingAnimation from "../../assets/business_consulting.json"
 import workInProgressAnimaation from "../../assets/work_in_progress.json"
 
 import xLogo from "../../assets/xLogo.png"
+import xWhiteLogo from "../../assets/xLogoWhite.svg"
 import discordLogo from "../../assets/discordLogo.svg"
+import discordWhiteLogo from "../../assets/discordWhiteLogo.svg"
 import gmailLogo from "../../assets/gmailLogo.svg"
-import telegramLogo from "../../assets/telegram_logo.svg"
-import linkedinLogo from "../../assets/linkedin_logo.svg"
-import worldIcon from "../../assets/world_icon.svg"
-import instagramLogo from "../../assets/instagram_icon.svg"
+import linkedinWhiteLogo from "../../assets/linkedInWhiteLogo.svg"
+import instagramWhiteLogo from "../../assets/instagramWhiteLogo.svg"
+import dot from "../../assets/dot.png"
+import logo from "../../assets/Ziken Labs.png"
 
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Mousewheel } from "swiper/modules"
-import 'swiper/swiper-bundle.css'
+import bestTripTipsLogo from "../../assets/BesTripTips.svg"
+import evoloadLogo from "../../assets/Evoload.svg"
+import fiverrLogo from "../../assets/Fiverr.svg"
+import newsFromTechLogo from "../../assets/NewsFromTech.svg"
+import nextIdeaLogo from "../../assets/Next idea.svg"
+import nextToolLogo from "../../assets/Next Tool.svg"
+import plasbitLogo from "../../assets/Plasbit.svg"
+import spazioCryptoLogo from "../../assets/Spaziocrypto.svg"
+import trackerXLogo from "../../assets/TrackerX.svg"
+import trakXLogo from "../../assets/Trakx.svg"
+import votexLogo from "../../assets/Votex.svg"
+import crpytoStocksLogo from "../../assets/Crypto&Stocks.svg"
+
+import { CursorContext } from "../../App"
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -70,6 +76,7 @@ function Home() {
 		useRef()
 	]
 
+	const { cursorEnter, cursorLeave, setCursorColor } = useContext(CursorContext)
 
 	useEffect(() => {
 		if (window.location.pathname != "" && window.location.pathname != "/")
@@ -276,14 +283,8 @@ function Home() {
 	useEffect(() => {
 		if (window.location.pathname != "" && window.location.pathname != "/")
 			return
-		
-		const cursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-		const rotatedCursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 32 32" fill="none"><path transform="rotate(45, 16, 16)" d="M19 5L5 19M5 5L9.5 9.5M12 12L19 19" stroke="${(scrollProgress > 35 && scrollProgress < 70) ? "white" : "black"}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-		document.body.style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG)}'), auto`;
-		document.querySelectorAll("a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`);
-		document.querySelector("#cookies-banner-accept").style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG)}'), auto`;
-		document.querySelector("#footer").style.cursor = `url('data:image/svg+xml;base64,${btoa(rotatedCursorSVG.replace("black", "white"))}'), auto`;
-		document.querySelectorAll("#footer a").forEach(a => a.style.cursor = `url('data:image/svg+xml;base64,${btoa(cursorSVG.replace("black", "white"))}'), auto`);
+
+		setCursorColor((scrollProgress > 35 && scrollProgress < 70) ? "bg-white" : "bg-black")
 
 		const logoAnimationId = setInterval(() => {
 			if (scrollProgress <= 35)
@@ -295,6 +296,9 @@ function Home() {
 		}
 
 	}, [scrollProgress])
+
+	if (window.location.href.includes("/about"))
+		return <About />;
 
 	const logoScale = 
 		scrollProgress <= 35 ? 1 :
@@ -322,7 +326,7 @@ function Home() {
 		if (window.innerWidth / 10 <= 120) pixelTextFontSize = window.innerWidth / 10;
 		else pixelTextFontSize = 120
 	}
-
+	
 	return (    
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
 			className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory">
@@ -345,22 +349,16 @@ function Home() {
 					textAlign="center"
 					textBaseLine="middle"
 					gradient={ [ [0, '#121517'], [1, '#121517'] ] }
-					gap={ isMobile ? 1 :2 }
+					gap={ isMobile ? 1 : 2 }
 					radius={ 5000 }
 					initialAnimation={ true }
 					hoverAnimation={ true }
 					vibrateParticles={ true }
-					// randomFriction={ 0.5 }
 					randomFriction={ 0.25 }
-					// fixedFriction={ 0.15 }
 					fixedFriction={ 0.05 }
-					// randomEase={ 0.1 }
 					randomEase={ 0.05 }
-					// fixedEase={ 0.1 }
 					fixedEase={ 0.1 }
-					// randomExitAcceleration={ 1 }
 					randomExitAcceleration={ 0.5 }
-					// fixedExitAcceleration={ 0.2 }
 					fixedExitAcceleration={ 0.5 }
 					exitDelay={ animationPeriodMillis / 2 }
 					maxTextWidth={ animationIndex == 0 ? 100 : (isMobile ? 350 : 1000) }
@@ -371,24 +369,24 @@ function Home() {
 			<section className="relative">
 				{ isMobile ? 
 					<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
-						<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
+						<img src={ logo } className="my-auto block h-20 w-20" alt="logo"></img>
 					</nav> :
 					<nav id="top-nav" className="w-full h-20 px-4 grid absolute z-30" style={{ transition: "top .25s ease" }}>
-						<img src={ logo } className="my-auto block h-20 w-20 min-w-min" alt="logo"></img>
+						<img src={ logo } className="my-auto block h-20 w-20" alt="logo"></img>
 						<div></div> { /* Fill space */ }
-						<a href="/services" className="text-center akashi my-auto text-black font-extrabold mr-5">Services</a>
-						<a href="/clients" className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
-						<a href="/products" className="text-center akashi my-auto text-black font-bold mx-5">Products</a>
-						<a href="/about" className="text-center akashi my-auto text-black font-bold mx-5">About</a>
-						<a href="/blog" className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
-						<a href="/contact" className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }  href="/services" className="text-center akashi my-auto text font-extrabold mr-5">Services</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/clients" className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/products" className="text-center akashi my-auto text-black font-bold mx-5">Products</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/about" className="text-center akashi my-auto text-black font-bold mx-5">About</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/blog" className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/contact" className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
 					</nav> 
 				}
 			</section>
 			<section id="services" className={ `text-white overflow-y-scroll overflow-x-hidden ${ isMobile ? "px-4" : "px-20" }` }>
 				<h2 className={ `mt-6 mb-6 ${ isMobile ? "text-4xl text-center" : "text-5xl" } akashi` }>OUR SERVICES</h2>
 				<div className={ `grid gap-4 ${ isMobile ? "" : "grid-cols-2 h-5/6" }` } style={{ gridTemplateRows: isMobile ? "" : "33% 33% 33%" }}>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Project Management</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[0] } className={ `w-52 h-52 mx-auto my-4` } animationData={ projectManagementAnimation } autoplay={ false } />
@@ -401,7 +399,7 @@ function Home() {
 							</div>
 						</> }
 					</div>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Graphic Design</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[1] } className={ `w-52 h-52 mx-auto my-4` } animationData={ graphicDesignAnimation  } loop={ true } autoplay={ false } />
@@ -414,7 +412,7 @@ function Home() {
 							</div>
 						</> }
 					</div>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Copywriting</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[2] } className={ `w-52 h-52 mx-auto my-4` } animationData={ copywritingAnimation } loop={ true } autoplay={ false } />
@@ -427,7 +425,7 @@ function Home() {
 							</div>
 						</> }
 					</div>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Marketing</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[3] } className={ `w-52 h-52 mx-auto my-4` } animationData={ marketingAnimation } loop={ true } autoplay={ false } />
@@ -440,7 +438,7 @@ function Home() {
 							</div>
 						</> }
 					</div>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Web Design</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[4] } className={ `w-52 h-52 mx-auto my-4` } animationData={ webDesignAnimation } loop={ true } autoplay={ false } />
@@ -453,7 +451,7 @@ function Home() {
 							</div>
 						</> }
 					</div>
-					<div className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ `${ isMobile ? "bg-opacity-60" : "flex bg-opacity-20" } bg-neutral-700 border-neutral-700 border-2 rounded-lg p-4 hover:bg-opacity-100 transition-colors duration-500` }>
 						{ isMobile ? <>
 							<h4 className={ `my-auto text-center text-2xl` }>Business consulting</h4>
 							<Lottie lottieRef={ lottieAnimationsRefs[5] } className={ `w-52 h-52 mx-auto my-4` } animationData={ businessConsultingAnimation } loop={ true } autoplay={ false } />
@@ -469,199 +467,200 @@ function Home() {
 				</div>
 			</section>
 			<section id="clients" className="pt-5 overflow-y-scroll overflow-x-hidden">
-				<h2 className={ `mt-2 ${ isMobile ? "text-2xl text-center" : "text-4xl ml-20" } akashi` }>OUR CLIENTS & WORKS</h2>
-				<Swiper spaceBetween={ 40 } direction="horizontal" loop={ false } centeredSlides={ false } 
-					mousewheel={{ forceToAxis: false, sensitivity: 1, releaseOnEdges: true, invert: false }}
-					// mousewheel={{ forceToAxis: true, sensitivity: 1, releaseOnEdges: true, invert: false }}
-					slidesPerView={ isMobile ? 1.1 : 1.25 } className={ isMobile ? "px-10 h-5/6 py-8" : "px-40 pt-5 pb-20 h-4/5" } modules={[ Mousewheel ]} 
-					onReachBeginning={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) }
-					onReachEnd={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = true, 750) } 
-					onSlideChange={ (swiper) => setTimeout(() => swiper.params.mousewheel.releaseOnEdges = false, 500) }>
-					{ isMobile ?
-						<>
-							<SwiperSlide className="bg-transparent rounded-lg transition-all flex flex-col backdrop-filter backdrop-blur-sm" >
-								<div className="rounded-lg relative mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">TrakX</h2>
-									<div style={{ backgroundImage: "url('TrakxClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
+				{ isMobile ? <>
+					<div className="mb-4">
+						<h2 className="text-4xl text-center mt-4 mb-4">Our clients</h2>
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ evoloadLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center">First client</h4> */}
+							</div>
+						</motion.div>
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ fiverrLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center">First client</h4> */}
+							</div>
+						</motion.div>
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ plasbitLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center">First client</h4> */}
+							</div>
+						</motion.div>
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ spazioCryptoLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center">First client</h4> */}
+							</div>
+						</motion.div>
+						<h2 className="text-4xl text-center mt-4 mb-4">Our products</h2>
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ trakXLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center">First client</h4> */}
+							</div>
+						</motion.div>
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ votexLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center">First client</h4> */}
+							</div>
+						</motion.div>
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ trackerXLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center">First client</h4> */}
+							</div>
+						</motion.div>
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ crpytoStocksLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center">First client</h4> */}
+							</div>
+						</motion.div>
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ bestTripTipsLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center">First client</h4> */}
+							</div>
+						</motion.div>
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ newsFromTechLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center">First client</h4> */}
+							</div>
+						</motion.div>
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+							<div className="mx-auto">
+								<img src={ nextToolLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center">First client</h4> */}
+							</div>
+						</motion.div>
+					</div>
+				</> : <>
+					<div className="grid grid-cols-2 h-4/5 mx-12">
+						<h2 className="text-center text-6xl ml-12 mt-auto mb-auto">Our clients</h2>
+						<div className="grid grid-cols-2 grid-rows-auto gap-4 mb-4">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div onClick={ () => window.open("https://evoload.co/") } className="m-auto">
+									<img src={ evoloadLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">First client</h4> */}
 								</div>
-								<div className="bg-cover rounded-lg relative mt-8 mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(215, 215, 205, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">PlasBit</h2>
-									<div style={{ backgroundImage: "url('PlasBitClientsImage.png')" }}  className='z-10 bg-cover mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://telegram.me/Plasbit_Community" target="_blank"><img src={ telegramLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/plasbit" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/plasbitsp/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
+							</motion.div>
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div className="m-auto">
+									<img src={ fiverrLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">First client</h4> */}
 								</div>
-							</SwiperSlide>
-							<SwiperSlide className="bg-transparent rounded-lg transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<div className="rounded-lg relative mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(252, 115, 3, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">SpazioCrypto</h2>
-									<div style={{ backgroundImage: "url('SpazioCryptoClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://www.spaziocrypto.com/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.instagram.com/spaziocrypto/" target="_blank"><img src={ instagramLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Spaziocrypto" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.gg/BgYQQzst9v" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
+							</motion.div>
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div className="m-auto">
+									<img src={ plasbitLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">First client</h4> */}
 								</div>
-								<div className="bg-cover rounded-lg relative mt-8 mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(100, 150, 255, 0.3)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">Evoload</h2>
-									<div style={{ backgroundImage: "url('EvoloadClientsImage.png')" }}  className='z-10 bg-cover mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/evoload" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/Dka6HAZzYH" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
+							</motion.div>
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div className="m-auto">
+									<img src={ spazioCryptoLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">First client</h4> */}
 								</div>
-							</SwiperSlide>
-							<SwiperSlide className="bg-transparent rounded-lg transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<div className="rounded-lg relative mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(2, 150, 76, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">Fiverr</h2>
-									<div style={{ backgroundImage: "url('FiverrClientsImage.png')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>	
-									</div>
+							</motion.div>
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div className="m-auto">
+									<img src={ trakXLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">First client</h4> */}
 								</div>
-								<div className="rounded-lg relative mt-8 mb-2 flex flex-col h-full hover:scale-105" style={{ background: "rgba(0, 0, 0, 0.5)" }}>
-									<h2 className="text-black my-1 text-base akashi text-center">Tired Club</h2>
-									<div style={{ backgroundImage: "url('TiredClubClientsImage.jpg')" }}  className='z-10 bg-cover bg-center mb-2 rounded-t-lg pt-2 text-white text-xl akashi text-center flex-1 h-4/5'></div>
-									<div className="flex justify-center mx-auto mb-3">
-										<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-4 h-4 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-4 h-4 ml-2 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/pCGYfbmHH3" target="_blank"><img src={ discordLogo } className="w-4 h-4 ml-2 hover:scale-110 transition-all"></img></a>
-									</div>
+							</motion.div>
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div className="m-auto">
+									<img src={ nextIdeaLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">First client</h4> */}
 								</div>
-							</SwiperSlide>
-						</> :
-						<>
-							<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>Trakx: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>SEO Strategies - Blog Management</h3>
-								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(TrakxClientsImage.png)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://trakx.io/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/official_trakx" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/trakx-io/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide style={{ background: "rgba(235, 235, 235, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>PlasBit: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>SEO Web3 Blog articles</h3>
-								<div className="flex-1 bg-cover rounded-b-lg" style={{ backgroundImage: "url(PlasBitClientsImage.png)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://plasbit.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://telegram.me/Plasbit_Community" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/plasbit" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/plasbitsp/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide style={{ background: "rgba(252, 115, 3, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>SpazioCrypto: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Blog Management - Community Management - Graphic Design - SEO Strategies</h3>
-								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(SpazioCryptoClientsImage.png)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://www.spaziocrypto.com/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.instagram.com/spaziocrypto/" target="_blank"><img src={ instagramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Spaziocrypto" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.gg/BgYQQzst9v" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/spaziocrypto/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide className="bg-black rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm" 
-								style={{ background: "rgba(100, 150, 255, 0.3)" }} // "linear-gradient(to left bottom, rgba(60, 138, 255, 0.1), rgba(100, 150, 255, 1))" }}
-							>
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>Evoload: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Blog Management - Community Management - Graphic Design</h3>
-								<div className="flex-1 bg-cover rounded-b-lg relative" style={{ backgroundImage: "url(EvoloadClientsImage.png)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://evoload.co/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://t.me/evoloadofficialEN" target="_blank"><img src={ telegramLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/evoload" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/Dka6HAZzYH" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-										<a href="https://www.linkedin.com/company/evoload/" target="_blank"><img src={ linkedinLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide style={{ background: "rgba(2, 150, 76, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>Fiverr: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Graphic Desgin - SEO Copywriting - Discord Building</h3>
-								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(FiverrClientsImage.png)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://www.fiverr.com/pp_studios" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide style={{ background: "rgba(0, 0, 0, 0.3)" }} className="bg-cover rounded-lg hover:scale-105 transition-all flex flex-col backdrop-filter backdrop-blur-sm">	
-								<h2 className='text-black mt-4 mx-4 text-xl akashi text-center'>Tired Club: (October 2022 - Now)</h2>
-								<h3 className='text-black my-4 mx-4 akashi text-center text-sm'>Social Media Management - Community Management - Marketing Strategies - Graphic Design</h3>
-								<div className="flex-1 bg-center bg-cover rounded-b-lg" style={{ backgroundImage: "url(TiredClubClientsImage.jpg)" }}>
-									<div className="flex justify-center absolute bottom-4 left-1/2 -translate-x-1/2">
-										<a href="https://tiredclub.art/" target="_blank"><img src={ worldIcon } className="w-8 h-8 bg-black rounded-full p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://twitter.com/Tired__Club" target="_blank"><img src={ xLogo } className="w-8 h-8 ml-4 rounded-full bg-black p-1 hover:scale-110 transition-all"></img></a>
-										<a href="https://discord.com/invite/pCGYfbmHH3" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-									</div>
-								</div>
-							</SwiperSlide>
-						</>
-					}					
-				</Swiper>
-				{/* { isMobile ? 
-					<footer style={{ background: "rgba(235, 235, 235, 0.7)" }} className="bg-cover backdrop-filter backdrop-blur-sm px-8 py-4 h-1/5">
-						<div className="flex justify-center mt-4">
-							<a href="https://twitter.com/ZikenLabs" target="_blank"><img src={ xLogo } className="w-8 h-8 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-							<a href="https://discord.gg/kYn7jkRemT" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-							<a href="mailto:info@zikenlabs.com" target="_blank"><img src={ gmailLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+							</motion.div>
 						</div>
-					</footer> :
-					<footer style={{ background: "rgba(235, 235, 235, 0.7)" }} className="bg-cover backdrop-filter backdrop-blur-sm px-8 py-4 h-1/5">
-					<div className="flex justify-center mt-4">
-						<a href="https://twitter.com/ZikenLabs" target="_blank"><img src={ xLogo } className="w-8 h-8 rounded-full bg-black p-2 hover:scale-110 transition-all"></img></a>
-						<a href="https://discord.gg/kYn7jkRemT" target="_blank"><img src={ discordLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
-						<a href="mailto:info@zikenlabs.com" target="_blank"><img src={ gmailLogo } className="w-8 h-8 ml-4 hover:scale-110 transition-all"></img></a>
+					</div> 
+					<div className="grid grid-cols-2 h-4/5 mx-12">
+						<div className="grid grid-cols-2 grid-rows-auto gap-4 mb-4">
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div className="m-auto">
+									<img src={ bestTripTipsLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">BesTripTips</h4> */}
+								</div>
+							</motion.div>
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div className="m-auto">
+									<img src={ newsFromTechLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">First client</h4> */}
+								</div>
+							</motion.div>
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div className="m-auto">
+									<img src={ votexLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">First client</h4> */}
+								</div>
+							</motion.div>
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div className="m-auto">
+									<img src={ trackerXLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">First client</h4> */}
+								</div>
+							</motion.div>
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div className="m-auto">
+									<img src={ crpytoStocksLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">First client</h4> */}
+								</div>
+							</motion.div>
+							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
+								<div className="m-auto">
+									<img src={ nextToolLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">First client</h4> */}
+								</div>
+							</motion.div>
+						</div>
+						<h2 className="text-center text-6xl ml-12 mt-auto mb-auto">Our Products</h2>
 					</div>
-				</footer>
-				} */}
-				{/* <footer className="bg-black pb-5" id="footer"> */}
-				<footer className="pb-5" style={{ background: "rgba(0, 0, 0, 0.7)" }} id="footer">
-					<img src={ whiteLogo } className={ `ml-auto mr-auto ${isMobile ? "w-40" : "w-60"}` }></img>
-					<div className={ `${isMobile ? "" : "flex"} text-gray-100 ml-auto mr-auto text-center w-fit` }>
-						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://it.linkedin.com/company/ziken-labs" target="_blank">LinkedIn</a></h4>
-						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://discord.gg/kYn7jkRemT" target="_blank" className={ isMobile ? "" : "ml-4 mr-4" }>Discord</a></h4>
-						<h4 className={ isMobile ? "mb-2" : "ml-4 mr-4" }><a href="https://twitter.com/ZikenLabs" target="_blank">Twitter</a></h4>
-						<h4 className={ isMobile ? "mb-6" : "ml-4 mr-4" }><a href="https://www.instagram.com/zikenlabs/" target="_blank">Instagram</a></h4>
+				</> }
+				<footer className="pb-5" id="footer" style={{ 
+					// background: "rgba(255, 255, 255, 0.8)",
+					boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+					backdropFilter: "blur(2px)",
+					webkitBackdropFilter: "blur(2px)",
+					border: "1px solid rgba(0, 0, 0, 0.3)",
+					mixBlendMode: "difference",
+					background: "linear-gradient(to top, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0.8)", 
+				}} onMouseEnter={ () => setCursorColor("bg-white") } onMouseLeave={ () => setCursorColor("bg-black") }>
+					<img src={ logo } className={ `ml-auto mr-auto ${isMobile ? "w-40" : "w-60"}` }></img>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="ml-auto mr-auto text-center text-black mt-auto mb-auto">
+						<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
+						<a href="/products" target="_blank" className="ml-4 mr-4">Products</a>
+						<a href="/blog" target="_blank" className="ml-4 mr-4">Blog</a>
+						<a href="/about" target="_blank" className="ml-4 mr-4">About</a>
 					</div>
-					<div className={ `${isMobile ? "" : "flex" + " mt-6" } text-gray-100 ml-auto mr-auto text-center w-fit` }>
-						<h4 className={ `ml-4 mr-4 ${isMobile ? "mb-2" : ""}` }><a href="/privacy" target="_blank">Privacy</a></h4>
-						<h4 className="ml-4 mr-4"><a href="/termsofservice" target="_blank">Terms Of Service</a></h4>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="flex justify-center mt-6">
+						<img src={ linkedinWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
+						<img src={ discordWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
+						<img src={ xWhiteLogo } className="mix-blend-difference w-6 h-6 ml-2 mr-2 mt-2"></img>
+						<img src={ instagramWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
 					</div>
-					<div className={ isMobile ? "mt-8" : `grid grid-cols-3 mt-20` }>
-						{ isMobile ? <></> : <h3 className="text-white akashi ml-5 text-3xl">ZIKEN LABS</h3> }
-						{/* <img src={ whiteLogo } className="w-20 ml-10"></img> */}
-						<h5 className="text-center text-gray-400 mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs</h5>
-						{ isMobile ? <></> : <div className="text-right text-white mt-auto mb-auto mr-10">
-							<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
-							<a href="/products" target="_blank" className="ml-4 mr-4">Products</a>
-							<a href="/blog" target="_blank" className="ml-4 mr-4">Blog</a>
-							<a href="/about" target="_blank" className="ml-4 mr-4">About</a>
-						</div> }
-					</div>
+					{ isMobile ? <div className="mt-4">
+						<h5 className="text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls <br /> Via della Badia di Cava 82, 00142, Rome, Italy <br /> VAT: IT 17351991009</h5>
+						<div className="text-center text-black mt-6">
+							<a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a>
+							<a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms of Service</a>
+						</div>
+					</div> :
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ isMobile ? "mt-8" : `flex mt-20` }>
+						<h3 className="text-black akashi ml-5 text-3xl">ZIKEN LABS</h3>
+						<h5 className="flex-1 text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls - Via della Badia di Cava 82, 00142, Rome, Italy - VAT: IT 17351991009</h5>
+						<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="text-right text-black mt-auto mb-auto mr-5">
+							<a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a>
+							<a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms of Service</a>
+						</div>
+					</div> }
 				</footer>
 			</section>
-			{/* <section id="footer" className="pt-5 overflow-y-scroll overflow-x-hidden">
-			</section> */}
 		</div>
 	)
 }

@@ -1,15 +1,25 @@
-import { useEffect, useEffecct, useRef } from 'react'
 import {
 	createBrowserRouter,
 	RouterProvider,
 } from "react-router-dom"
 
+import { useState, useEffect, createContext } from 'react'
+
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import Temp from './pages/Temp/Temp'
 import NotFound from './pages/NotFound/NotFound'
+import Cursor from "./components/Cursor/Cursor"
+
+export const CursorContext = createContext(null);
 
 function App() {
+	// Cursor customization
+	const [cursorColor, setCursorColor] = useState("bg-black");
+	const [cursorVariant, setCursorVariant] = useState("default");	
+	const cursorEnter = () => setCursorVariant("active");
+	const cursorLeave = () => setCursorVariant("default");
+
 	const router = createBrowserRouter([
 		{
 		  path: "",
@@ -37,6 +47,10 @@ function App() {
 		},
 		{
 		  path: "/products",
+		  element: <Temp />,
+		},
+		{
+		  path: "/clients",
 		  element: <Temp />,
 		},
 		{
@@ -74,9 +88,10 @@ function App() {
 		}
 	}, []);
 	
-	return (
-		<RouterProvider router={router} />
-	)
+	return <CursorContext.Provider value={{ cursorEnter, cursorLeave, setCursorColor }}>
+		<Cursor cursorColor={ cursorColor } cursorVariant={ cursorVariant } />
+		<RouterProvider router={ router } />
+	</CursorContext.Provider>
 }
 
 export default App;
