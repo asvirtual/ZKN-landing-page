@@ -37,7 +37,8 @@ export default function Cursor(props) {
 		className={ `overflow-y-auto z-10 h-6 w-6 rounded-full fixed top-0 left-0 ${props.cursorColor} z-20` }
 		variants={ cursorVariants } 
 		animate={ props.cursorVariant } 
-		transition={{ duration: 0.1, stiffness: 600, damping: 25 }}  
+		// transition={{ duration: 0.1, stiffness: 1000, damping: 250 }}  
+		transition={{ duration: 0.01 }}
 		style={{ 
 			backgroundBlendMode: "difference",
 			boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",

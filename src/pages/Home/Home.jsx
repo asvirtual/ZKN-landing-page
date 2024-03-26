@@ -349,7 +349,7 @@ function Home() {
 					textAlign="center"
 					textBaseLine="middle"
 					gradient={ [ [0, '#121517'], [1, '#121517'] ] }
-					gap={ isMobile ? 1 : 3 }
+					gap={ isMobile ? 1 : 2 }
 					radius={ 5000 }
 					initialAnimation={ true }
 					hoverAnimation={ true }
@@ -641,7 +641,7 @@ function Home() {
 					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="flex justify-center mt-6">
 						<img src={ linkedinWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
 						<img src={ discordWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
-						<img src={ xWhiteLogo } className="mix-blend-difference w-8 h-8 ml-2 mr-2 mt-1"></img>
+						<img src={ xWhiteLogo } className="mix-blend-difference w-6 h-6 ml-2 mr-2 mt-2"></img>
 						<img src={ instagramWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
 					</div>
 					{ isMobile ? <div className="mt-4">
