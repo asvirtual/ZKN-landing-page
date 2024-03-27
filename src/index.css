@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.iub__us-widget {
+  display: none !important;
+}
+
 @font-face {
   font-family: "Akashi";   /*Can be any text*/
   src: local("Akashi"),
