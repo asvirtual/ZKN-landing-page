@@ -82,12 +82,6 @@ function Home() {
 		if (window.location.pathname != "" && window.location.pathname != "/")
 			return
 
-		if (localStorage.getItem("technical-cookies-accepted") === "true") document.getElementById("cookies-banner").style.display = "none"
-		document.getElementById("cookies-banner-accept").addEventListener("click", e => {
-			localStorage.setItem("technical-cookies-accepted", "true")
-			document.getElementById("cookies-banner").style.display = "none"
-		})
-
 		const canvas = document.querySelector("#background")
 		canvas.width = window.innerWidth
 		canvas.height = window.innerHeight
@@ -330,11 +324,6 @@ function Home() {
 	return (    
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
 			className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory">
-			<div className={ isMobile ? "absolute bottom-0 pt-2 pb-2 pl-6 pr-6 z-10" : "absolute bottom-8 right-8 pt-2 pb-2 pl-8 pr-8 z-10 w-1/6"} style={{ background: "rgba(255, 255, 255, 0.2)" }} id="cookies-banner">
-				<h3 className="text-center akashi">Cookie Notice</h3>
-				<p className="mt-4 text-center">🍪 This website uses technical cookies to ensure a smooth user experience. By continuing to browse, you agree to the use of these cookies.</p>
-				<div id="cookies-banner-accept" className="mt-8 mb-2 ml-auto mr-auto text-center text-white rounded p-1 bg-green-800 w-fit pt-2 pb-2 pl-8 pr-8">Got it</div>
-			</div>
 			<div id="progress-bar" style={{ width: `${scrollProgress}%`, background: (Math.trunc(scrollProgress) > 33 && Math.trunc(scrollProgress) <= 66) ? "white" : "black" }}></div>
 			<canvas id="background" className="fixed top-0 -z-20" ></canvas>
 			<motion.div style={{ scale: logoScale <= 0 ? 0 : logoScale, transition: "all .5s ease" }} className="h-screen w-screen fixed top-0 -z-10">
