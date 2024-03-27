@@ -622,13 +622,14 @@ function Home() {
 						<h2 className="text-center text-6xl ml-12 mt-auto mb-auto">Our Products</h2>
 					</div>
 				</> }
-				<footer className="pb-5" id="footer" style={{ 
+				<footer className="pb-5 z-20" id="footer" style={{ 
 					// background: "rgba(255, 255, 255, 0.8)",
 					boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
 					backdropFilter: "blur(2px)",
 					webkitBackdropFilter: "blur(2px)",
 					border: "1px solid rgba(0, 0, 0, 0.3)",
 					mixBlendMode: "difference",
+					webkitMixBlendMode: "difference",
 					background: "linear-gradient(to top, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0.8)", 
 				}} onMouseEnter={ () => setCursorColor("bg-white") } onMouseLeave={ () => setCursorColor("bg-black") }>
 					<img src={ logo } className={ `ml-auto mr-auto ${isMobile ? "w-40" : "w-60"}` }></img>
