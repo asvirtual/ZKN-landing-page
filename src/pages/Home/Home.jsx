@@ -645,8 +645,10 @@ function Home() {
 						<h3 className="text-black akashi ml-5 text-3xl">ZIKEN LABS</h3>
 						<h5 className="flex-1 text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls - Via della Badia di Cava 82, 00142, Rome, Italy - VAT: IT 17351991009</h5>
 						<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="text-right text-black mt-auto mb-auto mr-5">
-							<a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a>
-							<a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms of Service</a>
+							{/* <a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a> */}
+							<a href="https://www.iubenda.com/privacy-policy/97599587" className="ml-4 mr-4">Privacy Policy</a>
+							<a href="https://www.iubenda.com/privacy-policy/97599587/cookie-policy" className="ml-4 mr-4">Cookie Policy</a>
+							{/* <a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms of Service</a> */}
 						</div>
 					</div> }
 				</footer>
