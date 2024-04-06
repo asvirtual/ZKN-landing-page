@@ -483,13 +483,13 @@ function Home() {
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
-						<h2 className="text-4xl text-center mt-4 mb-4">Our products</h2>
-						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ trakXLogo } className="w-16 m-auto"></img>
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
+						<h2 className="text-4xl text-center mt-4 mb-4">Our products</h2>
 						<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
 								<img src={ votexLogo } className="w-16 m-auto"></img>
@@ -637,8 +637,10 @@ function Home() {
 					{ isMobile ? <div className="mt-4">
 						<h5 className="text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls <br /> Via della Badia di Cava 82, 00142, Rome, Italy <br /> VAT: IT 17351991009</h5>
 						<div className="text-center text-black mt-6">
-							<a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a>
-							<a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms of Service</a>
+							{/* <a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a>
+							<a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms of Service</a> */}
+							<a href="https://www.iubenda.com/privacy-policy/97599587" target="_blank" className="ml-4 mr-4">Privacy Policy</a>
+							<a href="https://www.iubenda.com/privacy-policy/97599587/cookie-policy" target="_blank" className="ml-4 mr-4">Cookie Policy</a>
 						</div>
 					</div> :
 					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ isMobile ? "mt-8" : `flex mt-20` }>
@@ -646,8 +648,8 @@ function Home() {
 						<h5 className="flex-1 text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls - Via della Badia di Cava 82, 00142, Rome, Italy - VAT: IT 17351991009</h5>
 						<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="text-right text-black mt-auto mb-auto mr-5">
 							{/* <a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a> */}
-							<a href="https://www.iubenda.com/privacy-policy/97599587" className="ml-4 mr-4">Privacy Policy</a>
-							<a href="https://www.iubenda.com/privacy-policy/97599587/cookie-policy" className="ml-4 mr-4">Cookie Policy</a>
+							<a href="https://www.iubenda.com/privacy-policy/97599587" target="_blank" className="ml-4 mr-4">Privacy Policy</a>
+							<a href="https://www.iubenda.com/privacy-policy/97599587/cookie-policy" target="_blank" className="ml-4 mr-4">Cookie Policy</a>
 							{/* <a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms of Service</a> */}
 						</div>
 					</div> }
