@@ -43,7 +43,7 @@ export default function Cursor(props) {
 			backgroundBlendMode: "difference",
 			boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
 			backdropFilter: "blur(2px)",
-			webkitBackdropFilter: "blur(2px)",
+			WebkitBackdropFilter: "blur(2px)",
 			border: "1px solid rgba(0, 0, 0, 0.3)",
 			// mixBlendMode: "difference !important"
 		}}
