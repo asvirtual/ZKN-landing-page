@@ -43,6 +43,7 @@ import trackerXLogo from "../../assets/TrackerX.svg"
 import trakXLogo from "../../assets/Trakx.svg"
 import votexLogo from "../../assets/Votex.svg"
 import crpytoStocksLogo from "../../assets/Crypto&Stocks.svg"
+import finzenLogo from "../../assets/finzenLogo.png"
 
 import { CursorContext } from "../../App"
 
@@ -510,8 +511,8 @@ function Home() {
 						</motion.div>
 						<motion.div onClick={ () => window.open("https://thefinzen.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								{/* <img src={ nextToolLogo } className="w-16 m-auto"></img> */}
-								<h4 className="text-center my-4">The Fin Zen</h4>
+								<img src={ finzenLogo } className="w-16 m-auto"></img>
+								{/* <h4 className="text-center my-4">The Fin Zen</h4> */}
 							</div>
 						</motion.div>
 						<motion.div onClick={ () => window.open("https://top.gg/bot/1046105025585365092") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
@@ -591,8 +592,8 @@ function Home() {
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://thefinzen.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									{/* <img src={  } className="w-16 m-auto"></img> */}
-									<h4 className="text-center">The Fin Zen</h4>
+									<img src={ finzenLogo } className="w-16 m-auto"></img>
+									{/* <h4 className="text-center">The Fin Zen</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://top.gg/bot/1046105025585365092") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
@@ -617,7 +618,7 @@ function Home() {
 						<h2 className="text-center text-6xl ml-12 mt-auto mb-auto">Our Products</h2>
 					</div>
 				</> }
-				<footer className="pb-5 z-20" id="footer" style={{ 
+				<footer className="pb-5 z-20" id="footer" style={{
 					// background: "rgba(255, 255, 255, 0.8)",
 					boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
 					backdropFilter: "blur(2px)",
