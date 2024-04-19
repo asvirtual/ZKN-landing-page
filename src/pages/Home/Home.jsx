@@ -460,33 +460,33 @@ function Home() {
 				{ isMobile ? <>
 					<div className="mb-4">
 						<h2 className="text-4xl text-center mt-4 mb-4">Our clients</h2>
-						<motion.div onClick={ () => window.open("https://evoload.co/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
+						<motion.div onClick={ () => window.open("https://trakx.io/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								<img src={ trakXLogo } className="w-16 m-auto"></img>
+								<img src={ trakXLogo } alt="Trakx" className="w-16 m-auto"></img>
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
 						<motion.div onClick={ () => window.open("https://plasbit.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								<img src={ plasbitLogo } className="w-16 m-auto"></img>
+								<img src={ plasbitLogo } alt="PlasBit" className="w-16 m-auto"></img>
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
 						<motion.div onClick={ () => window.open("https://evoload.co/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								<img src={ evoloadLogo } className="w-16 m-auto"></img>
+								<img src={ evoloadLogo } alt="Evoload" className="w-16 m-auto"></img>
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
 						<motion.div onClick={ () => window.open("https://www.spaziocrypto.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								<img src={ spazioCryptoLogo } className="w-16 m-auto"></img>
+								<img src={ spazioCryptoLogo } alt="Spaziocrypto" className="w-16 m-auto"></img>
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
 						<motion.div onClick={ () => window.open("https://www.fiverr.com/pp_studios") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								<img src={ fiverrLogo } className="w-16 m-auto"></img>
+								<img src={ fiverrLogo } alt="Fiverr - Ziken Labs" className="w-16 m-auto"></img>
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
@@ -499,37 +499,37 @@ function Home() {
 						<h2 className="text-4xl text-center mt-4 mb-4">Our products</h2>
 						<motion.div onClick={ () => window.open("https://bestriptips.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								<img src={ bestTripTipsLogo } className="w-16 m-auto"></img>
+								<img src={ bestTripTipsLogo } alt="BesTripTips - Travel Blog - Ziken Labs" className="w-16 m-auto"></img>
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
 						<motion.div onClick={ () => window.open("https://newsfromtech.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								<img src={ newsFromTechLogo } className="w-16 m-auto"></img>
+								<img src={ newsFromTechLogo } alt="News From Tech - Technology Blog - Ziken Labs" className="w-16 m-auto"></img>
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
 						<motion.div onClick={ () => window.open("https://thefinzen.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								<img src={ finzenLogo } className="w-16 m-auto"></img>
+								<img src={ finzenLogo } alt="The Fin Zen - Finance Blog - Ziken Labs" className="w-16 m-auto"></img>
 								{/* <h4 className="text-center my-4">The Fin Zen</h4> */}
 							</div>
 						</motion.div>
 						<motion.div onClick={ () => window.open("https://top.gg/bot/1046105025585365092") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								<img src={ votexLogo } className="w-16 m-auto"></img>
+								<img src={ votexLogo } alt="Votex - Discord Bot - Ziken Labs" className="w-16 m-auto"></img>
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
 						<motion.div onClick={ () => window.open("https://top.gg/bot/1068826096415543296") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								<img src={ trackerXLogo } className="w-16 m-auto"></img>
+								<img src={ trackerXLogo } alt="TrackerX - Discord Bot - Ziken Labs" className="w-16 m-auto"></img>
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
 						<motion.div onClick={ () => window.open("https://top.gg/bot/1081940674871578747") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="mt-4 bg-gray-300 flex rounded-lg mx-auto w-4/5 py-4">
 							<div className="mx-auto">
-								<img src={ crpytoStocksLogo } className="w-16 m-auto"></img>
+								<img src={ crpytoStocksLogo } alt="Crypto & Stocks - Discord Bot - Ziken Labs" className="w-16 m-auto"></img>
 								{/* <h4 className="text-center">First client</h4> */}
 							</div>
 						</motion.div>
@@ -540,31 +540,31 @@ function Home() {
 						<div className="grid grid-cols-2 grid-rows-auto gap-4 mb-4">
 							<motion.div onClick={ () => window.open("https://trakx.io/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ trakXLogo } className="w-16 m-auto"></img>
+									<img src={ trakXLogo } alt="Trakx" className="w-16 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://plasbit.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ plasbitLogo } className="w-16 m-auto"></img>
+									<img src={ plasbitLogo } alt="PlasBit" className="w-16 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://evoload.co/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ evoloadLogo } className="w-16 m-auto"></img>
+									<img src={ evoloadLogo } alt="Evoload" className="w-16 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://www.spaziocrypto.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ spazioCryptoLogo } className="w-16 m-auto"></img>
+									<img src={ spazioCryptoLogo } alt="Spaziocrypto" className="w-16 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://www.fiverr.com/pp_studios") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ fiverrLogo } className="w-16 m-auto"></img>
+									<img src={ fiverrLogo } alt="Fiverr - Ziken Labs" className="w-16 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
@@ -580,37 +580,37 @@ function Home() {
 						<div className="grid grid-cols-2 grid-rows-auto gap-4 mb-4">
 							<motion.div onClick={ () => window.open("https://bestriptips.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ bestTripTipsLogo } className="w-16 m-auto"></img>
+									<img src={ bestTripTipsLogo } alt="BesTripTips - Travel Blog - Ziken Labs" className="w-16 m-auto"></img>
 									{/* <h4 className="text-center">BesTripTips</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://newsfromtech.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ newsFromTechLogo } className="w-16 m-auto"></img>
+									<img src={ newsFromTechLogo } alt="News From Tech - Technology Blog - Ziken Labs" className="w-16 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://thefinzen.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ finzenLogo } className="w-16 m-auto"></img>
+									<img src={ finzenLogo } alt="The Fin Zen - Finance Blog - Ziken Labs" className="w-16 m-auto"></img>
 									{/* <h4 className="text-center">The Fin Zen</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://top.gg/bot/1046105025585365092") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ votexLogo } className="w-16 m-auto"></img>
+									<img src={ votexLogo } alt="Votex - Discord Bot - Ziken Labs" className="w-16 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://top.gg/bot/1068826096415543296") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ trackerXLogo } className="w-16 m-auto"></img>
+									<img src={ trackerXLogo } alt="TrackerX - Discord Bot - Ziken Labs" className="w-16 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://top.gg/bot/1081940674871578747") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ crpytoStocksLogo } className="w-16 m-auto"></img>
+									<img src={ crpytoStocksLogo } alt="Crypto & Stocks - Discord Bot - Ziken Labs" className="w-16 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
@@ -636,10 +636,10 @@ function Home() {
 						<a href="/about" target="_blank" className="ml-4 mr-4">About</a>
 					</div>
 					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="flex justify-center mt-6">
-						<img src={ linkedinWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
-						<img src={ discordWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
-						<img src={ xWhiteLogo } className="mix-blend-difference w-6 h-6 ml-2 mr-2 mt-2"></img>
-						<img src={ instagramWhiteLogo } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
+						<img src={ linkedinWhiteLogo } onClick={ () => window.open("https://www.linkedin.com/company/ziken-labs/") } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
+						<img src={ discordWhiteLogo } onClick={ () => window.open("https://discord.com/invite/Czu9yxPqxM") } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
+						<img src={ xWhiteLogo } onClick={ () => window.open("https://twitter.com/ZikenLabs") } className="mix-blend-difference w-6 h-6 ml-2 mr-2 mt-2"></img>
+						{/* <img src={ instagramWhiteLogo } onClick={ () => window.open("https://www.linkedin.com/company/ziken-labs/") } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img> */}
 					</div>
 					{ isMobile ? <div className="mt-4">
 						<h5 className="text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls <br /> Via della Badia di Cava 82, 00142, Rome, Italy <br /> VAT: IT 17351991009</h5>
