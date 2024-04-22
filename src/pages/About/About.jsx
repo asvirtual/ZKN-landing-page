@@ -3,7 +3,7 @@ import style from './About.module.css';
 
 
 const About = () => {
-    return "About";
+    return "About page";
 
     /* return <main className={ style.main }>
         <h1>
