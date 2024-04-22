@@ -43,7 +43,7 @@ import trackerXLogo from "../../assets/TrackerX.svg"
 import trakXLogo from "../../assets/Trakx.svg"
 import votexLogo from "../../assets/Votex.svg"
 import crpytoStocksLogo from "../../assets/Crypto&Stocks.svg"
-import finzenLogo from "../../assets/finzenLogo.png"
+import finzenLogo from "../../assets/Finzen.svg"
 
 import { CursorContext } from "../../App"
 
@@ -540,37 +540,37 @@ function Home() {
 						<div className="grid grid-cols-2 grid-rows-auto gap-4 mb-4">
 							<motion.div onClick={ () => window.open("https://trakx.io/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ trakXLogo } alt="Trakx" className="w-16 m-auto"></img>
+									<img src={ trakXLogo } alt="Trakx" className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://plasbit.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ plasbitLogo } alt="PlasBit" className="w-16 m-auto"></img>
+									<img src={ plasbitLogo } alt="PlasBit" className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://evoload.co/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ evoloadLogo } alt="Evoload" className="w-16 m-auto"></img>
+									<img src={ evoloadLogo } alt="Evoload" className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://www.spaziocrypto.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ spazioCryptoLogo } alt="Spaziocrypto" className="w-16 m-auto"></img>
+									<img src={ spazioCryptoLogo } alt="Spaziocrypto" className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://www.fiverr.com/pp_studios") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ fiverrLogo } alt="Fiverr - Ziken Labs" className="w-16 m-auto"></img>
+									<img src={ fiverrLogo } alt="Fiverr - Ziken Labs" className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ nextIdeaLogo } className="w-16 m-auto"></img>
+									<img src={ nextIdeaLogo } className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
@@ -580,37 +580,37 @@ function Home() {
 						<div className="grid grid-cols-2 grid-rows-auto gap-4 mb-4">
 							<motion.div onClick={ () => window.open("https://bestriptips.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ bestTripTipsLogo } alt="BesTripTips - Travel Blog - Ziken Labs" className="w-16 m-auto"></img>
+									<img src={ bestTripTipsLogo } alt="BesTripTips - Travel Blog - Ziken Labs" className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">BesTripTips</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://newsfromtech.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ newsFromTechLogo } alt="News From Tech - Technology Blog - Ziken Labs" className="w-16 m-auto"></img>
+									<img src={ newsFromTechLogo } alt="News From Tech - Technology Blog - Ziken Labs" className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://thefinzen.com/") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ finzenLogo } alt="The Fin Zen - Finance Blog - Ziken Labs" className="w-16 m-auto"></img>
+									<img src={ finzenLogo } alt="The Fin Zen - Finance Blog - Ziken Labs" className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">The Fin Zen</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://top.gg/bot/1046105025585365092") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ votexLogo } alt="Votex - Discord Bot - Ziken Labs" className="w-16 m-auto"></img>
+									<img src={ votexLogo } alt="Votex - Discord Bot - Ziken Labs" className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://top.gg/bot/1068826096415543296") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: -300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ trackerXLogo } alt="TrackerX - Discord Bot - Ziken Labs" className="w-16 m-auto"></img>
+									<img src={ trackerXLogo } alt="TrackerX - Discord Bot - Ziken Labs" className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
 							<motion.div onClick={ () => window.open("https://top.gg/bot/1081940674871578747") } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: .7 }} className="bg-gray-300 flex rounded-lg hover:bg-gray-700 transition-colors duration-500">
 								<div className="m-auto">
-									<img src={ crpytoStocksLogo } alt="Crypto & Stocks - Discord Bot - Ziken Labs" className="w-16 m-auto"></img>
+									<img src={ crpytoStocksLogo } alt="Crypto & Stocks - Discord Bot - Ziken Labs" className="w-24 m-auto"></img>
 									{/* <h4 className="text-center">First client</h4> */}
 								</div>
 							</motion.div>
