@@ -3,7 +3,9 @@ import style from './About.module.css';
 
 
 const About = () => {
-    return <main className={ style.main }>
+    return "About";
+
+    /* return <main className={ style.main }>
         <h1>
             Founded in 2023 in Italy by industry visionaries <a href="https://www.linkedin.com/in/fabrizio-pepe/" target="_blank">Fabrizio Pepe</a> and <a href="https://www.linkedin.com/in/luca-polo/" target="_blank">Luca Polo</a>, Ziken Labs is a premium digital services agency that distinguishes itself through a commitment to innovation and proficiency. <br></br>
             Our core principles of delivering unparalleled quality, speed, and efficiency guide every facet of our operations. Offering a comprehensive suite of solutions, including: 
@@ -56,7 +58,7 @@ const About = () => {
             <li><a href="https://virgilio.it" target="_blank">virgilio.it</a></li>
             <li><a href="https://paginegialle.it" target="_blank">paginegialle.it</a></li>
         </ul>
-    </main>;
+    </main>; */
 };
 
 export default About;
