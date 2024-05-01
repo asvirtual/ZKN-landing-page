@@ -208,7 +208,7 @@ function PixelText(props) {
             const canvas = document.getElementById(props.id)
             canvas.width = props.width
             canvas.height = props.height
-
+            
             const ctx = canvas.getContext('2d', {
                 willReadFrequently: true
             })
@@ -223,6 +223,7 @@ function PixelText(props) {
             const animate = (effect) => {
                 if (!props.paused) {
                     ctx.clearRect(0, 0, canvas.width, canvas.height)
+                    // console.log("Rendering", canvas, effect.mouse)
                     effect.render(exit)
                 }
 

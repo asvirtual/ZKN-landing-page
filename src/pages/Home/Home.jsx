@@ -155,7 +155,7 @@ function Home() {
 		})
 
 		const scrollContainer = document.querySelector("#scroll-container")
-		scrollContainer.addEventListener('scroll', e => {
+		const scrollHandler = e => {
 			const scrollPercentage = parseInt(scrollContainer.scrollTop) / parseInt(scrollContainer.scrollHeight) * 100 + 33
 			setScrollProgress(scrollPercentage)
 
@@ -226,7 +226,9 @@ function Home() {
 				if (isScrollingDown) gsap.to(sphere.position, { duration: 1, z: 2, x: -0.5 })
 				else gsap.to(sphere.position, { duration: 1, z: 0, x: 0 })
 			}
-		})
+		}
+
+		scrollContainer.addEventListener('scroll', scrollHandler)
 
 		// document.querySelector("#scrollbar").addEventListener("click", e => {
 		// 	const percentage = e.clientY / scrollContainer.clientHeight
@@ -272,6 +274,7 @@ function Home() {
 		return () => {
 			renderer.dispose()
 			cancelAnimationFrame(animationFrameId)
+			scrollContainer.removeEventListener('scroll', scrollHandler)
 		}
 	}, [isMobile])
 

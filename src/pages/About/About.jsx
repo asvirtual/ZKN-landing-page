@@ -1,9 +1,100 @@
-import React from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import style from './About.module.css';
+
+import { isMobile } from 'react-device-detect';
+
+import logo from "../../assets/Ziken Labs.png"
+import backgroundImage from "../../assets/about_us_background.jpg"
+import fabrizioPepe from "../../assets/FabrizioPepe.webp"
+import lucaPolo from "../../assets/LucaPolo.webp"
+import giordanoAlberti from "../../assets/GiordanoAlberti.jpg"
+
+import xLogo from "../../assets/xLogo.png"
+import xWhiteLogo from "../../assets/xLogoWhite.svg"
+import discordLogo from "../../assets/discordLogo.svg"
+import discordWhiteLogo from "../../assets/discordWhiteLogo.svg"
+import gmailLogo from "../../assets/gmailLogo.svg"
+import linkedinWhiteLogo from "../../assets/linkedInWhiteLogo.svg"
+import instagramWhiteLogo from "../../assets/instagramWhiteLogo.svg"
+
+import { CursorContext } from "../../App"
+import PixelText from '../../components/PixelText/PixelText';
+
+import { motion } from "framer-motion"
 
 
 const About = () => {
-    return "About page";
+    const scrollContainer = useRef(null);
+    const [ scrollProgress, setScrollProgress ] = useState(0);
+
+	const { cursorEnter, cursorLeave, setCursorColor } = useContext(CursorContext)
+
+    useEffect(() => {
+		const scrollHandler = e => {
+			const scrollPercentage = parseInt(scrollContainer.scrollTop) / parseInt(scrollContainer.scrollHeight) * 100 + 33
+			setScrollProgress(scrollPercentage)
+        }
+
+        scrollContainer?.current.addEventListener("scroll", scrollHandler);
+        return () => scrollContainer?.current.removeEventListener("scroll", scrollHandler);
+    }, []);
+
+	let pixelTextFontSize;
+    if (window.innerWidth / 10 <= 120) pixelTextFontSize = window.innerWidth / 20;
+    else pixelTextFontSize = 40
+
+    return (
+		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
+            className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth">
+            <div id="progress-bar" style={{ width: `${scrollProgress}%`, background: (Math.trunc(scrollProgress) > 33 && Math.trunc(scrollProgress) <= 66) ? "white" : "black" }}></div>
+            
+			<section>
+				{ isMobile ? 
+					<nav id="top-nav" className="w-full h-20 px-4 grid z-30" style={{ transition: "top .25s ease" }}>
+						<img src={ logo } className="my-auto block h-20 w-20" alt="logo"></img>
+					</nav> :
+					<nav id="top-nav" className="w-full h-20 px-4 grid z-30" style={{ transition: "top .25s ease" }}>
+						<img src={ logo } className="my-auto block h-20 w-20" alt="logo"></img>
+						<div></div> { /* Fill space */ }
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }  href="/services" className="text-center akashi my-auto text font-extrabold mr-5">Services</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/clients" className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/products" className="text-center akashi my-auto text-black font-bold mx-5">Products</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } style={{ textDecorationThickness: "2px", textDecorationStyle: "dotted" }} className="underline underline-offset-4 text-center akashi my-auto text-black font-bold mx-5">About</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/blog" className="text-center akashi my-auto text-black font-bold mx-5">Blog</a>
+						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/contact" className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
+					</nav> 
+				}
+                <div className={ `relative h-1/3 text-white overflow-y-hidden py-4 ${ isMobile ? "px-4" : "px-20" }` }>
+                    <img src={ backgroundImage } className="absolute opacity-80 left-0 top-0 w-full h-auto -z-10 blur-sm"></img>
+                    <h2 className="akashi text-5xl text-center my-8">Our Vision & Mission</h2>
+                    <p className="my-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod, orci ut lacinia tristique, neque lorem congue odio, quis viverra metus ligula vitae arcu. Integer nisi lacus, aliquam quis feugiat id, lobortis quis mauris. Donec ultrices tellus ut consectetur pellentesque. Morbi tincidunt libero nec est porta aliquet. Fusce pulvinar suscipit sapien, eget rhoncus odio imperdiet id. Phasellus ultrices, quam eget vehicula pharetra, ligula tortor porta orci, ullamcorper vulputate sapien elit ac diam. Praesent a leo volutpat, sodales lectus quis, iaculis nulla. Curabitur tempus nisl posuere lectus sagittis, a viverra sem finibus. </p>
+                </div>
+                <div 
+                    onMouseEnter={ () => setCursorColor("bg-white") } 
+                    onMouseLeave={ () => setCursorColor("bg-black") } className={ `relative text-white bg-black py-4 ${ isMobile ? "px-4" : "px-20" }` }>
+                    <h2 className="akashi text-5xl text-center mt-8 mb-16">The team</h2>
+                    <div className={ `m-8 w-60 h-72 ${style.card} text-black` } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }>
+                        <div className={ style.cardInner }>
+                            <div className={ `${style.cardFront} bg-white rounded-lg p-2` } style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
+                                <div className="absolute w-full h-32 z-10 bg-gray-600 top-0 left-0 rounded-t-lg"></div>
+                                <img src={ fabrizioPepe } className="rounded-full relative z-20 w-40 h-40 mx-auto mt-10"></img>
+                                <p className="relative akashi text-center h-fit mt-4">Fabrizio Pepe</p>
+                                <p className="relative text-center">Co-founder</p>
+
+                            </div>
+                            <div className={ `${style.cardBack} bg-white rounded-lg` } style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
+                                <img src={ fabrizioPepe } className="relative w-full h-auto rounded-t-lg"></img>
+                                <div className="absolute bottom-0 h-1/6 w-full grid grid-flow-col justify-center bg-red-800 rounded-b-lg">
+                                    <img src={ linkedinWhiteLogo } className="my-auto relative w-8 h-8"></img>
+                                    <img src={ linkedinWhiteLogo } className="my-auto relative w-8 h-8"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</section>
+        </div>     
+    );
 
     /* return <main className={ style.main }>
         <h1>
