@@ -29,19 +29,15 @@ const About = () => {
 
 	const { cursorEnter, cursorLeave, setCursorColor } = useContext(CursorContext)
 
-    useEffect(() => {
+    /* useEffect(() => {
 		const scrollHandler = e => {
 			const scrollPercentage = parseInt(scrollContainer.scrollTop) / parseInt(scrollContainer.scrollHeight) * 100 + 33
 			setScrollProgress(scrollPercentage)
         }
 
-        scrollContainer?.current.addEventListener("scroll", scrollHandler);
-        return () => scrollContainer?.current.removeEventListener("scroll", scrollHandler);
-    }, []);
-
-	let pixelTextFontSize;
-    if (window.innerWidth / 10 <= 120) pixelTextFontSize = window.innerWidth / 20;
-    else pixelTextFontSize = 40
+        scrollContainer?.current?.addEventListener("scroll", scrollHandler);
+        return () => scrollContainer?.current?.removeEventListener("scroll", scrollHandler);
+    }, []); */
 
     return (
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
