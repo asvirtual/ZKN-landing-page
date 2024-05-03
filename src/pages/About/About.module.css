@@ -10,7 +10,8 @@
 .cardInner {
     width: 100%;
     height: 100%;
-    transition: all 0.5s;
+    transition: all ease 0.5s;
+    transition-property: transform, scale, rotateY;
     transform-style: preserve-3d;
     position: relative;
 }
@@ -27,10 +28,11 @@
 }
 
 .cardBack {
+    top: 0;
     transform: rotateY(180deg);
 }
 
 .card:hover .cardInner {
     transform: rotateY(180deg);
-    scale: 1.25;
+    /* scale: 1.15; */
 }

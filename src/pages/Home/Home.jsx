@@ -342,7 +342,7 @@ function Home() {
 					textAlign="center"
 					textBaseLine="middle"
 					gradient={ [ [0, '#121517'], [1, '#121517'] ] }
-					gap={ isMobile ? 1 : 2 }
+					gap={ isMobile ? 1 : 3 }
 					radius={ 5000 }
 					initialAnimation={ true }
 					hoverAnimation={ true }

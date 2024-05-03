@@ -9,13 +9,9 @@ import fabrizioPepe from "../../assets/FabrizioPepe.webp"
 import lucaPolo from "../../assets/LucaPolo.webp"
 import giordanoAlberti from "../../assets/GiordanoAlberti.jpg"
 
-import xLogo from "../../assets/xLogo.png"
+import fiverrWhiteLogo from "../../assets/fiverrWhiteLogo.svg"
 import xWhiteLogo from "../../assets/xLogoWhite.svg"
-import discordLogo from "../../assets/discordLogo.svg"
-import discordWhiteLogo from "../../assets/discordWhiteLogo.svg"
-import gmailLogo from "../../assets/gmailLogo.svg"
 import linkedinWhiteLogo from "../../assets/linkedInWhiteLogo.svg"
-import instagramWhiteLogo from "../../assets/instagramWhiteLogo.svg"
 
 import { CursorContext } from "../../App"
 import PixelText from '../../components/PixelText/PixelText';
@@ -39,6 +35,28 @@ const About = () => {
         return () => scrollContainer?.current?.removeEventListener("scroll", scrollHandler);
     }, []); */
 
+    const Card = ({ name, description, image, icons }) => {
+        return <div className={ `m-8 w-60 h-fit ${style.card} text-black` } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }>
+            <div className={ `h-fit ${style.cardInner}` }>
+                <div className={ `relative h-fit ${style.cardFront} bg-white rounded-lg p-2` } style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
+                    <div className="absolute w-full h-32 z-10 bg-gray-600 top-0 left-0 rounded-t-lg"></div>
+                    <img src={ image } className="rounded-full relative z-20 w-40 h-40 mx-auto mt-10"></img>
+                    <p className="relative akashi text-center h-fit mt-4">{ name }</p>
+                    <p className="relative text-center text-sm mb-4">{ description }</p>
+                </div>
+                <div className={ `${style.cardBack} bg-white rounded-lg` } style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
+                    <img src={ image } className="relative w-full h-auto rounded-t-lg"></img>
+                    <p className="relative akashi h-min text-center py-4">{ name }</p>
+                    <div className="relative h-fit py-4 w-full grid grid-flow-col justify-center bg-slate-800 rounded-b-lg">
+                        { icons.map(({ logo, link, styles }) => <a target="_blank" className="my-auto relative mx-2" href={ link }>
+                            <img src={ logo } className={ `relative ${styles ?? "w-8 h-8"}` }></img>
+                        </a> )}
+                    </div>
+                </div>
+            </div>
+        </div>;
+    };
+
     return (
 		<div id="scroll-container" ref={ scrollContainer } style={{ "--scrollbar-color": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) > 60 && Math.trunc(scrollProgress) <= 80)) ? "white" : "black", "--scrollbar-background": ((Math.trunc(scrollProgress) > 20 && Math.trunc(scrollProgress) <= 40) || (Math.trunc(scrollProgress) >= 60 && Math.trunc(scrollProgress) <= 80)) ? "black" : "white" }}
             className="max-h-screen max-w-full overflow-y-scroll overflow-x-hidden scroll-smooth">
@@ -60,7 +78,7 @@ const About = () => {
 						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/contact" className="text-center akashi my-auto text-black font-bold mx-5">Contact</a>
 					</nav> 
 				}
-                <div className={ `relative h-1/3 text-white overflow-y-hidden py-4 ${ isMobile ? "px-4" : "px-20" }` }>
+                <div className={ `relative h-fit text-white overflow-y-hidden py-4 ${ isMobile ? "px-4" : "px-20" }` }>
                     <img src={ backgroundImage } className="absolute opacity-80 left-0 top-0 w-full h-auto -z-10 blur-sm"></img>
                     <h2 className="akashi text-5xl text-center my-8">Our Vision & Mission</h2>
                     <p className="my-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod, orci ut lacinia tristique, neque lorem congue odio, quis viverra metus ligula vitae arcu. Integer nisi lacus, aliquam quis feugiat id, lobortis quis mauris. Donec ultrices tellus ut consectetur pellentesque. Morbi tincidunt libero nec est porta aliquet. Fusce pulvinar suscipit sapien, eget rhoncus odio imperdiet id. Phasellus ultrices, quam eget vehicula pharetra, ligula tortor porta orci, ullamcorper vulputate sapien elit ac diam. Praesent a leo volutpat, sodales lectus quis, iaculis nulla. Curabitur tempus nisl posuere lectus sagittis, a viverra sem finibus. </p>
@@ -69,23 +87,10 @@ const About = () => {
                     onMouseEnter={ () => setCursorColor("bg-white") } 
                     onMouseLeave={ () => setCursorColor("bg-black") } className={ `relative text-white bg-black py-4 ${ isMobile ? "px-4" : "px-20" }` }>
                     <h2 className="akashi text-5xl text-center mt-8 mb-16">The team</h2>
-                    <div className={ `m-8 w-60 h-72 ${style.card} text-black` } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }>
-                        <div className={ style.cardInner }>
-                            <div className={ `${style.cardFront} bg-white rounded-lg p-2` } style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
-                                <div className="absolute w-full h-32 z-10 bg-gray-600 top-0 left-0 rounded-t-lg"></div>
-                                <img src={ fabrizioPepe } className="rounded-full relative z-20 w-40 h-40 mx-auto mt-10"></img>
-                                <p className="relative akashi text-center h-fit mt-4">Fabrizio Pepe</p>
-                                <p className="relative text-center">Co-founder</p>
-
-                            </div>
-                            <div className={ `${style.cardBack} bg-white rounded-lg` } style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
-                                <img src={ fabrizioPepe } className="relative w-full h-auto rounded-t-lg"></img>
-                                <div className="absolute bottom-0 h-1/6 w-full grid grid-flow-col justify-center bg-red-800 rounded-b-lg">
-                                    <img src={ linkedinWhiteLogo } className="my-auto relative w-8 h-8"></img>
-                                    <img src={ linkedinWhiteLogo } className="my-auto relative w-8 h-8"></img>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="flex w-full justify-center">
+                        <Card name="Fabrizio Pepe" description="Co-founder of Ziken Labs, architecture student, and travel lover, he is in charge of BesTripTips' editorial team." image={ fabrizioPepe } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/fabrizio-pepe/" }, { logo: xWhiteLogo, link: "https://twitter.com/digital_fp_", styles: "w-6 h-6 mt-1" } ] } />
+                        <Card name="Luca Polo" description="Co-founder of Ziken Labs, experienced graphic designer, he merges creativity, technology and innovation." image={ lucaPolo } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/luca-polo/" }, { logo: xWhiteLogo, link: "https://twitter.com/ElrondLuis", styles: "w-6 h-6 mt-1" } ] } />
+                        <Card name="Giordano Alberti" description="Collaborator of Ziken Labs, computer engineering student and developer, He's a constant learner, honing his coding skills" image={ giordanoAlberti } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/giordano-alberti-39842627b/" }, { logo: fiverrWhiteLogo, link: "https://it.fiverr.com/users/asvirtual1", styles: "w-6 h-6 mt-1" } ] } />
                     </div>
                 </div>
 			</section>
