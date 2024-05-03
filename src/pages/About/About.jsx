@@ -19,18 +19,20 @@ import PixelText from '../../components/PixelText/PixelText';
 import { motion } from "framer-motion"
 
 
-const Card = ({ cursorEnter, cursorLeave, name, description, image, icons }) => {
-    return <div className={ `hover:-mt-1 m-8 w-60 h-fit ${style.card} text-black` } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }>
+const Card = ({ cursorEnter, cursorLeave, name, role, description, image, icons }) => {
+    return <div className={ `hover:-mt-1 m-8 w-72 h-fit ${style.card} text-black` } onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }>
         <div className={ `h-fit ${style.cardInner}` }>
-            <div className={ `relative h-fit ${style.cardFront} bg-white rounded-lg p-2` } style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
+            <div className={ `relative h-fit ${style.cardFront} bg-white rounded-lg p-6` } style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
                 <div className="absolute w-full h-32 z-10 bg-gray-600 top-0 left-0 rounded-t-lg"></div>
                 <img src={ image } className="rounded-full relative z-20 w-40 h-40 mx-auto mt-10"></img>
-                <p className="relative akashi text-center h-fit mt-4">{ name }</p>
-                <p className="relative text-center text-sm mb-4">{ description }</p>
+                <p className="relative akashi text-center h-fit mt-4 text-lg">{ name }</p>
+                <p className="relative akashi text-center h-fit text-xs">{ role }</p>
+                <p className="relative text-center text-md mt-4 mb-4">{ description }</p>
             </div>
             <div className={ `${style.cardBack} bg-white rounded-lg` } style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
                 <img src={ image } className={ `${style.cardBackImage} relative w-full h-auto` }></img>
-                <p className="relative akashi h-min text-center py-4">{ name }</p>
+                <p className="relative akashi h-min text-center pt-4 text-lg">{ name }</p>
+                <p className="relative akashi text-center h-fit pb-7 text-xs">{ role }</p>
                 <div className="relative h-fit py-4 w-full grid grid-flow-col justify-center bg-slate-800 rounded-b-lg">
                     { icons.map(({ logo, link, styles }) => <a target="_blank" className="my-auto relative mx-2" href={ link }>
                         <img src={ logo } className={ `relative ${styles ?? "w-8 h-8"}` }></img>
@@ -65,10 +67,10 @@ const About = () => {
 			<section>
 				{ isMobile ? 
 					<nav id="top-nav" className="w-full h-20 px-4 grid z-30" style={{ transition: "top .25s ease" }}>
-						<img src={ logo } className="my-auto block h-20 w-20" alt="logo"></img>
+						<img src={ logo } className="my-auto block h-20 w-20" alt="logo" onClick={ () => window.location.href = "/" }></img>
 					</nav> :
 					<nav id="top-nav" className="w-full h-20 px-4 grid z-30" style={{ transition: "top .25s ease" }}>
-						<img src={ logo } className="my-auto block h-20 w-20" alt="logo"></img>
+						<img src={ logo } className="my-auto block h-20 w-20" alt="logo" onClick={ () => window.location.href = "/" }></img>
 						<div></div> { /* Fill space */ }
 						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave }  href="/services" className="text-center akashi my-auto text font-extrabold mr-5">Services</a>
 						<a onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } href="/clients" className="text-center akashi my-auto text-black font-bold mx-5">Clients</a>
@@ -88,10 +90,35 @@ const About = () => {
                     onMouseLeave={ () => setCursorColor("bg-black") } className={ `relative text-white bg-black py-4 ${ isMobile ? "px-4" : "px-20" }` }>
                     <h2 className="akashi text-5xl text-center mt-8 mb-16">The team</h2>
                     <div className="flex w-full justify-center">
-                        <Card cursorEnter={ cursorEnter } cursorLeave={ cursorLeave } name="Fabrizio Pepe" description="Co-founder of Ziken Labs, architecture student, and travel lover, he is in charge of BesTripTips' editorial team." image={ fabrizioPepe } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/fabrizio-pepe/" }, { logo: xWhiteLogo, link: "https://twitter.com/digital_fp_", styles: "w-6 h-6 mt-1" } ] } />
-                        <Card cursorEnter={ cursorEnter } cursorLeave={ cursorLeave } name="Luca Polo" description="Co-founder of Ziken Labs, experienced graphic designer, he merges creativity, technology and innovation." image={ lucaPolo } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/luca-polo/" }, { logo: xWhiteLogo, link: "https://twitter.com/ElrondLuis", styles: "w-6 h-6 mt-1" } ] } />
-                        <Card cursorEnter={ cursorEnter } cursorLeave={ cursorLeave } name="Giordano Alberti" description="Collaborator of Ziken Labs, computer engineering student and developer, he's a constant learner, honing his coding skills" image={ giordanoAlberti } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/giordano-alberti-39842627b/" }, { logo: fiverrWhiteLogo, link: "https://it.fiverr.com/users/asvirtual1", styles: "w-6 h-6 mt-1" } ] } />
+                        <Card cursorEnter={ cursorEnter } cursorLeave={ cursorLeave } name="Fabrizio Pepe" role="Co-founder" description="Co-founder of Ziken Labs, architecture student, and travel lover, he is in charge of BesTripTips' editorial team." image={ fabrizioPepe } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/fabrizio-pepe/" }, { logo: xWhiteLogo, link: "https://twitter.com/digital_fp_", styles: "w-6 h-6 mt-1" } ] } />
+                        <Card cursorEnter={ cursorEnter } cursorLeave={ cursorLeave } name="Luca Polo" role="Co-founder" description="Co-founder of Ziken Labs, experienced graphic designer, he merges creativity, technology and innovation." image={ lucaPolo } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/luca-polo/" }, { logo: xWhiteLogo, link: "https://twitter.com/ElrondLuis", styles: "w-6 h-6 mt-1" } ] } />
+                        <Card cursorEnter={ cursorEnter } cursorLeave={ cursorLeave } name="Giordano Alberti" role="Website developer" description="Collaborator of Ziken Labs, computer engineering student and developer, he's a constant learner, honing his coding skills" image={ giordanoAlberti } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/giordano-alberti-39842627b/" }, { logo: fiverrWhiteLogo, link: "https://it.fiverr.com/users/asvirtual1", styles: "w-6 h-6 mt-1" } ] } />
                     </div>
+                    <div className="grid grid-flow-col gap-12 w-full justify-center px-12 my-12">
+                        <div>
+                            <img src={ xWhiteLogo } className="w-12 h-12 mx-auto rounded-full bg-red-700 p-3"></img>
+                            <h3 className="akashi text-center text-2xl my-4">Piani strategici</h3>
+                            <p className="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod, orci ut lacinia tristique, neque lorem congue odio, quis viverra metus ligula vitae arcu. </p>
+                        </div>
+                        <div>
+                            <img src={ xWhiteLogo } className="w-12 h-12 mx-auto rounded-full bg-red-700 p-3"></img>
+                            <h3 className="akashi text-center text-2xl my-4">Customized solutions</h3>
+                            <p className="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod, orci ut lacinia tristique, neque lorem congue odio, quis viverra metus ligula vitae arcu. </p>
+                        </div>
+                        <div>
+                            <img src={ xWhiteLogo } className="w-12 h-12 mx-auto rounded-full bg-red-700 p-3"></img>
+                            <h3 className="akashi text-center text-2xl my-4">Costanza e resilienza</h3>
+                            <p className="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod, orci ut lacinia tristique, neque lorem congue odio, quis viverra metus ligula vitae arcu. </p>
+                        </div>
+                        <div>
+                            <img src={ xWhiteLogo } className="w-12 h-12 mx-auto rounded-full bg-red-700 p-3"></img>
+                            <h3 className="akashi text-center text-2xl my-4">Critical Thinking</h3>
+                            <p className="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod, orci ut lacinia tristique, neque lorem congue odio, quis viverra metus ligula vitae arcu. </p>
+                        </div>
+                    </div>
+                </div>
+                <div className={ `relative h-fit overflow-y-hidden py-4 ${ isMobile ? "px-4" : "px-20" }` }>
+                    DISCORD
                 </div>
 			</section>
         </div>     
