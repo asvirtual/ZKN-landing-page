@@ -5,6 +5,19 @@
 .card {
     perspective: 1000px;
     background-color: transparent;
+    transition: all ease 0.5s;
+    animation: cardAnimation 1s ease forwards;
+}
+
+@keyframes cardAnimation {
+    0% {
+        scale: .4;
+        transform: rotateY(0);
+    }
+    100% {
+        scale: 1;
+        transform: rotateY(360deg);
+    }
 }
 
 .cardInner {
@@ -35,4 +48,15 @@
 .card:hover .cardInner {
     transform: rotateY(180deg);
     /* scale: 1.15; */
+}
+
+.cardBackImage {
+    transform: scale(0.5);
+    transition: transform ease-out .5s;
+    border-radius: 100%;
+}
+
+.card:hover .cardBackImage {
+    transform: none;
+    border-radius: .5rem .5rem 0 0;
 }
