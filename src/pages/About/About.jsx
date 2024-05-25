@@ -13,10 +13,26 @@ import fiverrWhiteLogo from "../../assets/fiverrWhiteLogo.svg"
 import xWhiteLogo from "../../assets/xLogoWhite.svg"
 import linkedinWhiteLogo from "../../assets/linkedInWhiteLogo.svg"
 
+import bestTripTipsLogo from "../../assets/BesTripTips.svg"
+import evoloadLogo from "../../assets/Evoload.svg"
+import fiverrLogo from "../../assets/Fiverr.svg"
+import newsFromTechLogo from "../../assets/NewsFromTech.svg"
+import nextIdeaLogo from "../../assets/Next idea.svg"
+import nextToolLogo from "../../assets/Next Tool.svg"
+import plasbitLogo from "../../assets/Plasbit.svg"
+import spazioCryptoLogo from "../../assets/Spaziocrypto.svg"
+import trackerXLogo from "../../assets/TrackerX.svg"
+import trakXLogo from "../../assets/Trakx.svg"
+import votexLogo from "../../assets/Votex.svg"
+import crpytoStocksLogo from "../../assets/Crypto&Stocks.svg"
+import finzenLogo from "../../assets/Finzen.svg"
+
 import { CursorContext } from "../../App"
 import PixelText from '../../components/PixelText/PixelText';
 
 import { motion } from "framer-motion"
+
+import Marquee from 'react-fast-marquee';
 
 
 const Card = ({ cursorEnter, cursorLeave, name, role, description, image, icons }) => {
@@ -32,7 +48,7 @@ const Card = ({ cursorEnter, cursorLeave, name, role, description, image, icons 
             <div className={ `${style.cardBack} bg-white rounded-lg` } style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
                 <img src={ image } className={ `${style.cardBackImage} relative w-full h-auto` }></img>
                 <p className="relative akashi h-min text-center pt-4 text-lg">{ name }</p>
-                <p className="relative akashi text-center h-fit pb-7 text-xs">{ role }</p>
+                <p className="relative akashi text-center h-fit pb-14 text-xs">{ role }</p>
                 <div className="relative h-fit py-4 w-full grid grid-flow-col justify-center bg-slate-800 rounded-b-lg">
                     { icons.map(({ logo, link, styles }) => <a target="_blank" className="my-auto relative mx-2" href={ link }>
                         <img src={ logo } className={ `relative ${styles ?? "w-8 h-8"}` }></img>
@@ -90,9 +106,9 @@ const About = () => {
                     onMouseLeave={ () => setCursorColor("bg-black") } className={ `relative text-white bg-black py-4 ${ isMobile ? "px-4" : "px-20" }` }>
                     <h2 className="akashi text-5xl text-center mt-8 mb-16">The team</h2>
                     <div className="flex w-full justify-center">
-                        <Card cursorEnter={ cursorEnter } cursorLeave={ cursorLeave } name="Fabrizio Pepe" role="Co-founder" description="Co-founder of Ziken Labs, architecture student, and travel lover, he is in charge of BesTripTips' editorial team." image={ fabrizioPepe } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/fabrizio-pepe/" }, { logo: xWhiteLogo, link: "https://twitter.com/digital_fp_", styles: "w-6 h-6 mt-1" } ] } />
+                        <Card cursorEnter={ cursorEnter } cursorLeave={ cursorLeave } name="Fabrizio Pepe" role="Co-founder" description="Co-founder & CEO of Ziken Labs. Focused on entrepreneurial activities, he wants to make the company an international reality." image={ fabrizioPepe } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/fabrizio-pepe/" }, { logo: xWhiteLogo, link: "https://twitter.com/digital_fp_", styles: "w-6 h-6 mt-1" } ] } />
                         <Card cursorEnter={ cursorEnter } cursorLeave={ cursorLeave } name="Luca Polo" role="Co-founder" description="Co-founder of Ziken Labs, experienced graphic designer, he merges creativity, technology and innovation." image={ lucaPolo } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/luca-polo/" }, { logo: xWhiteLogo, link: "https://twitter.com/ElrondLuis", styles: "w-6 h-6 mt-1" } ] } />
-                        <Card cursorEnter={ cursorEnter } cursorLeave={ cursorLeave } name="Giordano Alberti" role="Website developer" description="Collaborator of Ziken Labs, computer engineering student and developer, he's a constant learner, honing his coding skills" image={ giordanoAlberti } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/giordano-alberti-39842627b/" }, { logo: fiverrWhiteLogo, link: "https://it.fiverr.com/users/asvirtual1", styles: "w-6 h-6 mt-1" } ] } />
+                        <Card cursorEnter={ cursorEnter } cursorLeave={ cursorLeave } name="Giordano Alberti" role="Website developer" description="Collaborator of Ziken Labs, tech enthusiast, computer engineering student and developer, he's a constant learner, honing his coding skills" image={ giordanoAlberti } icons={ [ { logo: linkedinWhiteLogo, link: "https://www.linkedin.com/in/giordano-alberti-39842627b/" }, { logo: fiverrWhiteLogo, link: "https://it.fiverr.com/users/asvirtual1", styles: "w-6 h-6 mt-1" } ] } />
                     </div>
                     <div className="grid grid-flow-col gap-12 w-full justify-center px-12 my-12">
                         <div>
@@ -119,6 +135,88 @@ const About = () => {
                 </div>
                 <div className={ `relative h-fit overflow-y-hidden py-4 ${ isMobile ? "px-4" : "px-20" }` }>
                     DISCORD
+                </div>
+                <div className="px-40">
+                    <h2 className="akashi text-center text-5xl">OUR CLIENTS</h2>
+                    <Marquee autoFill={ true } pauseOnHover={ true } speed={ 75 } gradient={ true }>
+                        <div className="flex justify-center mt-5 mb-24 bg-slate-300">
+                            <div className="flex mx-20">
+                                <img src={ trakXLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">TrakX</p>
+                            </div>
+                            <div className="flex mx-20">
+                                <img src={ plasbitLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">PlasBit</p>
+                            </div>
+                            <div className="flex mx-20">
+                                <img src={ evoloadLogo } className="w-16 h-16"></img>
+                                <h4 className="my-auto text-xl">Evoload</h4>
+                            </div>
+                            <div className="flex mx-20">
+                                <img src={ spazioCryptoLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">SpazioCrypto</p>
+                            </div>
+                        </div>
+                    </Marquee>
+                    
+                    <h2 className="akashi text-center text-5xl">OUR PRODUCTS</h2>
+                    <Marquee autoFill={ true } pauseOnHover={ true } speed={ 75 } gradient={ true }>
+                        <div className="flex justify-center mt-5 mb-24 bg-slate-300">
+                            <div className="flex mx-20">
+                                <img src={ bestTripTipsLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">BesTripTips</p>
+                            </div>
+                            <div className="flex mx-20">
+                                <img src={ newsFromTechLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">NewsFromTech</p>
+                            </div>
+                            <div className="flex mx-20">
+                                <img src={ finzenLogo } className="w-16 h-16"></img>
+                                <h4 className="my-auto text-xl">TheFinzen</h4>
+                            </div>
+                            <div className="flex mx-20">
+                                <img src={ votexLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">Votex</p>
+                            </div>    
+                            <div className="flex mx-20">
+                                <img src={ trackerXLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">TrackerX</p>
+                            </div>    
+                            <div className="flex mx-20">
+                                <img src={ crpytoStocksLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">CryptoStocks</p>
+                            </div>                            
+                        </div>
+                    </Marquee>
+                    <h2 className="akashi text-center text-5xl">FEATURED ON</h2>
+                    <Marquee autoFill={ true } pauseOnHover={ true } speed={ 75 } gradient={ true }>
+                        <div className="flex justify-center mt-5 mb-24 bg-slate-300">
+                            <div className="flex mx-20">
+                                <img src={ bestTripTipsLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">BesTripTips</p>
+                            </div>
+                            <div className="flex mx-20">
+                                <img src={ newsFromTechLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">NewsFromTech</p>
+                            </div>
+                            <div className="flex mx-20">
+                                <img src={ finzenLogo } className="w-16 h-16"></img>
+                                <h4 className="my-auto text-xl">TheFinzen</h4>
+                            </div>
+                            <div className="flex mx-20">
+                                <img src={ votexLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">Votex</p>
+                            </div>    
+                            <div className="flex mx-20">
+                                <img src={ trackerXLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">TrackerX</p>
+                            </div>    
+                            <div className="flex mx-20">
+                                <img src={ crpytoStocksLogo } className="w-16 h-16"></img>
+                                <p className="my-auto text-xl">CryptoStocks</p>
+                            </div>                            
+                        </div>
+                    </Marquee>
                 </div>
 			</section>
         </div>     
