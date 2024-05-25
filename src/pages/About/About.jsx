@@ -11,6 +11,7 @@ import giordanoAlberti from "../../assets/GiordanoAlberti.jpg"
 
 import fiverrWhiteLogo from "../../assets/fiverrWhiteLogo.svg"
 import xWhiteLogo from "../../assets/xLogoWhite.svg"
+import discordLogo from "../../assets/discordLogo.svg"
 import linkedinWhiteLogo from "../../assets/linkedInWhiteLogo.svg"
 
 import bestTripTipsLogo from "../../assets/BesTripTips.svg"
@@ -132,14 +133,19 @@ const About = () => {
                             <p className="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod, orci ut lacinia tristique, neque lorem congue odio, quis viverra metus ligula vitae arcu. </p>
                         </div>
                     </div>
+                    <div className="mt-32 mb-12 px-100">
+                        <h2 className="akashi text-center text-5xl mb-4">Like our project?</h2>
+                        <p className="mx-auto text-center w-96">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod, orci ut lacinia tristique, neque lorem congue odio, quis viverra metus ligula vitae arcu. </p>
+                    </div>
+                    <div className={ `relative h-fit overflow-y-hidden py-4 ${ isMobile ? "px-4" : "px-20" } flex mx-auto w-fit bg-slate-600 rounded-lg mb-8` }>
+                        <img src={ discordLogo } className="w-12 h-12"></img>
+                        <p className="akashi my-auto ml-4 text-xl">Join us on Discord!</p>
+                    </div>
                 </div>
-                <div className={ `relative h-fit overflow-y-hidden py-4 ${ isMobile ? "px-4" : "px-20" }` }>
-                    DISCORD
-                </div>
-                <div className="px-40">
+                <div className="mt-8 px-40">
                     <h2 className="akashi text-center text-5xl">OUR CLIENTS</h2>
-                    <Marquee autoFill={ true } pauseOnHover={ true } speed={ 75 } gradient={ true }>
-                        <div className="flex justify-center mt-5 mb-24 bg-slate-300">
+                    <Marquee autoFill={ true } pauseOnHover={ true } speed={ 75 } gradient={ true } className=" mt-5 mb-24">
+                        <div className="flex justify-center bg-slate-300 py-8">
                             <div className="flex mx-20">
                                 <img src={ trakXLogo } className="w-16 h-16"></img>
                                 <p className="my-auto text-xl">TrakX</p>
@@ -160,8 +166,8 @@ const About = () => {
                     </Marquee>
                     
                     <h2 className="akashi text-center text-5xl">OUR PRODUCTS</h2>
-                    <Marquee autoFill={ true } pauseOnHover={ true } speed={ 75 } gradient={ true }>
-                        <div className="flex justify-center mt-5 mb-24 bg-slate-300">
+                    <Marquee autoFill={ true } pauseOnHover={ true } speed={ 75 } gradient={ true } className=" mt-5 mb-24">
+                        <div className="flex justify-center bg-slate-300 py-8">
                             <div className="flex mx-20">
                                 <img src={ bestTripTipsLogo } className="w-16 h-16"></img>
                                 <p className="my-auto text-xl">BesTripTips</p>
@@ -189,8 +195,8 @@ const About = () => {
                         </div>
                     </Marquee>
                     <h2 className="akashi text-center text-5xl">FEATURED ON</h2>
-                    <Marquee autoFill={ true } pauseOnHover={ true } speed={ 75 } gradient={ true }>
-                        <div className="flex justify-center mt-5 mb-24 bg-slate-300">
+                    <Marquee autoFill={ true } pauseOnHover={ true } speed={ 75 } gradient={ true } className=" mt-5 mb-24">
+                        <div className="flex justify-center bg-slate-300 py-8">
                             <div className="flex mx-20">
                                 <img src={ bestTripTipsLogo } className="w-16 h-16"></img>
                                 <p className="my-auto text-xl">BesTripTips</p>
