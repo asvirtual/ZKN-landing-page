@@ -12,6 +12,7 @@ import giordanoAlberti from "../../assets/GiordanoAlberti.jpg"
 import fiverrWhiteLogo from "../../assets/fiverrWhiteLogo.svg"
 import xWhiteLogo from "../../assets/xLogoWhite.svg"
 import discordLogo from "../../assets/discordLogo.svg"
+import discordWhiteLogo from "../../assets/discordWhiteLogo.svg"
 import linkedinWhiteLogo from "../../assets/linkedInWhiteLogo.svg"
 
 import bestTripTipsLogo from "../../assets/BesTripTips.svg"
@@ -224,6 +225,49 @@ const About = () => {
                         </div>
                     </Marquee>
                 </div>
+                <footer className="pb-5 z-20" id="footer" style={{
+					// background: "rgba(255, 255, 255, 0.8)",
+					boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+					backdropFilter: "blur(2px)",
+					WebkitBackdropFilter: "blur(2px)",
+					border: "1px solid rgba(0, 0, 0, 0.3)",
+					mixBlendMode: "difference",
+					WebkitMixBlendMode: "difference",
+					background: "linear-gradient(to top, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0.8)", 
+				}} onMouseEnter={ () => setCursorColor("bg-white") } onMouseLeave={ () => setCursorColor("bg-black") }>
+					<img src={ logo } className={ `ml-auto mr-auto ${isMobile ? "w-40" : "w-60"}` }></img>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="ml-auto mr-auto text-center text-black mt-auto mb-auto">
+						<a href="/services" target="_blank" className="ml-4 mr-4">Services</a>
+						<a href="/products" target="_blank" className="ml-4 mr-4">Products</a>
+						<a href="/blog" target="_blank" className="ml-4 mr-4">Blog</a>
+						<a href="/about" target="_blank" className="ml-4 mr-4">About</a>
+					</div>
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="flex justify-center mt-6">
+						<img src={ linkedinWhiteLogo } onClick={ () => window.open("https://www.linkedin.com/company/ziken-labs/") } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
+						<img src={ discordWhiteLogo } onClick={ () => window.open("https://discord.com/invite/Czu9yxPqxM") } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img>
+						<img src={ xWhiteLogo } onClick={ () => window.open("https://twitter.com/ZikenLabs") } className="mix-blend-difference w-6 h-6 ml-2 mr-2 mt-2"></img>
+						{/* <img src={ instagramWhiteLogo } onClick={ () => window.open("https://www.linkedin.com/company/ziken-labs/") } className="mix-blend-difference w-10 h-10 ml-2 mr-2"></img> */}
+					</div>
+					{ isMobile ? <div className="mt-4">
+						<h5 className="text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls <br /> Via della Badia di Cava 82, 00142, Rome, Italy <br /> VAT: IT 17351991009</h5>
+						<div className="text-center text-black mt-6">
+							{/* <a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a>
+							<a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms of Service</a> */}
+							<a href="https://www.iubenda.com/privacy-policy/97599587" target="_blank" className="ml-4 mr-4">Privacy Policy</a>
+							<a href="https://www.iubenda.com/privacy-policy/97599587/cookie-policy" target="_blank" className="ml-4 mr-4">Cookie Policy</a>
+						</div>
+					</div> :
+					<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className={ isMobile ? "mt-8" : `flex mt-20` }>
+						<h3 className="text-black akashi ml-5 text-3xl">ZIKEN LABS</h3>
+						<h5 className="flex-1 text-center mt-auto mb-auto">© { new Date().getFullYear() } Ziken Labs Srls - Via della Badia di Cava 82, 00142, Rome, Italy - VAT: IT 17351991009</h5>
+						<div onMouseEnter={ cursorEnter } onMouseLeave={ cursorLeave } className="text-right text-black mt-auto mb-auto mr-5">
+							{/* <a href="/privacy" target="_blank" className="ml-4 mr-4">Privacy</a> */}
+							<a href="https://www.iubenda.com/privacy-policy/97599587" target="_blank" className="ml-4 mr-4">Privacy Policy</a>
+							<a href="https://www.iubenda.com/privacy-policy/97599587/cookie-policy" target="_blank" className="ml-4 mr-4">Cookie Policy</a>
+							{/* <a href="/termsofservice" target="_blank" className="ml-4 mr-4">Terms of Service</a> */}
+						</div>
+					</div> }
+				</footer>
 			</section>
         </div>     
     );
